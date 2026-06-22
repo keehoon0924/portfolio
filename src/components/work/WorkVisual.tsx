@@ -26,11 +26,11 @@ function VideoVisual() {
   return (
     <div className="relative flex aspect-video w-full max-w-[480px] items-center justify-center overflow-hidden rounded-[14px] bg-ink">
       <div className="absolute inset-0 flex items-end justify-center gap-1.5 p-[30px] opacity-45">
-        {[32, 48, 64, 48, 32].map((height, index) => (
+        {[0, 1, 2, 3, 4].map((index) => (
           <span
             key={index}
-            className="w-2 rounded-[3px] bg-mark"
-            style={{ height: `${height}%` }}
+            className="eq-bar w-2 rounded-[3px] bg-mark"
+            style={{ animationDelay: `${index * 0.15}s` }}
           />
         ))}
       </div>

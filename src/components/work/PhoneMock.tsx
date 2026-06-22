@@ -1,4 +1,5 @@
 import FakeDetailPage from "@/components/work/FakeDetailPage";
+import MockScrollScreen from "@/components/work/MockScrollScreen";
 
 const screenClassName =
   "absolute overflow-y-auto overflow-x-hidden bg-white [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/15";
@@ -13,6 +14,7 @@ export default function PhoneMock({ title, size = "default" }: PhoneMockProps) {
 
   return (
     <div
+      data-mock
       className={
         compact
           ? "relative z-[3] mb-2 mr-[-40px] h-[308px] w-[150px] flex-none rounded-[24px] bg-[#1c1c1e] p-[7px] shadow-[0_30px_60px_-32px_rgba(22,24,27,0.45)]"
@@ -26,7 +28,7 @@ export default function PhoneMock({ title, size = "default" }: PhoneMockProps) {
             : "absolute left-1/2 top-[11px] z-[3] h-[18px] w-[82px] -translate-x-1/2 rounded-b-xl bg-[#1c1c1e]"
         }
       />
-      <div
+      <MockScrollScreen
         className={
           compact
             ? `${screenClassName} inset-[7px] rounded-[18px]`
@@ -34,7 +36,7 @@ export default function PhoneMock({ title, size = "default" }: PhoneMockProps) {
         }
       >
         <FakeDetailPage title={title} />
-      </div>
+      </MockScrollScreen>
     </div>
   );
 }

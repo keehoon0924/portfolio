@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const reviews = [
   {
     quote:
@@ -23,20 +25,21 @@ export default function Reviews() {
   return (
     <section id="reviews" className="border-t border-line py-[90px]">
       <div className="mx-auto w-full max-w-[1160px] px-[30px] max-md:px-5">
-        <div className="mb-[18px] flex items-baseline gap-4">
+        <Reveal className="mb-[18px] flex items-baseline gap-4">
           <span className="font-mono text-[13px] font-medium text-mark-deep">
             04
           </span>
           <h2 className="text-[clamp(24px,3.3vw,38px)] font-extrabold tracking-[-0.015em]">
             함께한 사람들의 한마디
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-[30px] grid gap-[26px] max-[760px]:grid-cols-1 min-[761px]:grid-cols-3">
           {reviews.map((review) => (
-            <article
+            <Reveal
               key={review.author}
-              className={`relative rounded-[3px] bg-note px-6 pb-7 pt-[26px] shadow-[0_14px_26px_-16px_rgba(22,24,27,0.28)] ${review.rotate}`}
+              as="article"
+              className={`postit-note relative rounded-[3px] bg-note px-6 pb-7 pt-[26px] shadow-[0_14px_26px_-16px_rgba(22,24,27,0.28)] ${review.rotate}`}
             >
               <div
                 className="absolute -top-2.5 left-1/2 h-[18px] w-16 -translate-x-1/2 -rotate-[3deg] border border-black/[0.04] bg-white/45"
@@ -48,7 +51,7 @@ export default function Reviews() {
               <p className="mt-4 font-mono text-[11px] text-[#8a7a3c]">
                 {review.author}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { works, type WorkType } from "@/data/works";
+import Reveal from "@/components/Reveal";
 import CaseBand from "@/components/work/CaseBand";
 import CategoryDivider from "@/components/work/CategoryDivider";
 
@@ -17,14 +18,14 @@ export default function WorkSection() {
   return (
     <section id="work" className="border-t border-line py-[90px]">
       <div className="mx-auto w-full max-w-[1160px] px-[30px] max-md:px-5">
-        <div className="mb-[18px] flex items-baseline gap-4">
+        <Reveal className="mb-[18px] flex items-baseline gap-4">
           <span className="font-mono text-[13px] font-medium text-mark-deep">
             03
           </span>
           <h2 className="text-[clamp(24px,3.3vw,38px)] font-extrabold tracking-[-0.015em]">
             Selected Work
           </h2>
-        </div>
+        </Reveal>
 
         <div>
           {WORK_TYPE_ORDER.map((type) => {

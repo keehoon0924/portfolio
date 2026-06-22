@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 type CategoryDividerProps = {
   label: string;
   category: string;
@@ -10,7 +12,7 @@ export default function CategoryDivider({
   isFirst = false,
 }: CategoryDividerProps) {
   return (
-    <div
+    <Reveal
       className={`mb-2 flex items-center gap-3.5 ${isFirst ? "mt-[38px]" : "mt-16"}`}
     >
       <span className="text-base font-bold">{label}</span>
@@ -18,6 +20,6 @@ export default function CategoryDivider({
         {category}
       </span>
       <span className="h-px flex-1 bg-line" />
-    </div>
+    </Reveal>
   );
 }

@@ -1,4 +1,5 @@
 import type { Work } from "@/data/works";
+import Reveal from "@/components/Reveal";
 import WorkVisual from "@/components/work/WorkVisual";
 
 type CaseBandProps = {
@@ -8,7 +9,7 @@ type CaseBandProps = {
 
 export default function CaseBand({ work, flip = false }: CaseBandProps) {
   return (
-    <div
+    <Reveal
       className={`grid items-center gap-[26px] py-[46px] max-[860px]:grid-cols-1 min-[861px]:grid-cols-[0.92fr_1.08fr] min-[861px]:gap-[50px] ${
         flip ? "min-[861px]:[&>*:first-child]:order-2" : ""
       }`}
@@ -49,6 +50,6 @@ export default function CaseBand({ work, flip = false }: CaseBandProps) {
       <div className="flex items-center justify-center max-[860px]:order-1">
         <WorkVisual work={work} />
       </div>
-    </div>
+    </Reveal>
   );
 }

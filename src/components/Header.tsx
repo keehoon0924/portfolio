@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const navItems = [
   { href: "#about", label: "ABOUT" },
   { href: "#work", label: "WORK" },
@@ -6,8 +10,24 @@ const navItems = [
 ];
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-[60] flex items-center justify-between px-[30px] py-5">
+    <header
+      className={`fixed inset-x-0 top-0 z-[60] flex items-center justify-between px-[30px] transition-[padding,background-color,border-color,backdrop-filter] duration-300 ${
+        scrolled
+          ? "border-b border-line bg-paper/86 py-[13px] backdrop-blur-[10px]"
+          : "py-5"
+      }`}
+    >
       <div className="font-extrabold tracking-[-0.01em]">
         LEE KIHOON
         <span className="block font-mono text-[10px] font-normal tracking-[0.2em] text-muted">

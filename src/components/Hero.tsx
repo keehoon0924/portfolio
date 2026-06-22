@@ -1,10 +1,60 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Highlighter from "@/components/Highlighter";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+
 const keywords = ["콘텐츠", "퍼포먼스", "기획·실행"];
 
 export default function Hero() {
+  const reduced = useReducedMotion();
+  const kvRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const [heroIn, setHeroIn] = useState(false);
+  const [highlightLit, setHighlightLit] = useState(false);
+  const [badgeTransform, setBadgeTransform] = useState("");
+
+  useEffect(() => {
+    if (reduced) {
+      setHeroIn(true);
+      setHighlightLit(true);
+      return;
+    }
+
+    setHeroIn(true);
+    const timer = window.setTimeout(() => setHighlightLit(true), 700);
+    return () => window.clearTimeout(timer);
+  }, [reduced]);
+
+  useEffect(() => {
+    const kv = kvRef.current;
+    const badge = badgeRef.current;
+    if (!kv || !badge || reduced) return;
+
+    const onPointerMove = (event: PointerEvent) => {
+      const rect = kv.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      setBadgeTransform(
+        `rotateY(${x * 9}deg) rotateX(${-y * 9}deg)`,
+      );
+    };
+
+    const onPointerLeave = () => setBadgeTransform("");
+
+    kv.addEventListener("pointermove", onPointerMove);
+    kv.addEventListener("pointerleave", onPointerLeave);
+
+    return () => {
+      kv.removeEventListener("pointermove", onPointerMove);
+      kv.removeEventListener("pointerleave", onPointerLeave);
+    };
+  }, [reduced]);
+
   return (
     <section
       id="hero"
-      className="flex min-h-svh items-center pb-[60px] pt-[120px]"
+      className={`flex min-h-svh items-center pb-[60px] pt-[120px] ${heroIn ? "hero-in" : ""}`}
     >
       <div className="mx-auto w-full max-w-[1160px] px-[30px] max-md:px-5">
         <div className="grid w-full items-center gap-11 max-[860px]:grid-cols-1 max-[860px]:gap-11 min-[861px]:grid-cols-[1.12fr_0.88fr] min-[861px]:gap-[50px]">
@@ -13,18 +63,17 @@ export default function Hero() {
               Marketer · Portfolio 2025
             </p>
             <h1 className="text-[clamp(34px,5.2vw,72px)] font-extrabold leading-[1.08] tracking-[-0.025em] text-ink">
-              아이디어를
-              <br />
-              <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10">성과</span>
-                <span
-                  className="absolute -left-[0.04em] -right-[0.04em] bottom-[0.07em] -z-10 h-[0.34em] rounded-[2px] bg-mark"
-                  aria-hidden
-                />
+              <span className="hero-line">
+                <span className="hero-line-inner">아이디어를</span>
               </span>
-              로 증명하는
-              <br />
-              마케터 이기훈입니다.
+              <span className="hero-line">
+                <span className="hero-line-inner">
+                  <Highlighter lit={highlightLit}>성과</Highlighter>로 증명하는
+                </span>
+              </span>
+              <span className="hero-line">
+                <span className="hero-line-inner">마케터 이기훈입니다.</span>
+              </span>
             </h1>
             <p className="mt-6 max-w-[30em] text-[clamp(15px,1.4vw,18px)] text-ink-soft">
               전략적 사고와 빠른 실행으로 브랜드의 가치를 키웁니다. 기획부터
@@ -42,8 +91,15 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex justify-center max-[860px]:order-first">
-            <div className="w-[280px] max-w-[78vw] rounded-[18px] border border-line bg-surface px-6 pb-[30px] pt-[26px] text-center shadow-[0_30px_60px_-30px_rgba(22,24,27,0.28)]">
+          <div
+            ref={kvRef}
+            className="flex justify-center perspective-[1500px] max-[860px]:order-first"
+          >
+            <div
+              ref={badgeRef}
+              className="w-[280px] max-w-[78vw] rounded-[18px] border border-line bg-surface px-6 pb-[30px] pt-[26px] text-center shadow-[0_30px_60px_-30px_rgba(22,24,27,0.28)] transition-transform duration-[250ms] ease-in-out [transform-style:preserve-3d]"
+              style={{ transform: badgeTransform || undefined }}
+            >
               <div
                 className="relative mx-auto -mt-[58px] mb-3.5 h-[54px] w-[46px] rounded-t-[24px] border-[3px] border-b-0 border-ink"
                 aria-hidden
