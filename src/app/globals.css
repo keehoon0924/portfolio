@@ -1,26 +1,62 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Nanum+Pen+Script&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* fonts */
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-hand: "Nanum Pen Script", cursive;
+
+  /* neutral */
+  --color-paper: #f6f7f8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f2f4;
+  --color-ink: #16181b;
+  --color-ink-soft: #4a4d52;
+  --color-muted: #8a9099;
+  --color-line: #e4e7ea;
+  --color-line-strong: #d3d7dc;
+
+  /* accent */
+  --color-mark: #eccb3a;
+  --color-mark-soft: #f7e9a8;
+  --color-mark-deep: #c9a91e;
+
+  /* postit */
+  --color-note: #f7e9a8;
+  --color-note-ink: #5a4a12;
+
+  /* radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  /* easing */
+  --ease-std: cubic-bezier(0.4, 0, 0.1, 1);
+  --ease-emph: cubic-bezier(0.5, 0, 0.1, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
 }
