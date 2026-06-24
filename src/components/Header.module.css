@@ -1,0 +1,66 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: rgba(246, 247, 248, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 18px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  line-height: 1.1;
+}
+
+.name {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: 15px;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.contact {
+  color: var(--text) !important;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    gap: 16px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,152 @@
+.card {
+  position: relative;
+  display: grid;
+  gap: 44px;
+  align-items: center;
+  padding: 34px 36px;
+  margin: 10px 0;
+  border: 1px solid transparent;
+  border-radius: var(--r-panel);
+  cursor: pointer;
+  transition:
+    transform 0.4s var(--ease-reveal),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+/* reveal 진입 transform과 hover lift가 충돌하지 않도록, 진입 후에만 hover 적용 */
+.card.is-visible:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+/* 카드 전체 클릭 영역 */
+.hit {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 12px;
+}
+
+.kickerDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 48ch;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rowKey {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.rowVal {
+  color: var(--text-secondary);
+}
+
+.foot {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: var(--r-pill);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.card.is-visible:hover .arrow {
+  transform: translateX(5px);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.mock {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.45s var(--ease-reveal);
+}
+
+.card.is-visible:hover .mock {
+  transform: scale(1.04);
+}
+
+@media (max-width: 820px) {
+  .card {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+    padding: 28px 22px;
+  }
+  .text {
+    order: 1 !important;
+  }
+  .mock {
+    order: 2 !important;
+  }
+}

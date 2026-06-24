@@ -1,0 +1,140 @@
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 92px var(--pad-x) 70px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 56px;
+  align-items: center;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.h1 {
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.sub {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 24px;
+  max-width: 42ch;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  background: var(--surface);
+}
+
+.cardWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-panel-lg);
+  padding: 18px 18px 26px;
+  width: 262px;
+  box-shadow: var(--shadow-namecard);
+  position: relative;
+}
+
+.cardNotch {
+  width: 46px;
+  height: 14px;
+  background: var(--text);
+  border-radius: 0 0 12px 12px;
+  margin: 0 auto;
+}
+
+.cardHead {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.cardRole {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+.cardName {
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.cardPhoto {
+  height: 118px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--surface-soft) 0 11px,
+    #fff 11px 22px
+  );
+  margin: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardPhotoChip {
+  width: 54px;
+  height: 54px;
+  background: var(--accent);
+  border-radius: 8px;
+}
+
+.cardMeta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.9;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: auto;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 64px var(--pad-x) 56px;
+  }
+  .cardWrap {
+    justify-content: flex-start;
+  }
+}

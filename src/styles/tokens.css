@@ -1,0 +1,52 @@
+/* Design tokens — 레퍼런스 README의 색상·타이포·간격 토큰 */
+:root {
+  /* Colors */
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --surface-soft: #f1f2f4;
+  --text: #16181b;
+  --text-secondary: #4a4d52;
+  --text-muted: #8a9099;
+  --border: #e4e7ea;
+  --border-strong: #d3d7dc;
+
+  --accent: #eccb3a; /* 주요 액센트 (노랑) */
+  --accent-text: #c9a91e; /* 노랑 텍스트 변형 */
+
+  --note-bg: #f7e9a8; /* 후기 메모지 배경 */
+  --note-text: #5a4a12; /* 후기 메모지 텍스트 */
+  --note-meta: #9a851f;
+
+  --tonefit: #e8895b; /* TONE:FIT 오렌지 */
+  --tonefit-text: #c26b3e;
+
+  --dark-bg: #16181b; /* 다크 섹션 (Contact) */
+  --device-body: #1c1c1e; /* 기기 목업 바디 */
+
+  /* Typography */
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-hand: "Nanum Pen Script", cursive;
+
+  /* Layout */
+  --content-max: 1160px;
+  --content-wide: 1500px;
+  --pad-x: 30px;
+  --pad-x-wide: 48px;
+
+  /* Radius */
+  --r-card: 12px;
+  --r-panel: 16px;
+  --r-panel-lg: 18px;
+  --r-pill: 999px;
+  --r-note: 4px;
+
+  /* Shadows */
+  --shadow-card-hover: 0 28px 50px -28px rgba(22, 24, 27, 0.28);
+  --shadow-namecard: 0 30px 60px -30px rgba(22, 24, 27, 0.28);
+  --shadow-device: 0 36px 60px -24px rgba(22, 24, 27, 0.5);
+
+  /* Motion */
+  --ease-reveal: cubic-bezier(0.4, 0, 0.1, 1);
+  --ease-marker: cubic-bezier(0.5, 0, 0.1, 1);
+}

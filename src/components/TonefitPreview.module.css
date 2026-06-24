@@ -1,0 +1,253 @@
+.section {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+  padding: 112px 0 124px;
+}
+
+.inner {
+  max-width: var(--content-wide);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--pad-x-wide);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 50px;
+}
+
+/* ---- Laptop ---- */
+.laptopCol {
+  justify-self: start;
+  width: 100%;
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.laptop {
+  width: 100%;
+}
+
+.lid {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(160deg, #46484c, #26282b);
+  border-radius: 22px 22px 8px 8px;
+  padding: 15px 15px 18px;
+  box-shadow: 0 60px 100px -42px rgba(22, 24, 27, 0.55);
+}
+
+.camera {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #0b0b0c;
+  border-radius: 99px;
+  z-index: 2;
+  box-shadow: 0 0 0 2px #2b2d30;
+}
+
+.lidScreen {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+}
+
+.lidViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.autoImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+}
+
+.deck {
+  position: relative;
+  width: 123%;
+  left: -11.5%;
+  height: 118px;
+  background: linear-gradient(180deg, #e6e8ec, #bcc0c6 58%, #9a9ea5);
+  clip-path: polygon(5% 0, 95% 0, 100% 100%, 0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding-top: 7px;
+}
+
+.hinge {
+  width: 150px;
+  height: 8px;
+  background: linear-gradient(#17171a, #303236);
+  border-radius: 0 0 7px 7px;
+}
+
+.keyboard {
+  width: 76%;
+  height: 56px;
+  margin-top: 1px;
+  border-radius: 7px;
+  background: #3a3c40;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.keyRow {
+  flex: 1;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #5a5d62 0 5%,
+    #3a3c40 5% 6.6%
+  );
+}
+
+.trackpad {
+  width: 28%;
+  height: 18px;
+  border-radius: 5px;
+  background: linear-gradient(#d0d3d8, #b4b8be);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.16);
+}
+
+/* ---- Phone ---- */
+.phoneCol {
+  flex: none;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.phone {
+  position: relative;
+  width: 236px;
+  height: 496px;
+  background: var(--device-body);
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow: 0 50px 90px -34px rgba(22, 24, 27, 0.5);
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 24px;
+  background: #000;
+  border-radius: 99px;
+  z-index: 3;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+/* ---- CTA ---- */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--tonefit);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 26px;
+  border-radius: var(--r-pill);
+  transition: transform 0.3s ease;
+}
+
+.ctaBtn:hover {
+  transform: translateY(-3px);
+}
+
+.ctaNote {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #7b818a;
+}
+
+@media (max-width: 920px) {
+  .section {
+    padding: 80px 0 90px;
+  }
+  .inner {
+    padding: 0 var(--pad-x);
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    justify-items: center;
+  }
+  .laptopCol {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .cta {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
