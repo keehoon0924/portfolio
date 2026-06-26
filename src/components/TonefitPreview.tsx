@@ -10,8 +10,9 @@ export function TonefitPreview() {
   return (
     <section id="tonefit-pc" className={styles.section}>
       <div className={styles.inner}>
-        <Reveal className={styles.label}>
-          ◇ PC · 모바일 라이브 미리보기 — 자동 스크롤
+        <Reveal className={styles.label}>◇ 반응형 실행 — PC · 모바일 전체</Reveal>
+        <Reveal as="h3" delay={0.04} className={styles.heading}>
+          한 화면이 아니라, 전 기기 경험을 직접 설계했습니다.
         </Reveal>
 
         <Reveal delay={0.1} className={styles.grid}>
@@ -63,14 +64,6 @@ export function TonefitPreview() {
         </Reveal>
 
         <Reveal delay={0.2} className={styles.cta}>
-          <a
-            href={tonefitAssets.liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.ctaBtn}
-          >
-            실제 사이트 방문 ↗
-          </a>
           <span className={styles.ctaNote}>화면은 자동으로 스크롤됩니다</span>
         </Reveal>
       </div>

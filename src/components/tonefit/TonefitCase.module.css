@@ -1,0 +1,370 @@
+.case {
+  display: block;
+}
+
+/* ---------- 1막 Intro ---------- */
+.intro {
+  border-top: 1px solid var(--border);
+  /*
+   * 1순위: 생성 배경 이미지(tf-kv-bg.png) — 아직 없으면 이 레이어는 건너뛰고
+   * 아래 그라데이션(플레이스홀더 겸 폴백)이 보인다. 이미지 추가하면 자동 적용.
+   */
+  background:
+    url("/assets/tf-kv-bg.png") center / cover no-repeat,
+    radial-gradient(80% 70% at 80% 28%, rgba(232, 137, 91, 0.18), transparent 62%),
+    linear-gradient(180deg, #fbf7f3 0%, #f2ede8 100%);
+  overflow: hidden;
+}
+
+.introInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 96px var(--pad-x) 88px;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tonefit-text);
+  margin-bottom: 18px;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  background: var(--tonefit);
+  border-radius: 2px;
+}
+
+.title {
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.positioning {
+  margin-top: 20px;
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+
+.projectType {
+  margin-top: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.facts {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  max-width: 380px;
+}
+
+.factRow {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.factKey {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+
+.factVal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* KV — 화면·각도가 구워진 투명 PNG 한 장, 위치/크기만 잡음 */
+.kvStage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kvMockup {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 40px 60px rgba(22, 24, 27, 0.22));
+}
+
+/* ---------- 2막 문제 (다크) ---------- */
+.problem {
+  background: var(--dark-bg);
+  color: #fff;
+}
+
+.problemInner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: 124px var(--pad-x-wide);
+}
+
+.problemLabel {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.problemHeadline {
+  font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  white-space: pre-line;
+}
+
+.problemBody {
+  margin-top: 30px;
+  font-size: clamp(17px, 1.45vw, 21px);
+  color: #c7cbd1;
+  max-width: 88ch;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.problemPoints {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.point {
+  border-top: 1px solid #34373c;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: clamp(17px, 1.4vw, 20px);
+  color: #e7e9ec;
+  line-height: 1.5;
+}
+
+.pointNo {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+}
+
+/* ---------- 공통 섹션 라벨/헤딩 ---------- */
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.sectionHeading {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 44px;
+  text-wrap: balance;
+}
+
+/* ---------- 3막 접근 ---------- */
+.approach {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.approachInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 104px var(--pad-x);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-panel);
+  padding: 30px 28px;
+}
+
+.stepNo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-text);
+  margin-bottom: 16px;
+}
+
+.stepTitle {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.stepBody {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ---------- 4막 워크스루 필름스트립 ---------- */
+.walk {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.walkInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 104px var(--pad-x);
+}
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.screenRow {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.screenRow.reverse {
+  grid-template-columns: 1fr 240px;
+}
+
+.screenRow.reverse .screenPhone {
+  order: 2;
+}
+
+.screenRow.reverse .screenText {
+  order: 1;
+  text-align: right;
+}
+
+.screenPhone {
+  display: flex;
+  justify-content: center;
+}
+
+.screenPhone > * {
+  max-width: 240px;
+}
+
+.screenKicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 12px;
+}
+
+.screenTitle {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.screenCaption {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 42ch;
+}
+
+.screenRow.reverse .screenCaption {
+  margin-left: auto;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 860px) {
+  .introInner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 72px var(--pad-x);
+  }
+  .kvMockup {
+    max-width: 420px;
+  }
+  .problemInner,
+  .approachInner,
+  .walkInner {
+    padding: 80px var(--pad-x);
+  }
+  .problemPoints {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .point {
+    padding: 18px 0;
+    border-top: 1px solid #34373c;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .strip {
+    gap: 48px;
+  }
+  .screenRow,
+  .screenRow.reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-items: center;
+    text-align: center;
+  }
+  .screenRow.reverse .screenText,
+  .screenRow .screenText {
+    order: 2;
+    text-align: center;
+  }
+  .screenRow.reverse .screenPhone,
+  .screenRow .screenPhone {
+    order: 1;
+  }
+  .screenCaption,
+  .screenRow.reverse .screenCaption {
+    margin: 0 auto;
+  }
+}

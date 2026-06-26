@@ -180,14 +180,14 @@ export const groups: WorkGroup[] = [
 /** TONE:FIT 지그재그 밴드 / 자동스크롤에 쓰는 에셋 경로 */
 export const tonefitAssets = {
   gridImages: [
-    "/assets/frame-mo.png",
-    "/assets/news-mo.png",
-    "/assets/brand-smart-mo.png",
-    "/assets/brand-iden-mo.png",
-    "/assets/mobile-main.png",
+    "/assets/images/frame-mo.png",
+    "/assets/images/news-mo.png",
+    "/assets/images/brand-smart-mo.png",
+    "/assets/images/brand-iden-mo.png",
+    "/assets/images/mobile-main.png",
   ],
   // PC·모바일 자동 스크롤용 풀페이지 캡처 (노트북=PC, 폰=모바일)
-  livePreviewPc: "/assets/main-pc.png",
-  livePreviewMobile: "/assets/mobile-main.png",
+  livePreviewPc: "/assets/images/main-pc.png",
+  livePreviewMobile: "/assets/images/mobile-main.png",
   liveUrl: "https://ad-portfolio-tonefitcom.netlify.app",
 };

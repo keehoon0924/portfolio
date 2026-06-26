@@ -2,11 +2,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Stats } from "./components/Stats";
-import { TonefitFeatured } from "./components/TonefitFeatured";
-import { TonefitPreview } from "./components/TonefitPreview";
-import { SelectedWork } from "./components/work/SelectedWork";
-import { Notes } from "./components/Notes";
-import { Contact } from "./components/Contact";
+import { TonefitCase } from "./components/tonefit/TonefitCase";
 
 export default function App() {
   return (
@@ -16,11 +12,7 @@ export default function App() {
         <Hero />
         <About />
         <Stats />
-        <TonefitFeatured />
-        <TonefitPreview />
-        <SelectedWork />
-        <Notes />
-        <Contact />
+        <TonefitCase />
       </main>
     </>
   );
