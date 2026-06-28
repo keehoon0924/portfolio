@@ -21,12 +21,12 @@ const traits = [
 ];
 
 const tools = [
-  { name: "Photoshop", Icon: IconPhotoshop },
-  { name: "Figma", Icon: IconFigma },
-  { name: "Canva", Icon: IconCanva },
-  { name: "CapCut", Icon: IconCapCut },
-  { name: "PPT", Icon: IconPPT },
-  { name: "AI Tools", Icon: IconAI },
+  { name: "Photoshop", Icon: IconPhotoshop, desc: "이미지 보정, 배경 제거, 배너·상세페이지 제작" },
+  { name: "Figma", Icon: IconFigma, desc: "UI 디자인, 와이어프레임, 목업·프로토타이핑" },
+  { name: "Canva", Icon: IconCanva, desc: "SNS 썸네일, 카드뉴스, 오프라인 홍보물 제작" },
+  { name: "CapCut", Icon: IconCapCut, desc: "숏폼 영상 편집, 자막·효과 작업 (릴스·쇼츠)" },
+  { name: "PPT", Icon: IconPPT, desc: "발표자료, 제안서·기획서, 인포그래픽" },
+  { name: "AI Tools", Icon: IconAI, desc: "GPT·Gemini·Claude 활용, 영상 생성 AI, 업무 자동화" },
 ];
 
 export function About() {
@@ -130,8 +130,13 @@ export function About() {
               <div className={styles.toolList}>
                 {tools.map((t) => (
                   <div key={t.name} className={styles.toolItem}>
-                    <t.Icon size={40} />
+                    <div className={styles.toolIconWrap}>
+                    <t.Icon size={44} />
+                  </div>
+                  <div className={styles.toolInfo}>
                     <span className={styles.toolName}>{t.name}</span>
+                    <span className={styles.toolDesc}>{t.desc}</span>
+                  </div>
                   </div>
                 ))}
               </div>
