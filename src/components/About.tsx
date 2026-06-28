@@ -26,9 +26,9 @@ export function About() {
 
       {/* 배경 장식 선 */}
       <svg className={styles.deco} viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="200" cy="350" r="280" stroke="rgba(255,255,255,0.04)" strokeWidth="1"/>
-        <circle cx="200" cy="350" r="400" stroke="rgba(255,255,255,0.03)" strokeWidth="1"/>
-        <line x1="600" y1="0" x2="1200" y2="700" stroke="rgba(255,255,255,0.03)" strokeWidth="1"/>
+        <circle cx="200" cy="350" r="280" stroke="rgba(0,0,0,0.05)" strokeWidth="1"/>
+        <circle cx="200" cy="350" r="400" stroke="rgba(0,0,0,0.03)" strokeWidth="1"/>
+        <line x1="600" y1="0" x2="1200" y2="700" stroke="rgba(0,0,0,0.03)" strokeWidth="1"/>
       </svg>
 
       <div className={styles.inner}>
