@@ -72,90 +72,117 @@
 /* ── Laptop Section ── */
 .laptopSection {
   background: var(--dark-bg);
-  padding: 0 30px 80px;
+  padding: 0 40px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .laptopWrap {
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
 }
 
-.laptop {
+/* MacBook 스타일 목업 */
+.macbook {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: drop-shadow(0 40px 60px rgba(0,0,0,0.7));
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.8));
 }
 
-.laptopLid {
+/* 뚜껑(lid) */
+.macbookLid {
   width: 100%;
-  background: #1a1a1a;
-  border-radius: 14px 14px 2px 2px;
-  border: 1px solid #333;
-  padding: 14px 14px 8px;
+  background: linear-gradient(160deg, #3a3a3a 0%, #1c1c1e 100%);
+  border-radius: 16px 16px 4px 4px;
+  border: 1.5px solid #4a4a4a;
+  border-bottom: none;
+  padding: 10px 12px 8px;
   position: relative;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 
-.laptopCamera {
-  width: 6px;
-  height: 6px;
+.macbookNotch {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #333;
-  margin: 0 auto 10px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  margin: 0 auto 8px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
 }
 
-.laptopScreen {
+.macbookScreen {
   width: 100%;
   background: #000;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  border: 1px solid #111;
 }
 
-.laptopImg {
+.macbookImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
+  display: block;
 }
 
-.laptopBase {
-  width: 108%;
-  background: #222;
-  border-radius: 0 0 8px 8px;
-  border: 1px solid #333;
+/* 힌지 */
+.macbookHinge {
+  width: 102%;
+  height: 5px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-left: 1.5px solid #444;
+  border-right: 1.5px solid #444;
+}
+
+/* 바닥(base) */
+.macbookBase {
+  width: 110%;
+  background: linear-gradient(180deg, #2c2c2e 0%, #1c1c1e 100%);
+  border-radius: 0 0 10px 10px;
+  border: 1.5px solid #3a3a3a;
   border-top: none;
-  padding: 10px 20px 14px;
+  padding: 12px 24px 16px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.6),
+    inset 0 -1px 0 rgba(255,255,255,0.04);
+}
+
+.macbookKeyboardArea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.laptopKeyboard {
-  width: 90%;
+.macbookKeys {
+  width: 88%;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
-.kbRow {
-  height: 6px;
-  background: #2a2a2a;
-  border-radius: 2px;
+.macbookKeyRow {
+  height: 7px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
-.laptopTrackpad {
-  width: 30%;
-  height: 30px;
-  background: #2a2a2a;
-  border-radius: 4px;
-  border: 1px solid #333;
+.macbookTrackpad {
+  width: 28%;
+  height: 32px;
+  background: linear-gradient(180deg, #333 0%, #282828 100%);
+  border-radius: 6px;
+  border: 1px solid #444;
 }
 
 .laptopCaption {
@@ -353,34 +380,34 @@
 
 .phone {
   width: 100%;
-  max-width: 220px;
-  background: #1a1a1a;
-  border-radius: 36px;
-  border: 2px solid #2a2a2a;
-  padding: 12px 8px;
+  max-width: 260px;
+  background: linear-gradient(160deg, #3a3a3a 0%, #1a1a1a 100%);
+  border-radius: 44px;
+  border: 2px solid #444;
+  padding: 14px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   box-shadow:
-    0 2px 0 #111 inset,
-    0 30px 60px -12px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(255,255,255,0.06);
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 30px 60px -12px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .phoneNotch {
-  width: 70px;
-  height: 20px;
+  width: 80px;
+  height: 22px;
   background: #111;
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 16px 16px;
   flex-shrink: 0;
 }
 
 .phoneScreen {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  aspect-ratio: 9 / 19;
+  aspect-ratio: 9 / 16;
   background: #000;
 }
 

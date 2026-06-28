@@ -39,24 +39,32 @@ export function TonefitCase() {
       {/* ── 02 · 노트북 목업 (Hero Shot) ── */}
       <Reveal className={styles.laptopSection}>
         <div className={styles.laptopWrap}>
-          <div className={styles.laptop}>
-            <div className={styles.laptopLid}>
-              <div className={styles.laptopCamera} />
-              <div className={styles.laptopScreen}>
+          {/* MacBook-style SVG frame */}
+          <div className={styles.macbook}>
+            <div className={styles.macbookLid}>
+              {/* 베젤 상단 노치 */}
+              <div className={styles.macbookNotch} />
+              {/* 화면 */}
+              <div className={styles.macbookScreen}>
                 <img
                   src="/works/tonefit/identity-kv.webp"
                   alt="TONE:FIT 메인 화면"
-                  className={styles.laptopImg}
+                  className={styles.macbookImg}
                 />
               </div>
             </div>
-            <div className={styles.laptopBase}>
-              <div className={styles.laptopKeyboard}>
-                <div className={styles.kbRow} />
-                <div className={styles.kbRow} />
-                <div className={styles.kbRow} />
+            {/* 힌지 */}
+            <div className={styles.macbookHinge} />
+            {/* 바닥 */}
+            <div className={styles.macbookBase}>
+              <div className={styles.macbookKeyboardArea}>
+                <div className={styles.macbookKeys}>
+                  {Array.from({length: 5}).map((_, i) => (
+                    <div key={i} className={styles.macbookKeyRow} />
+                  ))}
+                </div>
+                <div className={styles.macbookTrackpad} />
               </div>
-              <div className={styles.laptopTrackpad} />
             </div>
           </div>
         </div>
