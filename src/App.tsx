@@ -2,8 +2,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Stats } from "./components/Stats";
-import { TonefitFeatured } from "./components/TonefitFeatured";
-import { TonefitPreview } from "./components/TonefitPreview";
+import { TonefitCase } from "./components/TonefitCase";
 import { SelectedWork } from "./components/work/SelectedWork";
 import { Notes } from "./components/Notes";
 import { Contact } from "./components/Contact";
@@ -16,8 +15,7 @@ export default function App() {
         <Hero />
         <About />
         <Stats />
-        <TonefitFeatured />
-        <TonefitPreview />
+        <TonefitCase />
         <SelectedWork />
         <Notes />
         <Contact />
