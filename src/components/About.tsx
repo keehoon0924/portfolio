@@ -1,14 +1,6 @@
 import { Reveal } from "./Reveal";
 import styles from "./About.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPhotoFilm,
-  faPenNib,
-  faWandMagicSparkles,
-  faFilm,
-  faChartBar,
-  faRobot,
-} from "@fortawesome/free-solid-svg-icons";
+import { IconPhotoshop, IconFigma, IconCanva, IconCapCut, IconPPT, IconAI } from "./ToolIcons";
 
 const career = [
   { company: "소담촌 구미산동점", role: "지점장", period: "2023.09 – 2025.12" },
@@ -29,12 +21,12 @@ const traits = [
 ];
 
 const tools = [
-  { name: "Photoshop", icon: faPhotoFilm },
-  { name: "Figma", icon: faPenNib },
-  { name: "Canva", icon: faWandMagicSparkles },
-  { name: "CapCut", icon: faFilm },
-  { name: "PPT", icon: faChartBar },
-  { name: "AI Tools", icon: faRobot },
+  { name: "Photoshop", Icon: IconPhotoshop },
+  { name: "Figma", Icon: IconFigma },
+  { name: "Canva", Icon: IconCanva },
+  { name: "CapCut", Icon: IconCapCut },
+  { name: "PPT", Icon: IconPPT },
+  { name: "AI Tools", Icon: IconAI },
 ];
 
 export function About() {
@@ -138,7 +130,7 @@ export function About() {
               <div className={styles.toolList}>
                 {tools.map((t) => (
                   <div key={t.name} className={styles.toolItem}>
-                    <FontAwesomeIcon icon={t.icon} className={styles.toolIcon} />
+                    <t.Icon size={40} />
                     <span className={styles.toolName}>{t.name}</span>
                   </div>
                 ))}
