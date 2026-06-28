@@ -1,5 +1,14 @@
 import { Reveal } from "./Reveal";
 import styles from "./About.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhotoFilm,
+  faPenNib,
+  faWandMagicSparkles,
+  faFilm,
+  faChartBar,
+  faRobot,
+} from "@fortawesome/free-solid-svg-icons";
 
 const career = [
   { company: "소담촌 구미산동점", role: "지점장", period: "2023.09 – 2025.12" },
@@ -20,12 +29,12 @@ const traits = [
 ];
 
 const tools = [
-  { name: "Photoshop", icon: "PS" },
-  { name: "Figma", icon: "Fg" },
-  { name: "Canva", icon: "Ca" },
-  { name: "CapCut", icon: "CC" },
-  { name: "PPT", icon: "PP" },
-  { name: "AI Tools", icon: "AI" },
+  { name: "Photoshop", icon: faPhotoFilm },
+  { name: "Figma", icon: faPenNib },
+  { name: "Canva", icon: faWandMagicSparkles },
+  { name: "CapCut", icon: faFilm },
+  { name: "PPT", icon: faChartBar },
+  { name: "AI Tools", icon: faRobot },
 ];
 
 export function About() {
@@ -129,7 +138,7 @@ export function About() {
               <div className={styles.toolList}>
                 {tools.map((t) => (
                   <div key={t.name} className={styles.toolItem}>
-                    <span className={styles.toolIcon}>{t.icon}</span>
+                    <FontAwesomeIcon icon={t.icon} className={styles.toolIcon} />
                     <span className={styles.toolName}>{t.name}</span>
                   </div>
                 ))}
