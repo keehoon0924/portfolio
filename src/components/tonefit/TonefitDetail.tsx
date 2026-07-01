@@ -108,9 +108,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
 
             <div className={styles.block}>
               <h4 className={styles.blockLabel}>Participation</h4>
-              <p className={styles.blockBody}>
-                브랜드 기획 · UI/UX 디자인 · 콘텐츠 제작
-              </p>
+              <p className={styles.blockBody}>팀 프로젝트로 진행</p>
+              <p className={styles.blockBody}>UI/UX 디자인 · 콘텐츠 제작</p>
             </div>
           </Reveal>
 
@@ -179,7 +178,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
 
         {/* ⑤ Problem & Solution — 상단 문제 → 점선 → 하단 해결 */}
         <section className={styles.section}>
-          <Reveal className={styles.head}>
+          <Reveal className={`${styles.head} ${styles.psHeadWide}`}>
             <p className={styles.psLabel}>Problem &amp; Solution</p>
             <h3 className={styles.headTitle}>
               최종적으로 문제점을 도출하고, TONE:FIT의 솔루션을 제시합니다.

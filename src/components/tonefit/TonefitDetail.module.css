@@ -201,6 +201,9 @@
   margin-bottom: 44px;
   max-width: 760px;
 }
+.head.psHeadWide {
+  max-width: none;
+}
 .headLabel {
   font-size: 14px;
   font-weight: 800;
