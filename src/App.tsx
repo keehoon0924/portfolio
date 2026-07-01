@@ -4,6 +4,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Tools } from "./components/Tools";
 import { Work } from "./components/Work";
+import { Closing } from "./components/Closing";
 import { Contact } from "./components/Contact";
 import { TonefitDetail } from "./components/tonefit/TonefitDetail";
 
@@ -18,6 +19,7 @@ export default function App() {
         <About />
         <Tools />
         <Work onOpenTonefit={() => setTonefitOpen(true)} />
+        <Closing />
         <Contact />
       </main>
       {tonefitOpen && <TonefitDetail onClose={() => setTonefitOpen(false)} />}
