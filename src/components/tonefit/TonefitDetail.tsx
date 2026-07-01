@@ -237,7 +237,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.videoBox}>
             <video
               className={styles.videoEl}
-              src="/assets/vidio/main-kv.mp4"
+              src="/assets/vidio/main-kv.webm"
               autoPlay
               muted
               loop
@@ -246,41 +246,30 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
           <Reveal delay={0.1} className={styles.mediaText}>
             <h4 className={styles.blockLabel}>Key Visual</h4>
-            <h3 className={styles.mediaTitle}>
-              첫 3초, 브랜드를 각인시키는 KV
-            </h3>
+            <h3 className={styles.mediaTitle}>브랜드의 첫인상, KV 영상</h3>
             <p className={styles.blockBody}>
-              메인 화면 진입과 동시에 TONE:FIT의 기술력과 브랜드 무드를 영상으로
-              전달합니다. 방문 3초 안에 ‘왜 TONE:FIT인가’를 각인시켜, 스크롤을
-              이어가게 만드는 시선 확보용 키 비주얼입니다.
+              메인 진입과 동시에 재생되는 키 비주얼 영상입니다. AI 스캔 과정과
+              퍼스널 컬러 매칭 무드를 영상으로 담아, 방문 직후 브랜드의 기술력과
+              감성을 동시에 각인시키고 다음 스크롤로 자연스럽게 이어지게
+              설계했습니다.
             </p>
           </Reveal>
         </section>
 
-        {/* ⑨ Contents Design — 좌측 텍스트 + 우측 폰 영상 */}
-        <section className={styles.media}>
-          <Reveal className={styles.mediaText}>
-            <h4 className={styles.blockLabel}>Contents Design</h4>
-            <h3 className={styles.mediaTitle}>
-              스크롤에 반응하는 인터랙티브 상세페이지
-            </h3>
-            <p className={styles.blockBody}>
-              GSAP 기반 스크롤 인터랙션으로, 피부 톤이 분석되고 결과가 채워지는
-              과정을 부드러운 모션으로 연출했습니다. 정보를 순서대로 노출해
-              가독성을 높이고, 브랜드 경험을 하나의 흐름으로 설계했습니다.
-            </p>
+        {/* ⑨ 디자인 영상 — 상단 타이틀 + 16:9 영상 */}
+        <section className={styles.videoSection}>
+          <Reveal className={styles.videoHead}>
+            <h3 className={styles.mediaTitle}>디자인 컷 · 브랜드 무드 영상</h3>
           </Reveal>
-          <Reveal delay={0.1} className={styles.phoneVideoWrap}>
-            <div className={styles.phoneBig}>
-              <video
-                className={styles.phoneVideo}
-                src={encodeURI("/assets/vidio/영상3.mp4")}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
+          <Reveal delay={0.1} className={styles.wideVideoWrap}>
+            <video
+              className={styles.wideVideo}
+              src={encodeURI("/assets/vidio/영상3.mp4")}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           </Reveal>
         </section>
       </div>
