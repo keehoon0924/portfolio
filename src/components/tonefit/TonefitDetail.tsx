@@ -171,7 +171,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal delay={0.1} className={styles.conceptGallery}>
-            {[1, 2, 3, 4].map((n) => (
+            {[1, 2, 3, 4, 5].map((n) => (
               <img
                 key={n}
                 className={styles.shotImg}

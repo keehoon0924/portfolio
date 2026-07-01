@@ -179,17 +179,18 @@
   top: 80px;
 }
 .conceptGallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  columns: 2;
+  column-gap: 20px;
 }
 .shotImg {
   width: 100%;
   height: auto;
   display: block;
+  margin-bottom: 20px;
   border-radius: 14px;
   border: 1px solid #eceae6;
   box-shadow: 0 20px 44px -28px rgba(22, 24, 27, 0.4);
+  break-inside: avoid;
 }
 
 /* ---------- 공통 섹션 헤더 ---------- */
