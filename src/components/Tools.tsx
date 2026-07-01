@@ -4,8 +4,8 @@ import styles from "./Tools.module.css";
 /**
  * Tools — 사용 가능한 툴을 가로로 무한 슬라이드하는 마퀴 섹션.
  * 각 로고는 3D 아이콘 PNG를 로컬에서 로드한다:
- *   public/assets/images/tools/{file}
- * 이미지가 없으면(아직 안 넣었으면) 텍스트 배지로 자동 폴백한다.
+ *   public/assets/images/{file}
+ * 이미지가 없거나 파일명이 다르면 텍스트 배지로 자동 폴백한다.
  */
 type Tool = { name: string; file: string };
 
@@ -15,12 +15,12 @@ const tools: Tool[] = [
   { name: "Illustrator", file: "illustrator.png" },
   { name: "Adobe XD", file: "adobexd.png" },
   { name: "HTML5", file: "html5.png" },
-  { name: "CSS3", file: "css3.png" },
-  { name: "JavaScript", file: "javascript.png" },
+  { name: "CSS3", file: "css.png" },
+  { name: "JavaScript", file: "js.png" },
   { name: "Bootstrap", file: "bootstrap.png" },
-  { name: "jQuery", file: "jquery.png" },
-  { name: "ChatGPT", file: "chatgpt.png" },
-  { name: "Claude", file: "claude.png" },
+  { name: "jQuery", file: "jQuery.png" },
+  { name: "ChatGPT", file: "gpt.png" },
+  { name: "Claude", file: "claud.png" },
   { name: "Gemini", file: "gemini.png" },
   { name: "Cursor", file: "cursor.png" },
   { name: "CapCut", file: "capcut.png" },
@@ -37,7 +37,7 @@ function ToolItem({ tool }: { tool: Tool }) {
   return (
     <img
       className={styles.logo}
-      src={`/assets/images/tools/${tool.file}`}
+      src={`/assets/images/${tool.file}`}
       alt={tool.name}
       title={tool.name}
       loading="lazy"
