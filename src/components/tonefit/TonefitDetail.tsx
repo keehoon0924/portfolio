@@ -9,56 +9,28 @@ import styles from "./TonefitDetail.module.css";
  *      → IMC → Solution → Project Goal → KV 영상 → 디자인 영상
  */
 
-/** IMC 3단계 전략 */
-const imc = [
+/** Problem → Solution 한 페이지 (상단 문제 → 하단 해결) */
+const problemSolutions = [
   {
-    tag: "IMC Strategy 1",
-    emoji: "👀",
-    title: "브랜드 인지 단계",
-    body: "온·오프라인 채널로 브랜드 접근성을 높이고, 기존 무인 포토부스와의 차별점(AI 퍼스널 컬러)을 명확히 각인시킵니다.",
+    problem: "비슷한 촬영 경험의 반복",
+    solTag: "Solution 1",
+    solTitle: "AI 퍼스널 컬러 매칭",
+    solBody:
+      "피부 톤을 스캔해 최적의 조명·배경을 자동 세팅하고, ‘나에게 맞는’ 무결점 화보 경험을 제공합니다.",
   },
   {
-    tag: "IMC Strategy 2",
-    emoji: "💡",
-    title: "경험·신뢰 단계",
-    body: "30초 AI 스캔과 맞춤 촬영을 직접 경험하게 하여, 데이터·기술 기반 브랜드에 대한 신뢰를 형성합니다.",
+    problem: "브랜드 간 차별화 부족",
+    solTag: "Solution 2",
+    solTitle: "무인 프리미엄 공간",
+    solBody:
+      "24시간 무인 스튜디오와 다양한 FRAME 구성으로, 기술과 감성이 공존하는 차별화된 경험을 설계했습니다.",
   },
   {
-    tag: "IMC Strategy 3",
-    emoji: "🗣️",
-    title: "확산·재방문 단계",
-    body: "콜라보 프레임과 SNS 인증 요소로 화제성을 만들어, 고객의 자발적 공유와 재방문을 자연스럽게 유도합니다.",
-  },
-];
-
-/** Solution 카드 */
-const solutions = [
-  {
-    tag: "Solution 1",
-    title: "AI 브랜드 경험",
-    items: [
-      "AI 퍼스널 컬러 진단 – 30초 스캔",
-      "맞춤 조명·배경 자동 세팅",
-      "무보정 화보 퀄리티 결과물",
-    ],
-  },
-  {
-    tag: "Solution 2",
-    title: "무인 프리미엄 공간",
-    items: [
-      "24시간 무인 스튜디오 운영",
-      "다양한 FRAME·컷 구성",
-      "반려동물 동반 입장 가능",
-    ],
-  },
-  {
-    tag: "Solution 3",
-    title: "바이럴·재방문",
-    items: [
-      "캐릭터·아티스트 콜라보 프레임",
-      "SNS 인증 아카이브 리포트",
-      "시즌 컨셉으로 재방문 유도",
-    ],
+    problem: "개인화·감성 경험의 부재",
+    solTag: "Solution 3",
+    solTitle: "콜라보·바이럴 설계",
+    solBody:
+      "캐릭터·아티스트 콜라보 프레임과 SNS 인증 요소로, 고객의 자발적 공유와 재방문을 유도합니다.",
   },
 ];
 
@@ -205,53 +177,32 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
         </section>
 
-        {/* ⑤ IMC 전략 */}
+        {/* ⑤ Problem & Solution — 상단 문제 → 점선 → 하단 해결 */}
         <section className={styles.section}>
           <Reveal className={styles.head}>
+            <p className={styles.psLabel}>Problem &amp; Solution</p>
             <h3 className={styles.headTitle}>
-              브랜드 경험을 확산하는 TONE:FIT IMC 전략
+              최종적으로 문제점을 도출하고, TONE:FIT의 솔루션을 제시합니다.
             </h3>
             <p className={styles.headDesc}>
-              온·오프라인의 경계를 넘어 일관되고 설득력 있는 브랜드 메시지를
-              전달하고, 고객의 자발적 공유를 이끌어내기 위해 3단계 IMC 전략을
-              설계했습니다.
+              앞선 리서치와 시장 분석을 바탕으로 사용자의 핵심 문제를 도출하고,
+              그에 맞는 해결 방향을 설계했습니다.
             </p>
           </Reveal>
 
-          <div className={styles.cards3}>
-            {imc.map((c) => (
-              <Reveal key={c.tag} className={styles.imcCard}>
-                <span className={styles.imcTag}>{c.tag}</span>
-                <span className={styles.imcEmoji}>{c.emoji}</span>
-                <div className={styles.imcTitle}>{c.title}</div>
-                <p className={styles.imcBody}>{c.body}</p>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
-        {/* ⑥ Solution — 3 카드 */}
-        <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <h3 className={styles.headTitle}>
-              TONE:FIT이 제안하는 3가지 솔루션
-            </h3>
-            <p className={styles.headDesc}>
-              데이터·기술을 브랜드 경험으로 연결하기 위해, 촬영 경험부터 공간
-              운영, 바이럴 확산까지 세 갈래의 솔루션을 설계했습니다.
-            </p>
-          </Reveal>
-
-          <div className={styles.cards3}>
-            {solutions.map((s) => (
-              <Reveal key={s.tag} className={styles.solCard}>
-                <span className={styles.solLabel}>{s.tag}</span>
-                <div className={styles.solTitle}>{s.title}</div>
-                <ul className={styles.solList}>
-                  {s.items.map((it) => (
-                    <li key={it}>{it}</li>
-                  ))}
-                </ul>
+          <div className={styles.psGrid}>
+            {problemSolutions.map((p) => (
+              <Reveal key={p.solTag} className={styles.psCol}>
+                <div className={styles.psProblem}>
+                  <span className={styles.psProblemLabel}>Problem</span>
+                  <p className={styles.psProblemText}>{p.problem}</p>
+                </div>
+                <span className={styles.psConnector} aria-hidden="true" />
+                <div className={styles.psSolution}>
+                  <span className={styles.psSolutionTag}>{p.solTag}</span>
+                  <div className={styles.psSolutionTitle}>{p.solTitle}</div>
+                  <p className={styles.psSolutionBody}>{p.solBody}</p>
+                </div>
               </Reveal>
             ))}
           </div>

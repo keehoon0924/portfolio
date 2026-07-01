@@ -411,6 +411,103 @@
   color: var(--tf-ink2);
 }
 
+/* ---------- Problem & Solution 흐름 ---------- */
+.psLabel {
+  color: var(--tf);
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.psGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.psCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.psProblem {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e6e4e0;
+  border-radius: 14px;
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: 0 14px 30px -26px rgba(22, 24, 27, 0.4);
+}
+.psProblemLabel {
+  display: block;
+  color: var(--tf);
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.psProblemText {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tf-ink);
+}
+/* 점선 커넥터 */
+.psConnector {
+  width: 0;
+  height: 40px;
+  border-left: 2px dashed var(--tf);
+  position: relative;
+}
+.psConnector::before,
+.psConnector::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--tf);
+}
+.psConnector::before {
+  top: -4px;
+}
+.psConnector::after {
+  bottom: -4px;
+}
+.psSolution {
+  width: 100%;
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--tf);
+  border-radius: 16px;
+  padding: 34px 24px 28px;
+  text-align: center;
+  box-shadow: 0 22px 44px -30px rgba(212, 115, 74, 0.5);
+}
+.psSolutionTag {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tf);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.psSolutionTitle {
+  color: var(--tf);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.psSolutionBody {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--tf-ink2);
+}
+
 /* ---------- 이미지 전용 섹션 (Desk / User research) ---------- */
 .imgSection {
   padding: 40px 0;
@@ -741,6 +838,10 @@
   }
   .snsGrid {
     grid-template-columns: 1fr 1fr;
+  }
+  .psGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
