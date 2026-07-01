@@ -61,6 +61,30 @@ const solutions = [
   },
 ];
 
+/** SNS 마케팅 카드 (Instagram 1·2 / Threads 3·4) */
+const snsCards = [
+  {
+    img: "insta1",
+    caption:
+      "인스타그램 피드에 퍼스널 컬러 결과 화보를 노출해 브랜드 무드를 각인시킵니다.",
+  },
+  {
+    img: "insta2",
+    caption:
+      "릴스·콜라보 프레임 콘텐츠로 도달을 넓히고 방문 예약으로 전환을 유도합니다.",
+  },
+  {
+    img: "insta3",
+    caption:
+      "Threads에서 후기·인증 대화를 이어가며 자연스러운 바이럴을 만듭니다.",
+  },
+  {
+    img: "insta4",
+    caption:
+      "실시간 소통형 게시물로 재방문과 커뮤니티 참여를 지속적으로 유도합니다.",
+  },
+];
+
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
   return (
     <div
@@ -274,6 +298,38 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               playsInline
             />
           </Reveal>
+        </section>
+
+        {/* ⑩ SNS 마케팅 — 라벨 + 4카드(Instagram/Threads) */}
+        <section className={styles.section}>
+          <Reveal className={styles.head}>
+            <p className={styles.snsLabel}>
+              <span className={styles.snsDot} />
+              SNS Marketing
+            </p>
+            <h3 className={styles.headTitle}>
+              SNS로 확장한 TONE:FIT 브랜드 경험
+            </h3>
+            <p className={styles.headDesc}>
+              Instagram과 Threads 두 채널의 특성에 맞춰 콘텐츠를 기획했습니다.
+              화보형 콘텐츠로 브랜드 무드를 각인시키고, 대화형 콘텐츠로 후기와
+              참여를 이끌어내 자연스러운 바이럴과 재방문을 유도했습니다.
+            </p>
+          </Reveal>
+
+          <div className={styles.snsGrid}>
+            {snsCards.map((c) => (
+              <Reveal key={c.img} className={styles.snsCard}>
+                <img
+                  className={styles.snsImg}
+                  src={`/assets/images/${c.img}.png`}
+                  alt={c.caption}
+                  loading="lazy"
+                />
+                <p className={styles.snsCaption}>{c.caption}</p>
+              </Reveal>
+            ))}
+          </div>
         </section>
       </div>
     </div>
