@@ -495,8 +495,8 @@
 /* ---------- 미디어(영상) 섹션 ---------- */
 .media {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 56px;
   align-items: center;
   padding: 140px 0;
 }
@@ -549,6 +549,8 @@
   margin: 0 auto;
 }
 .wideVideoWrap {
+  max-width: 720px;
+  margin: 0 auto;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 34px 70px -36px rgba(22, 24, 27, 0.5);

@@ -248,8 +248,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <h4 className={styles.blockLabel}>Key Visual</h4>
             <h3 className={styles.mediaTitle}>브랜드의 첫인상, KV 영상</h3>
             <p className={styles.blockBody}>
-              메인 진입과 동시에 재생되는 키 비주얼 영상입니다. AI 스캔 과정과
-              퍼스널 컬러 매칭 무드를 영상으로 담아, 방문 직후 브랜드의 기술력과
+              메인 진입과 동시에 재생되는 키 비주얼 영상입니다. 브랜드의 기술력과
               감성을 동시에 각인시키고 다음 스크롤로 자연스럽게 이어지게
               설계했습니다.
             </p>
