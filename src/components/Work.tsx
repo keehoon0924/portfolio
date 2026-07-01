@@ -12,6 +12,8 @@ type Project = {
   title: string;
   tags: string;
   img: string;
+  /** 목업 PNG는 잘리지 않게 contain, 스크린샷은 cover */
+  fit?: "cover" | "contain";
   link?: string;
 };
 
@@ -19,7 +21,8 @@ const projects: Project[] = [
   {
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
-    img: "main-pc.png",
+    img: "phone1.png",
+    fit: "contain",
     link: "https://ad-portfolio-tonefitcom.netlify.app",
   },
   {
@@ -38,7 +41,7 @@ function ProjectCard({ project }: { project: Project }) {
     </div>
   ) : (
     <img
-      className={styles.shot}
+      className={project.fit === "contain" ? styles.shotContain : styles.shot}
       src={`/assets/images/${project.img}`}
       alt={project.title}
       loading="lazy"

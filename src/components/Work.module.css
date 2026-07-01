@@ -77,6 +77,16 @@
   display: block;
 }
 
+/* 목업 PNG용 — 잘리지 않게 전체 표시, 은은한 배경 */
+.shotContain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 28px 24px 0;
+  background: linear-gradient(180deg, #fdf2ec 0%, #ffffff 100%);
+}
+
 .placeholder {
   width: 100%;
   height: 100%;
