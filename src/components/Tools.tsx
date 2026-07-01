@@ -3,41 +3,41 @@ import styles from "./Tools.module.css";
 
 /**
  * Tools — 사용 가능한 툴을 가로로 무한 슬라이드하는 마퀴 섹션.
- * 로고는 Simple Icons CDN(cdn.simpleicons.org)에서 브랜드 컬러로 로드한다.
- * slug이 없는 툴(예: Cursor)은 텍스트 배지로 폴백한다.
+ * 각 로고는 3D 아이콘 PNG를 로컬에서 로드한다:
+ *   public/assets/images/tools/{file}
+ * 이미지가 없으면(아직 안 넣었으면) 텍스트 배지로 자동 폴백한다.
  */
-type Tool = { name: string; slug?: string };
+type Tool = { name: string; file: string };
 
 const tools: Tool[] = [
-  { name: "Figma", slug: "figma" },
-  { name: "Photoshop", slug: "adobephotoshop" },
-  { name: "Illustrator", slug: "adobeillustrator" },
-  { name: "Adobe XD", slug: "adobexd" },
-  { name: "HTML5", slug: "html5" },
-  { name: "CSS3", slug: "css3" },
-  { name: "JavaScript", slug: "javascript" },
-  { name: "Bootstrap", slug: "bootstrap" },
-  { name: "jQuery", slug: "jquery" },
-  { name: "ChatGPT", slug: "openai" },
-  { name: "Claude", slug: "claude" },
-  { name: "Gemini", slug: "googlegemini" },
-  { name: "Cursor" },
-  { name: "CapCut", slug: "capcut" },
-  { name: "Notion", slug: "notion" },
-  { name: "GA4", slug: "googleanalytics" },
-  { name: "네이버 플레이스", slug: "naver" },
+  { name: "Figma", file: "figma.png" },
+  { name: "Photoshop", file: "photoshop.png" },
+  { name: "Illustrator", file: "illustrator.png" },
+  { name: "Adobe XD", file: "adobexd.png" },
+  { name: "HTML5", file: "html5.png" },
+  { name: "CSS3", file: "css3.png" },
+  { name: "JavaScript", file: "javascript.png" },
+  { name: "Bootstrap", file: "bootstrap.png" },
+  { name: "jQuery", file: "jquery.png" },
+  { name: "ChatGPT", file: "chatgpt.png" },
+  { name: "Claude", file: "claude.png" },
+  { name: "Gemini", file: "gemini.png" },
+  { name: "Cursor", file: "cursor.png" },
+  { name: "CapCut", file: "capcut.png" },
+  { name: "Notion", file: "notion.png" },
+  { name: "GA4", file: "ga4.png" },
 ];
 
 function ToolItem({ tool }: { tool: Tool }) {
   const [broken, setBroken] = useState(false);
 
-  if (!tool.slug || broken) {
+  if (broken) {
     return <span className={styles.badge}>{tool.name}</span>;
   }
   return (
     <img
       className={styles.logo}
-      src={`https://cdn.simpleicons.org/${tool.slug}`}
+      src={`/assets/images/tools/${tool.file}`}
       alt={tool.name}
       title={tool.name}
       loading="lazy"

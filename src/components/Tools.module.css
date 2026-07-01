@@ -1,6 +1,6 @@
 .section {
   border-top: 1px solid var(--border);
-  padding: 56px 0;
+  padding: 72px 0;
   overflow: hidden;
 }
 
@@ -25,12 +25,12 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 72px;
+  gap: 88px;
   width: max-content;
   padding: 0;
   margin: 0;
   list-style: none;
-  animation: marquee 40s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 /* 목록을 2번 반복하므로 -50% 이동 시 이음새가 맞는다 */
@@ -43,10 +43,6 @@
   }
 }
 
-.section:hover .track {
-  animation-play-state: paused;
-}
-
 .item {
   display: flex;
   align-items: center;
@@ -54,23 +50,39 @@
   flex: 0 0 auto;
 }
 
+/* 3D 느낌 — 부드러운 그림자로 깊이감, 호버 시 살짝 떠오름 */
 .logo {
-  height: 48px;
-  width: auto;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  transition: transform 0.25s var(--ease-reveal);
+  filter: drop-shadow(0 12px 18px rgba(22, 24, 27, 0.18));
+  transition: transform 0.3s var(--ease-reveal);
+  will-change: transform;
 }
 
 .logo:hover {
-  transform: scale(1.12);
+  transform: translateY(-6px) scale(1.06);
 }
 
 .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 22px;
+  background: linear-gradient(150deg, #ffffff, #eef0f3);
+  box-shadow:
+    0 12px 22px rgba(22, 24, 27, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text);
-  white-space: nowrap;
+  text-align: center;
+  line-height: 1.25;
+  padding: 8px;
+  white-space: pre-line;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,12 +97,11 @@
 
 @media (max-width: 860px) {
   .track {
-    gap: 48px;
+    gap: 56px;
   }
-  .logo {
-    height: 40px;
-  }
+  .logo,
   .badge {
-    font-size: 17px;
+    width: 80px;
+    height: 80px;
   }
 }
