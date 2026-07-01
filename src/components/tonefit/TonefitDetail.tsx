@@ -147,7 +147,6 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal delay={0.1} className={styles.phones}>
             {["phone3", "phone4", "phone5", "phone6"].map((img, i) => (
               <div key={img} className={`${styles.phone} ${styles[`phone${i}`]}`}>
-                <span className={styles.phoneNotch} />
                 <img
                   className={styles.phoneImg}
                   src={`/assets/images/${img}.png`}
