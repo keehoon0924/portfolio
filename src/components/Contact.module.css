@@ -1,72 +1,68 @@
 .section {
   border-top: 1px solid var(--border);
-  background: var(--dark-bg);
-  color: #fff;
 }
 
 .inner {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 128px var(--pad-x);
-  text-align: center;
+  padding: 104px var(--pad-x);
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 26px;
-}
-
-.h2 {
-  font-size: clamp(34px, 5.4vw, 68px);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-
-.mail {
-  margin-top: 38px;
-}
-
-.mailLink {
-  display: inline-flex;
+/* 상단 아웃라인 타이포 */
+.heading {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--accent);
+  gap: 24px;
+  margin-bottom: 72px;
+}
+.outline {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(48px, 8vw, 110px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  text-stroke: 2px var(--text);
+}
+.arrow {
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 0.9;
+}
+
+/* 가운데 정렬 이메일 + 문구 */
+.center {
+  text-align: center;
+  padding: 40px 0 60px;
+}
+.email {
+  display: inline-block;
+  font-size: clamp(30px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 15px 28px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  margin-bottom: 36px;
+  transition: color 0.25s ease;
 }
-
-.mailLink:hover {
-  transform: translateY(-5px);
+.email:hover {
+  color: var(--accent-text);
 }
-
-.line {
-  margin-top: 40px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  white-space: pre-wrap;
-}
-
-.copy {
-  margin-top: 80px;
-  font-family: var(--font-mono);
-  font-size: 11px;
+.message {
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 600;
+  line-height: 1.7;
   color: var(--text-secondary);
+  word-break: keep-all;
 }
 
 @media (max-width: 720px) {
   .inner {
-    padding: 96px var(--pad-x);
+    padding: 80px var(--pad-x);
+  }
+  .heading {
+    margin-bottom: 48px;
   }
 }
