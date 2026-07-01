@@ -171,10 +171,14 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal delay={0.1} className={styles.conceptGallery}>
-            {[0, 1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className={styles.shotPh}>
-                <span>화면 {i + 1}</span>
-              </div>
+            {[1, 2, 3, 4].map((n) => (
+              <img
+                key={n}
+                className={styles.shotImg}
+                src={`/assets/images/${n}.png`}
+                alt={`TONE:FIT 디자인 화면 ${n}`}
+                loading="lazy"
+              />
             ))}
           </Reveal>
         </section>
