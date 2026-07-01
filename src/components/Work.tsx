@@ -21,7 +21,7 @@ const projects: Project[] = [
   {
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
-    device: { desktop: "main-pc.png", phone: "mobile-main.png" },
+    device: { desktop: "main-pc.png", phone: "momain.png" },
     link: "https://ad-portfolio-tonefitcom.netlify.app",
   },
   {
