@@ -653,8 +653,9 @@
   }
 }
 .lightboxImg {
-  max-width: min(560px, 92vw);
-  max-height: 90vh;
+  width: auto;
+  height: 88vh;
+  max-width: 94vw;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.7);
