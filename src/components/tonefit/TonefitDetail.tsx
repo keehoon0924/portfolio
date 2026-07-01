@@ -212,7 +212,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal>
             <p className={styles.goalLabel}>Project Goal</p>
             <p className={styles.goalText}>
-              데이터와 기술로 ‘나에게 맞는 색’을 찾는 경험을 전하고,{" "}
+              데이터와 기술로 ‘나에게 맞는 색’을 찾는 경험을 전하고
+              <br />
               <span className={styles.hl}>
                 무인 프리미엄 포토 스튜디오의 새로운 기준
               </span>

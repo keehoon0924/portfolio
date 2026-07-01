@@ -591,8 +591,8 @@
   font-weight: 800;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  max-width: 22ch;
   margin: 0 auto;
+  word-break: keep-all;
 }
 .hl {
   color: var(--tf);
