@@ -259,7 +259,11 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         {/* ⑨ 디자인 영상 — 상단 타이틀 + 16:9 영상 */}
         <section className={styles.videoSection}>
           <Reveal className={styles.videoHead}>
-            <h3 className={styles.mediaTitle}>디자인 컷 · 브랜드 무드 영상</h3>
+            <h3 className={styles.mediaTitle}>매장을 채우는 무드와 소품</h3>
+            <p className={styles.videoDesc}>
+              프리미엄 무인 스튜디오의 공간 분위기와 다양한 촬영 소품을 영상으로
+              담아, TONE:FIT만의 감성적인 매장 경험을 전합니다.
+            </p>
           </Reveal>
           <Reveal delay={0.1} className={styles.wideVideoWrap}>
             <video

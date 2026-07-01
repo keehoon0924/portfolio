@@ -495,25 +495,33 @@
 /* ---------- 미디어(영상) 섹션 ---------- */
 .media {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 64px;
   align-items: center;
-  padding: 88px 0;
+  padding: 140px 0;
 }
 .mediaText {
-  max-width: 42ch;
+  max-width: 46ch;
 }
 .mediaTitle {
-  font-size: clamp(22px, 2.8vw, 30px);
+  font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 800;
-  line-height: 1.28;
+  line-height: 1.24;
   letter-spacing: -0.015em;
-  margin: 10px 0 16px;
+  margin: 14px 0 22px;
+}
+.media .blockBody {
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: none;
+}
+.media .blockLabel {
+  font-size: 17px;
 }
 .videoBox {
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 30px 60px -34px rgba(22, 24, 27, 0.5);
+  box-shadow: 0 40px 80px -36px rgba(22, 24, 27, 0.55);
   background: #000;
 }
 .videoEl {
@@ -531,7 +539,14 @@
   margin-bottom: 32px;
 }
 .videoHead .mediaTitle {
-  margin: 0;
+  margin: 0 0 12px;
+}
+.videoDesc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--tf-ink2);
+  max-width: 48ch;
+  margin: 0 auto;
 }
 .wideVideoWrap {
   border-radius: 18px;
