@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Reveal } from "../Reveal";
 import styles from "./TonefitDetail.module.css";
 
@@ -65,27 +66,33 @@ const solutions = [
 const snsCards = [
   {
     img: "insta1",
+    tag: "Instagram",
     caption:
-      "인스타그램 피드에 퍼스널 컬러 결과 화보를 노출해 브랜드 무드를 각인시킵니다.",
+      "새 콜라보 프레임 오픈 소식을 화보처럼 담아, ‘나도 찍으러 가고 싶다’는 마음이 들게 했어요.",
   },
   {
     img: "insta2",
+    tag: "Instagram",
     caption:
-      "릴스·콜라보 프레임 콘텐츠로 도달을 넓히고 방문 예약으로 전환을 유도합니다.",
+      "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북으로 풀어, 자연스럽게 방문으로 이어지게 했어요.",
   },
   {
     img: "insta3",
+    tag: "Threads",
     caption:
-      "Threads에서 후기·인증 대화를 이어가며 자연스러운 바이럴을 만듭니다.",
+      "반려동물과 함께한 순간으로 대화를 열어, 댓글과 공유가 오가는 따뜻한 바이럴을 만들었어요.",
   },
   {
     img: "insta4",
+    tag: "Threads",
     caption:
-      "실시간 소통형 게시물로 재방문과 커뮤니티 참여를 지속적으로 유도합니다.",
+      "친구에게 말 걸듯한 톤으로 후기를 나눠, 재방문과 인증 참여를 부담 없이 이끌었어요.",
   },
 ];
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
   return (
     <div
       className={styles.overlay}
@@ -320,18 +327,41 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <div className={styles.snsGrid}>
             {snsCards.map((c) => (
               <Reveal key={c.img} className={styles.snsCard}>
-                <img
-                  className={styles.snsImg}
-                  src={`/assets/images/${c.img}.png`}
-                  alt={c.caption}
-                  loading="lazy"
-                />
+                <button
+                  type="button"
+                  className={styles.snsThumb}
+                  onClick={() => setLightbox(`/assets/images/${c.img}.png`)}
+                  aria-label={`${c.tag} 게시물 크게 보기`}
+                >
+                  <img
+                    className={styles.snsImg}
+                    src={`/assets/images/${c.img}.png`}
+                    alt={c.caption}
+                    loading="lazy"
+                  />
+                  <span className={styles.snsBadge}>{c.tag}</span>
+                </button>
                 <p className={styles.snsCaption}>{c.caption}</p>
               </Reveal>
             ))}
           </div>
         </section>
       </div>
+
+      {lightbox && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="이미지 크게 보기"
+        >
+          <button className={styles.lightboxClose} aria-label="닫기">
+            ✕
+          </button>
+          <img className={styles.lightboxImg} src={lightbox} alt="확대 이미지" />
+        </div>
+      )}
     </div>
   );
 }
