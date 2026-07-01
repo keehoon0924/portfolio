@@ -1,140 +1,162 @@
 .hero {
-  min-height: 88vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .inner {
-  max-width: var(--content-max);
+  max-width: var(--content-wide);
   margin: 0 auto;
-  padding: 92px var(--pad-x) 70px;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 56px;
-  align-items: center;
+  padding: 0 var(--pad-x-wide);
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  margin-bottom: 22px;
-}
-
-.h1 {
-  font-size: clamp(40px, 6vw, 84px);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-}
-
-.sub {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-top: 24px;
-  max-width: 42ch;
-}
-
-.tags {
+/* ---- 좌측 타이포 ---- */
+.copy {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 34px;
+  flex-direction: column;
+  line-height: 0.9;
 }
 
-.tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--r-pill);
-  padding: 8px 16px;
-  background: var(--surface);
+.lineSolid,
+.lineOutline {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(64px, 12vw, 190px);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
-.cardWrap {
-  display: flex;
-  justify-content: center;
+.lineSolid {
+  color: var(--text);
 }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-panel-lg);
-  padding: 18px 18px 26px;
-  width: 262px;
+/* 아웃라인(속 빈) 텍스트 */
+.lineOutline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  text-stroke: 2px var(--text);
+}
+
+/* ---- 우측 폴라로이드 ---- */
+.polaroid {
+  margin: 0;
+  background: #fff;
+  padding: 16px 16px 22px;
   box-shadow: var(--shadow-namecard);
+  transform: rotate(6deg);
+  transition: transform 0.4s var(--ease-reveal);
+}
+
+.polaroid:hover {
+  transform: rotate(3deg) translateY(-6px);
+}
+
+.photo {
+  width: clamp(240px, 26vw, 380px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #4a86ff;
+}
+
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  font-family: var(--font-hand);
+  font-size: 40px;
+  color: #4a86ff;
+  text-align: center;
+  margin-top: 6px;
+  line-height: 1;
+}
+
+/* ---- 스크롤 인디케이터 ---- */
+.scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.scrollDot {
+  width: 22px;
+  height: 36px;
+  border: 2px solid var(--text);
+  border-radius: 999px;
   position: relative;
 }
 
-.cardNotch {
-  width: 46px;
-  height: 14px;
+.scrollDot::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
   background: var(--text);
-  border-radius: 0 0 12px 12px;
-  margin: 0 auto;
+  border-radius: 2px;
+  animation: scrollpulse 1.5s var(--ease-reveal) infinite;
 }
 
-.cardHead {
-  text-align: center;
-  margin-top: 18px;
-}
-
-.cardRole {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: var(--text-muted);
-}
-
-.cardName {
-  font-size: 20px;
-  font-weight: 800;
-  margin-top: 6px;
-}
-
-.cardPhoto {
-  height: 118px;
-  border-radius: 10px;
-  background: repeating-linear-gradient(
-    135deg,
-    var(--surface-soft) 0 11px,
-    #fff 11px 22px
-  );
-  margin: 18px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cardPhotoChip {
-  width: 54px;
-  height: 54px;
-  background: var(--accent);
-  border-radius: 8px;
-}
-
-.cardMeta {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-muted);
-  text-align: center;
-  line-height: 1.9;
-}
-
-@media (max-width: 860px) {
-  .hero {
-    min-height: auto;
+@keyframes scrollpulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
   }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+}
+
+.scrollLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollDot::after {
+    animation: none;
+  }
+  .polaroid {
+    transition: none;
+  }
+}
+
+/* ---- 반응형 ---- */
+@media (max-width: 860px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 64px var(--pad-x) 56px;
+    justify-items: center;
+    text-align: center;
+    gap: 48px;
+    padding: 100px var(--pad-x) 120px;
   }
-  .cardWrap {
-    justify-content: flex-start;
+  .copy {
+    align-items: center;
+  }
+  .polaroid {
+    transform: rotate(4deg);
   }
 }
