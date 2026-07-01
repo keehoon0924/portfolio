@@ -198,6 +198,25 @@
   letter-spacing: 0.04em;
 }
 
+/* 준비 중 카드 */
+.soon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-soft);
+}
+.soonMark {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-pill);
+  padding: 10px 22px;
+}
+
 .title {
   font-size: 20px;
   font-weight: 800;

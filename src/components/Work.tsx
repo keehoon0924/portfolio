@@ -17,6 +17,8 @@ type Project = {
   link?: string;
   /** 클릭 시 상세 오버레이 열기 */
   detail?: boolean;
+  /** 준비 중(추가 예정) 카드 */
+  soon?: boolean;
 };
 
 const projects: Project[] = [
@@ -30,6 +32,18 @@ const projects: Project[] = [
     title: "청연 (다도 원데이클래스)",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
     img: "cheongyeon.png",
+  },
+  {
+    title: "상세 페이지",
+    tags: "나중에 추가 예정, 수정 중입니다.",
+    img: "",
+    soon: true,
+  },
+  {
+    title: "카드 뉴스",
+    tags: "나중에 추가 예정, 수정 중입니다.",
+    img: "",
+    soon: true,
   },
 ];
 
@@ -68,7 +82,13 @@ function ProjectCard({
   const [broken, setBroken] = useState(false);
 
   let media;
-  if (project.device) {
+  if (project.soon) {
+    media = (
+      <div className={styles.soon}>
+        <span className={styles.soonMark}>COMING SOON</span>
+      </div>
+    );
+  } else if (project.device) {
     media = (
       <DeviceCombo
         desktop={project.device.desktop}
