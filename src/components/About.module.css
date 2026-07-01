@@ -8,115 +8,79 @@
   padding: 104px var(--pad-x);
 }
 
-.label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 18px;
+.title {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 56px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 64px;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 72px;
   align-items: start;
 }
 
-.h2 {
-  font-size: clamp(24px, 3.3vw, 38px);
-  font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
-}
-
-.desc {
-  margin-top: 24px;
-  font-size: 15px;
-  color: var(--text-secondary);
-  max-width: 46ch;
-}
-
-.tools {
-  margin-top: 28px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tool {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--r-pill);
-  padding: 7px 14px;
-  background: var(--surface);
-}
-
-.skillCard {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  padding: 26px 28px;
-}
-
-.skillCardLabel {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-}
-
-.skill {
-  margin-bottom: 18px;
-}
-
-.skill:last-child {
-  margin-bottom: 0;
-}
-
-.skillHead {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-bottom: 7px;
-}
-
-.skillName {
-  font-weight: 500;
-}
-
-.skillPct {
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-}
-
-.skillTrack {
-  height: 6px;
-  background: var(--surface-soft);
-  border-radius: var(--r-pill);
+/* ---- 좌측 사진 ---- */
+.photoWrap {
+  border-radius: var(--r-panel);
   overflow: hidden;
+  background: var(--surface-soft);
 }
 
-.skillFill {
-  height: 100%;
-  width: 0%;
-  background: var(--text);
-  border-radius: var(--r-pill);
-  transition: width 1s cubic-bezier(0.5, 0, 0.1, 1);
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ---- 우측 텍스트 ---- */
+.body {
+  padding-top: 8px;
+}
+
+.name {
+  font-family: var(--font-hand);
+  font-size: 40px;
+  color: #2b3a8c;
+  line-height: 1;
+  margin-bottom: 28px;
+}
+
+.lead {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 26px;
+}
+
+.para {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+
+.para:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 860px) {
   .inner {
     padding: 80px var(--pad-x);
   }
+  .title {
+    margin-bottom: 40px;
+  }
   .grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .photoWrap {
+    max-width: 320px;
   }
 }
