@@ -581,14 +581,15 @@
 }
 .snsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 48px;
+  align-items: start;
 }
 .snsCard {
   display: flex;
   flex-direction: column;
 }
-/* 균일한 크기의 썸네일 버튼 */
+/* 썸네일 버튼 — 이미지 전체가 잘리지 않게 표시 */
 .snsThumb {
   position: relative;
   padding: 0;
@@ -607,10 +608,26 @@
 }
 .snsImg {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
   display: block;
+}
+/* 영상 보기 버튼 */
+.snsVideoBtn {
+  align-self: flex-start;
+  margin-top: 14px;
+  border: none;
+  background: var(--tf);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.snsVideoBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
 }
 .snsBadge {
   position: absolute;
@@ -672,6 +689,24 @@
   color: var(--tf-ink);
   font-size: 16px;
   cursor: pointer;
+  z-index: 210;
+}
+
+/* 인스타 릴스 스타일 9:16 영상 프레임 */
+.reelFrame {
+  height: 88vh;
+  aspect-ratio: 9 / 16;
+  max-width: 94vw;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.7);
+}
+.reelVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---------- 반응형 ---------- */

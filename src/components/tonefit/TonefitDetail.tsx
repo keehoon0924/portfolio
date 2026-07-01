@@ -74,7 +74,8 @@ const snsCards = [
     img: "insta2",
     tag: "Instagram",
     caption:
-      "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북으로 풀어, 자연스럽게 방문으로 이어지게 했어요.",
+      "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북 영상으로 풀어, 자연스럽게 방문으로 이어지게 했어요.",
+    video: "1번 시안 영상.mp4",
   },
   {
     img: "insta3",
@@ -92,6 +93,7 @@ const snsCards = [
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [videoModal, setVideoModal] = useState<string | null>(null);
 
   return (
     <div
@@ -341,6 +343,17 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                   />
                   <span className={styles.snsBadge}>{c.tag}</span>
                 </button>
+                {c.video && (
+                  <button
+                    type="button"
+                    className={styles.snsVideoBtn}
+                    onClick={() =>
+                      setVideoModal(encodeURI(`/assets/vidio/${c.video}`))
+                    }
+                  >
+                    ▶ 영상 보기 →
+                  </button>
+                )}
                 <p className={styles.snsCaption}>{c.caption}</p>
               </Reveal>
             ))}
@@ -360,6 +373,33 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             ✕
           </button>
           <img className={styles.lightboxImg} src={lightbox} alt="확대 이미지" />
+        </div>
+      )}
+
+      {videoModal && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setVideoModal(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="영상 보기"
+        >
+          <button className={styles.lightboxClose} aria-label="닫기">
+            ✕
+          </button>
+          <div
+            className={styles.reelFrame}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              className={styles.reelVideo}
+              src={videoModal}
+              autoPlay
+              loop
+              playsInline
+              controls
+            />
+          </div>
         </div>
       )}
     </div>
