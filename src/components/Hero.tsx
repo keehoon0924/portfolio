@@ -17,7 +17,7 @@ export function Hero() {
         <figure className={styles.polaroid}>
           <div className={styles.photo}>
             <img
-              src="/assets/images/main-character.png"
+              src="/assets/images/main.png"
               alt="Keehoon character"
               className={styles.photoImg}
             />
