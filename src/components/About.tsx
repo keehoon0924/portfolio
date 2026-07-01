@@ -14,7 +14,7 @@ export function About() {
         <div className={styles.grid}>
           <Reveal className={styles.photoWrap}>
             <img
-              src="/assets/images/self.jpg"
+              src="/assets/images/id_photo.jpg"
               alt="이기훈 프로필 사진"
               className={styles.photo}
             />
