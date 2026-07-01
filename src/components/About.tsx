@@ -21,7 +21,7 @@ export function About() {
           </Reveal>
 
           <Reveal delay={0.1} className={styles.body}>
-            <div className={styles.name}>Kihoon Lee</div>
+            <div className={styles.name}>Keehoon Lee</div>
 
             <p className={styles.lead}>
               안녕하세요.
