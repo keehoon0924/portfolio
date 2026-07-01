@@ -17,8 +17,8 @@
 .card {
   position: relative;
   width: 100%;
-  max-width: 320px;
-  border-radius: 20px;
+  max-width: 480px;
+  border-radius: 26px;
   background: #fcf9f5;
   overflow: hidden;
   box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.45);
@@ -27,12 +27,12 @@
 /* 상단 제목 — GIF 위에 겹침 */
 .title {
   position: absolute;
-  top: 18px;
+  top: 24px;
   left: 0;
   right: 0;
   z-index: 2;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   color: #3a3630;
 }
@@ -67,23 +67,21 @@
   background: rgba(0, 0, 0, 0.12);
 }
 
-/* 하단 영역 — GIF 위에 겹치며 크림색 그라데이션 */
+/* 하단 영역 — GIF 아래에서 살짝 겹치며 크림색 그라데이션 (캐릭터 안 가림) */
 .bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   z-index: 2;
-  padding: 40px 22px 22px;
-  background: linear-gradient(to top, #fcf9f5 60%, rgba(252, 249, 245, 0));
+  margin-top: -52px;
+  padding: 64px 26px 26px;
+  background: linear-gradient(to top, #fcf9f5 62%, rgba(252, 249, 245, 0));
 }
 
 .desc {
   text-align: center;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.65;
   color: #6b6459;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   word-break: keep-all;
 }
 
@@ -93,9 +91,9 @@
   border-radius: 99px;
   background: #eccb3a;
   color: #4a3b00;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  padding: 12px;
+  padding: 15px;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
