@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Tools } from "./components/Tools";
 import { Work } from "./components/Work";
 import { TonefitCase } from "./components/tonefit/TonefitCase";
+import { TonefitDetail } from "./components/tonefit/TonefitDetail";
 
 export default function App() {
+  const [tonefitOpen, setTonefitOpen] = useState(false);
+
   return (
     <>
       <Header />
@@ -13,9 +17,10 @@ export default function App() {
         <Hero />
         <About />
         <Tools />
-        <Work />
+        <Work onOpenTonefit={() => setTonefitOpen(true)} />
         <TonefitCase />
       </main>
+      {tonefitOpen && <TonefitDetail onClose={() => setTonefitOpen(false)} />}
     </>
   );
 }

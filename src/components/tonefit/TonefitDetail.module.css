@@ -1,0 +1,440 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #ffffff;
+  overflow-y: auto;
+  --tf: #d4734a;
+  --tf-soft: #f8f5f0;
+  --tf-gray: #f6f6f6;
+  --tf-ink: #1e2022;
+  --tf-ink2: #4c4948;
+}
+
+.close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 110;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: var(--tf-ink);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+.close:hover {
+  transform: scale(1.08);
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px 120px;
+  color: var(--tf-ink);
+  font-family: var(--font-sans);
+}
+
+/* 공통 라벨/제목 */
+.blockLabel {
+  color: var(--tf);
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.blockBody {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--tf-ink2);
+  max-width: 46ch;
+}
+
+/* ---------- ① Hero ---------- */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 96px 0 64px;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -28px;
+  right: -28px;
+  bottom: 0;
+  height: 46%;
+  background: linear-gradient(180deg, transparent, var(--tf-soft));
+  border-radius: 40% 40% 0 0 / 100% 100% 0 0;
+  z-index: -1;
+}
+
+.category {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--tf-ink2);
+  margin-bottom: 22px;
+}
+.heroTitle {
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.block {
+  margin-top: 28px;
+}
+
+/* 폰 목업 4대 — 살짝 기울여 나열 */
+.phones {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 18px;
+  height: 560px;
+}
+.phone {
+  position: relative;
+  width: 168px;
+  aspect-ratio: 9 / 19.5;
+  background: #12131a;
+  border-radius: 26px;
+  padding: 8px;
+  box-shadow: 0 30px 50px -24px rgba(22, 24, 27, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 20px;
+  background: repeating-linear-gradient(
+    135deg,
+    #ececec 0 12px,
+    #f7f7f7 12px 24px
+  );
+}
+.phoneNotch {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 6px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 2;
+}
+.phoneHint {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  color: #9aa0a6;
+  font-family: var(--font-mono);
+}
+.phone0 {
+  transform: rotate(-6deg) translateY(6px);
+}
+.phone1 {
+  transform: translateY(-26px);
+}
+.phone2 {
+  transform: translateY(-12px);
+}
+.phone3 {
+  transform: rotate(6deg) translateY(20px);
+}
+
+/* ---------- ② Concept Explain ---------- */
+.concept {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 48px;
+  padding: 96px 0;
+  align-items: start;
+}
+.conceptText {
+  position: sticky;
+  top: 80px;
+}
+.conceptGallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.shotPh {
+  aspect-ratio: 3 / 5;
+  border-radius: 12px;
+  background: var(--tf-gray);
+  border: 1px solid #eceae6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b7bcc2;
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+/* ---------- 공통 섹션 헤더 ---------- */
+.section {
+  padding: 80px 0;
+}
+.head {
+  margin-bottom: 44px;
+  max-width: 760px;
+}
+.headLabel {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--tf-ink2);
+  margin-bottom: 12px;
+}
+.headTitle {
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+.headDesc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--tf-ink2);
+}
+
+/* ---------- ③ Desk research ---------- */
+.cards2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.dataCard {
+  background: var(--tf-gray);
+  border-radius: 18px;
+  padding: 28px 28px 30px;
+}
+.dataTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.dataUnit {
+  font-size: 11px;
+  color: #9aa0a6;
+  font-weight: 400;
+}
+.barRow {
+  margin-bottom: 20px;
+}
+.barTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 8px;
+  color: var(--tf-ink2);
+}
+.barVal {
+  font-weight: 800;
+  color: var(--tf);
+}
+.barTrack {
+  height: 10px;
+  background: #e6e4e0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  background: var(--tf);
+  border-radius: 999px;
+}
+
+.cagr {
+  display: inline-block;
+  background: var(--tf);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.chartSvg {
+  width: 100%;
+  height: 170px;
+  display: block;
+}
+.chartArea {
+  fill: rgba(212, 115, 74, 0.12);
+}
+.chartLine {
+  fill: none;
+  stroke: var(--tf);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.chartDot {
+  fill: var(--tf);
+}
+.chartDotEnd {
+  fill: #fff;
+  stroke: var(--tf);
+  stroke-width: 2.4;
+}
+.chartFoot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.chartFoot > div {
+  display: flex;
+  flex-direction: column;
+}
+.chartFootV {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--tf-ink);
+}
+.chartFootL {
+  font-size: 12px;
+  color: #9aa0a6;
+}
+
+/* ---------- ④ User research ---------- */
+.personaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.personaCard {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: 0 18px 40px -30px rgba(22, 24, 27, 0.35);
+}
+.personaTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--tf-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex: 0 0 auto;
+}
+.personaName {
+  font-size: 15px;
+  font-weight: 800;
+}
+.personaMeta {
+  font-size: 12px;
+  color: #9aa0a6;
+  margin-top: 2px;
+}
+.personaQuote {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--tf);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.personaSub {
+  font-size: 13px;
+  color: var(--tf-ink2);
+  line-height: 1.55;
+}
+
+/* ---------- ⑤ IMC ---------- */
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.imcCard {
+  background: var(--tf-gray);
+  border-radius: 16px;
+  padding: 26px 26px 30px;
+}
+.imcTag {
+  display: inline-block;
+  background: var(--tf-ink);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.imcEmoji {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+.imcTitle {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.imcBody {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--tf-ink2);
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 860px) {
+  .hero,
+  .concept {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .phones {
+    height: 420px;
+    gap: 10px;
+  }
+  .phone {
+    width: 120px;
+  }
+  .conceptText {
+    position: static;
+  }
+  .conceptGallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cards2,
+  .cards3 {
+    grid-template-columns: 1fr;
+  }
+  .personaGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .close {
+    transition: none;
+  }
+}

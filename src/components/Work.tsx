@@ -15,6 +15,8 @@ type Project = {
   /** 데스크탑+휴대폰 목업 조합으로 렌더 */
   device?: { desktop: string; phone: string };
   link?: string;
+  /** 클릭 시 상세 오버레이 열기 */
+  detail?: boolean;
 };
 
 const projects: Project[] = [
@@ -22,7 +24,7 @@ const projects: Project[] = [
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
     device: { desktop: "main-pc.png", phone: "momain.png" },
-    link: "https://ad-portfolio-tonefitcom.netlify.app",
+    detail: true,
   },
   {
     title: "청연 (다도 원데이클래스)",
@@ -56,7 +58,13 @@ function DeviceCombo({ desktop, phone }: { desktop: string; phone: string }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  project,
+  onOpenDetail,
+}: {
+  project: Project;
+  onOpenDetail: () => void;
+}) {
   const [broken, setBroken] = useState(false);
 
   let media;
@@ -93,6 +101,13 @@ function ProjectCard({ project }: { project: Project }) {
     </>
   );
 
+  if (project.detail) {
+    return (
+      <button type="button" className={styles.card} onClick={onOpenDetail}>
+        {card}
+      </button>
+    );
+  }
   return project.link ? (
     <a
       className={styles.card}
@@ -107,7 +122,7 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export function Work() {
+export function Work({ onOpenTonefit }: { onOpenTonefit: () => void }) {
   return (
     <section id="work" className={styles.section}>
       <div className={styles.inner}>
@@ -121,7 +136,7 @@ export function Work() {
         <div className={styles.grid}>
           {projects.map((p) => (
             <Reveal key={p.title} className={styles.cardWrap}>
-              <ProjectCard project={p} />
+              <ProjectCard project={p} onOpenDetail={onOpenTonefit} />
             </Reveal>
           ))}
         </div>
