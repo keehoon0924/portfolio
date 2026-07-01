@@ -589,7 +589,18 @@
   display: flex;
   flex-direction: column;
 }
-/* 썸네일 버튼 — 이미지 전체가 잘리지 않게 표시 */
+/* 채널 뱃지 — 이미지 카드 위쪽(바깥)에 배치 */
+.snsBadge {
+  align-self: flex-start;
+  background: var(--tf-ink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+/* 썸네일 버튼 — 고정 높이로 균일하게, 이미지 전체 표시(contain) */
 .snsThumb {
   position: relative;
   padding: 0;
@@ -608,10 +619,18 @@
 }
 .snsImg {
   width: 100%;
-  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  background: #fff;
   display: block;
 }
-/* 영상 보기 버튼 */
+.snsCaption {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--tf-ink2);
+}
+/* 영상 보기 버튼 — 캡션 아래 */
 .snsVideoBtn {
   align-self: flex-start;
   margin-top: 14px;
@@ -628,24 +647,6 @@
 .snsVideoBtn:hover {
   transform: translateY(-2px);
   opacity: 0.92;
-}
-.snsBadge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(30, 32, 34, 0.82);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-}
-.snsCaption {
-  margin-top: 16px;
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--tf-ink2);
 }
 
 /* 라이트박스 */

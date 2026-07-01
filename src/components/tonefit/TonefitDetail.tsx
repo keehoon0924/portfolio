@@ -329,6 +329,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <div className={styles.snsGrid}>
             {snsCards.map((c) => (
               <Reveal key={c.img} className={styles.snsCard}>
+                <span className={styles.snsBadge}>{c.tag}</span>
                 <button
                   type="button"
                   className={styles.snsThumb}
@@ -341,8 +342,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                     alt={c.caption}
                     loading="lazy"
                   />
-                  <span className={styles.snsBadge}>{c.tag}</span>
                 </button>
+                <p className={styles.snsCaption}>{c.caption}</p>
                 {c.video && (
                   <button
                     type="button"
@@ -351,10 +352,9 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                       setVideoModal(encodeURI(`/assets/vidio/${c.video}`))
                     }
                   >
-                    ▶ 영상 보기 →
+                    ▶ 영상 보기
                   </button>
                 )}
-                <p className={styles.snsCaption}>{c.caption}</p>
               </Reveal>
             ))}
           </div>
