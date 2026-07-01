@@ -62,32 +62,38 @@ const solutions = [
   },
 ];
 
-/** SNS 마케팅 카드 (Instagram 1·2 / Threads 3·4) */
-const snsCards = [
+/** SNS 마케팅 — 채널별 그룹 (Instagram / Threads) */
+const snsGroups = [
   {
-    img: "insta1",
-    tag: "Instagram",
-    caption:
-      "새 콜라보 프레임 오픈 소식을 화보처럼 담아, ‘나도 찍으러 가고 싶다’는 마음이 들게 했어요.",
+    channel: "Instagram",
+    cards: [
+      {
+        img: "insta1",
+        caption:
+          "새 콜라보 프레임 오픈 소식을 화보처럼 담아, ‘나도 찍으러 가고 싶다’는 마음이 들게 했습니다.",
+      },
+      {
+        img: "insta2",
+        caption:
+          "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북 영상으로 풀어, 자연스럽게 방문으로 이어지게 했습니다.",
+        video: "1번 시안 영상.mp4",
+      },
+    ],
   },
   {
-    img: "insta2",
-    tag: "Instagram",
-    caption:
-      "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북 영상으로 풀어, 자연스럽게 방문으로 이어지게 했어요.",
-    video: "1번 시안 영상.mp4",
-  },
-  {
-    img: "insta3",
-    tag: "Threads",
-    caption:
-      "반려동물과 함께한 순간으로 대화를 열어, 댓글과 공유가 오가는 따뜻한 바이럴을 만들었어요.",
-  },
-  {
-    img: "insta4",
-    tag: "Threads",
-    caption:
-      "친구에게 말 걸듯한 톤으로 후기를 나눠, 재방문과 인증 참여를 부담 없이 이끌었어요.",
+    channel: "Threads",
+    cards: [
+      {
+        img: "insta3",
+        caption:
+          "반려동물과 함께한 순간으로 대화를 열어, 댓글과 공유가 오가는 따뜻한 바이럴을 만들었습니다.",
+      },
+      {
+        img: "insta4",
+        caption:
+          "친구에게 말 걸듯한 톤으로 후기를 나눠, 재방문과 인증 참여를 부담 없이 이끌었습니다.",
+      },
+    ],
   },
 ];
 
@@ -326,38 +332,42 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             </p>
           </Reveal>
 
-          <div className={styles.snsGrid}>
-            {snsCards.map((c) => (
-              <Reveal key={c.img} className={styles.snsCard}>
-                <span className={styles.snsBadge}>{c.tag}</span>
-                <button
-                  type="button"
-                  className={styles.snsThumb}
-                  onClick={() => setLightbox(`/assets/images/${c.img}.png`)}
-                  aria-label={`${c.tag} 게시물 크게 보기`}
-                >
-                  <img
-                    className={styles.snsImg}
-                    src={`/assets/images/${c.img}.png`}
-                    alt={c.caption}
-                    loading="lazy"
-                  />
-                </button>
-                <p className={styles.snsCaption}>{c.caption}</p>
-                {c.video && (
-                  <button
-                    type="button"
-                    className={styles.snsVideoBtn}
-                    onClick={() =>
-                      setVideoModal(encodeURI(`/assets/vidio/${c.video}`))
-                    }
-                  >
-                    ▶ 영상 보기
-                  </button>
-                )}
-              </Reveal>
-            ))}
-          </div>
+          {snsGroups.map((g) => (
+            <div key={g.channel} className={styles.snsGroup}>
+              <p className={styles.snsChannel}>{g.channel}</p>
+              <div className={styles.snsGrid}>
+                {g.cards.map((c) => (
+                  <Reveal key={c.img} className={styles.snsCard}>
+                    <button
+                      type="button"
+                      className={styles.snsThumb}
+                      onClick={() => setLightbox(`/assets/images/${c.img}.png`)}
+                      aria-label={`${g.channel} 게시물 크게 보기`}
+                    >
+                      <img
+                        className={styles.snsImg}
+                        src={`/assets/images/${c.img}.png`}
+                        alt={c.caption}
+                        loading="lazy"
+                      />
+                    </button>
+                    <p className={styles.snsCaption}>{c.caption}</p>
+                    {c.video && (
+                      <button
+                        type="button"
+                        className={styles.snsVideoBtn}
+                        onClick={() =>
+                          setVideoModal(encodeURI(`/assets/vidio/${c.video}`))
+                        }
+                      >
+                        ▶ 영상 보기
+                      </button>
+                    )}
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
       </div>
 

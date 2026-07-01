@@ -468,17 +468,17 @@
 
 /* ---------- Project Goal ---------- */
 .goal {
-  padding: 120px 0;
+  padding: 12px 32px;
   text-align: center;
   background: var(--tf-soft);
-  border-radius: 20px;
-  margin: 40px 0;
+  border-radius: 16px;
+  margin: 60px 0;
 }
 .goalLabel {
   font-size: 14px;
   font-weight: 700;
   color: var(--tf-ink2);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 .goalText {
   font-size: clamp(22px, 3vw, 32px);
@@ -589,26 +589,30 @@
   display: flex;
   flex-direction: column;
 }
-/* 채널 뱃지 — 이미지 카드 위쪽(바깥)에 배치 */
-.snsBadge {
-  align-self: flex-start;
-  background: var(--tf-ink);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 13px;
-  border-radius: 999px;
-  margin-bottom: 12px;
+/* 채널 그룹 — 중앙 채널명 1회 + 카드 2개 */
+.snsGroup {
+  margin-bottom: 56px;
 }
-/* 썸네일 버튼 — 고정 높이로 균일하게, 이미지 전체 표시(contain) */
+.snsGroup:last-child {
+  margin-bottom: 0;
+}
+.snsChannel {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--tf-ink);
+  margin-bottom: 24px;
+}
+/* 썸네일 버튼 — 이미지 그 자체로 크기 결정 (여백 배경 없음) */
 .snsThumb {
   position: relative;
   padding: 0;
-  border: 1px solid #eceae6;
+  border: none;
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  background: #fff;
+  background: transparent;
+  line-height: 0;
   box-shadow: 0 18px 40px -28px rgba(22, 24, 27, 0.4);
   transition: transform 0.28s var(--ease-reveal),
     box-shadow 0.28s var(--ease-reveal);
@@ -619,9 +623,7 @@
 }
 .snsImg {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: contain;
-  background: #fff;
+  height: auto;
   display: block;
 }
 .snsCaption {
