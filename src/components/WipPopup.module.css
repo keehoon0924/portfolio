@@ -1,0 +1,111 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.overlay.show {
+  opacity: 1;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  background: #fcf9f5;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.45);
+}
+
+/* 상단 제목 — GIF 위에 겹침 */
+.title {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #3a3630;
+}
+
+.gif {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* 오른쪽 위 닫기 */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #3a3630;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* 하단 영역 — GIF 위에 겹치며 크림색 그라데이션 */
+.bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 40px 22px 22px;
+  background: linear-gradient(to top, #fcf9f5 60%, rgba(252, 249, 245, 0));
+}
+
+.desc {
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b6459;
+  margin-bottom: 16px;
+  word-break: keep-all;
+}
+
+.cta {
+  width: 100%;
+  border: none;
+  border-radius: 99px;
+  background: #eccb3a;
+  color: #4a3b00;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.cta:hover {
+  transform: translateY(-2px);
+  opacity: 0.94;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    transition: none;
+  }
+}

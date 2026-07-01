@@ -6,6 +6,7 @@ import { Tools } from "./components/Tools";
 import { Work } from "./components/Work";
 import { Closing } from "./components/Closing";
 import { Contact } from "./components/Contact";
+import { WipPopup } from "./components/WipPopup";
 import { TonefitDetail } from "./components/tonefit/TonefitDetail";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
         <Contact />
       </main>
       {tonefitOpen && <TonefitDetail onClose={() => setTonefitOpen(false)} />}
+      <WipPopup />
     </>
   );
 }
