@@ -128,9 +128,20 @@ export function Work({ onOpenTonefit }: { onOpenTonefit: () => void }) {
       <div className={styles.inner}>
         <Reveal className={styles.heading}>
           <span className={styles.outline}>WORK</span>
-          <span className={styles.arrow} aria-hidden="true">
-            →
-          </span>
+          <svg
+            className={styles.arrow}
+            viewBox="0 0 120 80"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 40 H86 M74 16 L104 40 L74 64"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </Reveal>
 
         <div className={styles.grid}>
