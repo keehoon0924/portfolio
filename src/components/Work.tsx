@@ -5,15 +5,15 @@ import styles from "./Work.module.css";
 /**
  * Work — 대표 프로젝트를 2단 카드 그리드로 소개.
  * 상단은 아웃라인 대형 타이포 "WORK →".
- * 카드 이미지는 public/assets/images/{img} 에서 로드하고,
- * 없으면 플레이스홀더로 폴백한다.
+ * TONE:FIT은 데스크탑+휴대폰 목업 조합, 그 외는 단일 스크린샷.
  */
 type Project = {
   title: string;
   tags: string;
-  img: string;
-  /** 목업 PNG는 잘리지 않게 contain, 스크린샷은 cover */
-  fit?: "cover" | "contain";
+  /** 단일 이미지(스크린샷) 경로 */
+  img?: string;
+  /** 데스크탑+휴대폰 목업 조합으로 렌더 */
+  device?: { desktop: string; phone: string };
   link?: string;
 };
 
@@ -21,8 +21,7 @@ const projects: Project[] = [
   {
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
-    img: "phone1.png",
-    fit: "contain",
+    device: { desktop: "main-pc.png", phone: "mobile-main.png" },
     link: "https://ad-portfolio-tonefitcom.netlify.app",
   },
   {
@@ -32,22 +31,59 @@ const projects: Project[] = [
   },
 ];
 
+/** 데스크탑(iMac 스타일) + 휴대폰 1대 목업 조합 */
+function DeviceCombo({ desktop, phone }: { desktop: string; phone: string }) {
+  return (
+    <div className={styles.combo}>
+      <div className={styles.monitor}>
+        <div className={styles.monitorScreen}>
+          <img src={`/assets/images/${desktop}`} alt="데스크탑 화면" />
+        </div>
+        <div className={styles.monitorChin} />
+        <div className={styles.monitorStand} />
+        <div className={styles.monitorFoot} />
+      </div>
+
+      <div className={styles.phone}>
+        <div className={styles.phoneNotch} />
+        <img
+          className={styles.phoneScreen}
+          src={`/assets/images/${phone}`}
+          alt="모바일 화면"
+        />
+      </div>
+    </div>
+  );
+}
+
 function ProjectCard({ project }: { project: Project }) {
   const [broken, setBroken] = useState(false);
 
-  const media = broken ? (
-    <div className={styles.placeholder}>
-      <span>{project.title}</span>
-    </div>
-  ) : (
-    <img
-      className={project.fit === "contain" ? styles.shotContain : styles.shot}
-      src={`/assets/images/${project.img}`}
-      alt={project.title}
-      loading="lazy"
-      onError={() => setBroken(true)}
-    />
-  );
+  let media;
+  if (project.device) {
+    media = (
+      <DeviceCombo
+        desktop={project.device.desktop}
+        phone={project.device.phone}
+      />
+    );
+  } else if (broken || !project.img) {
+    media = (
+      <div className={styles.placeholder}>
+        <span>{project.title}</span>
+      </div>
+    );
+  } else {
+    media = (
+      <img
+        className={styles.shot}
+        src={`/assets/images/${project.img}`}
+        alt={project.title}
+        loading="lazy"
+        onError={() => setBroken(true)}
+      />
+    );
+  }
 
   const card = (
     <>
