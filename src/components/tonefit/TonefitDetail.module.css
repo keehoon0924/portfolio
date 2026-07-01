@@ -422,6 +422,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: stretch;
 }
 .psCol {
   display: flex;
@@ -433,19 +434,19 @@
   background: #fff;
   border: 1px solid #e6e4e0;
   border-radius: 14px;
-  padding: 22px 20px;
+  padding: 24px 20px;
   text-align: center;
   box-shadow: 0 14px 30px -26px rgba(22, 24, 27, 0.4);
 }
 .psProblemLabel {
   display: block;
   color: var(--tf);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
   margin-bottom: 8px;
 }
 .psProblemText {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--tf-ink);
 }
@@ -475,37 +476,42 @@
 }
 .psSolution {
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   background: #fff;
   border: 1.5px solid var(--tf);
   border-radius: 16px;
-  padding: 34px 24px 28px;
+  padding: 40px 26px 32px;
   text-align: center;
   box-shadow: 0 22px 44px -30px rgba(212, 115, 74, 0.5);
 }
 .psSolutionTag {
   position: absolute;
-  top: -15px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--tf);
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
-  padding: 6px 16px;
+  padding: 7px 18px;
   border-radius: 999px;
   white-space: nowrap;
 }
 .psSolutionTitle {
   color: var(--tf);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .psSolutionBody {
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.7;
   color: var(--tf-ink2);
+  word-break: keep-all;
 }
 
 /* ---------- 이미지 전용 섹션 (Desk / User research) ---------- */
