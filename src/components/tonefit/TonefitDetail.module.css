@@ -143,6 +143,16 @@
   color: #9aa0a6;
   font-family: var(--font-mono);
 }
+.phoneImg {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 20px;
+  z-index: 1;
+}
 .phone0 {
   transform: rotate(-6deg) translateY(6px);
 }

@@ -145,10 +145,15 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal delay={0.1} className={styles.phones}>
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className={`${styles.phone} ${styles[`phone${i}`]}`}>
+            {["phone3", "phone4", "phone5", "phone6"].map((img, i) => (
+              <div key={img} className={`${styles.phone} ${styles[`phone${i}`]}`}>
                 <span className={styles.phoneNotch} />
-                <span className={styles.phoneHint}>이미지 준비 중</span>
+                <img
+                  className={styles.phoneImg}
+                  src={`/assets/images/${img}.png`}
+                  alt={`TONE:FIT 화면 ${i + 1}`}
+                  loading="lazy"
+                />
               </div>
             ))}
           </Reveal>
