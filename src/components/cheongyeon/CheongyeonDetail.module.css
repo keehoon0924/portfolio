@@ -27,33 +27,20 @@
 }
 
 .page {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 56px 28px 120px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   font-family: var(--font-sans);
 }
 
-/* 이미지 스택 — 원본 비율 유지, 콘텐츠 폭을 꽉 채움 */
+/* 이미지 스택 — 화면 전체 폭(full-bleed)으로 여백 없이 이어붙임 */
 .imgSection {
-  padding: 18px 0;
+  padding: 0;
 }
 .fullImg {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 16px;
-}
-
-@media (max-width: 860px) {
-  .page {
-    padding: 48px 16px 96px;
-  }
-  .imgSection {
-    padding: 12px 0;
-  }
-  .fullImg {
-    border-radius: 12px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
