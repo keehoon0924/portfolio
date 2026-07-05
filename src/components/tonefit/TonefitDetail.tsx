@@ -85,6 +85,54 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
+        {/* ⓪ 영상 인트로 — 상세페이지 진입 시 가장 먼저 보이는 2개 영상 */}
+        <section className={styles.videoIntro}>
+          {/* 영상 1 — Key Visual */}
+          <Reveal className={styles.introBlock}>
+            <div className={styles.introHead}>
+              <p className={styles.introLabel}>Key Visual</p>
+              <h3 className={styles.introTitle}>브랜드의 첫인상, KV 영상</h3>
+              <p className={styles.introDesc}>
+                메인 진입과 동시에 재생되는 키 비주얼 영상입니다. 브랜드의
+                기술력과 감성을 동시에 각인시키고 다음 스크롤로 자연스럽게
+                이어지게 설계했습니다.
+              </p>
+            </div>
+            <div className={styles.introVideoWrap}>
+              <video
+                className={styles.introVideo}
+                src="/assets/vidio/main-kv.webm"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </Reveal>
+
+          {/* 영상 2 — 매장을 채우는 무드와 소품 */}
+          <Reveal delay={0.1} className={styles.introBlock}>
+            <div className={styles.introHead}>
+              <p className={styles.introLabel}>Store Mood</p>
+              <h3 className={styles.introTitle}>매장을 채우는 무드와 소품</h3>
+              <p className={styles.introDesc}>
+                프리미엄 무인 스튜디오의 공간 분위기와 다양한 촬영 소품을 영상으로
+                담아, TONE:FIT만의 감성적인 매장 경험을 전합니다.
+              </p>
+            </div>
+            <div className={styles.introVideoWrap}>
+              <video
+                className={styles.introVideo}
+                src={encodeURI("/assets/vidio/영상3.mp4")}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </Reveal>
+        </section>
+
         {/* ① Hero — 카테고리·개요 + 폰 목업 */}
         <section className={styles.hero}>
           <Reveal className={styles.heroText}>
@@ -219,50 +267,6 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               </span>
               을 만들자!
             </p>
-          </Reveal>
-        </section>
-
-        {/* ⑧ Key Visual — 좌측 KV 영상 + 우측 텍스트 */}
-        <section className={styles.media}>
-          <Reveal className={styles.videoBox}>
-            <video
-              className={styles.videoEl}
-              src="/assets/vidio/main-kv.webm"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </Reveal>
-          <Reveal delay={0.1} className={styles.mediaText}>
-            <h4 className={styles.blockLabel}>Key Visual</h4>
-            <h3 className={styles.mediaTitle}>브랜드의 첫인상, KV 영상</h3>
-            <p className={styles.blockBody}>
-              메인 진입과 동시에 재생되는 키 비주얼 영상입니다. 브랜드의 기술력과
-              감성을 동시에 각인시키고 다음 스크롤로 자연스럽게 이어지게
-              설계했습니다.
-            </p>
-          </Reveal>
-        </section>
-
-        {/* ⑨ 디자인 영상 — 상단 타이틀 + 16:9 영상 */}
-        <section className={styles.videoSection}>
-          <Reveal className={styles.videoHead}>
-            <h3 className={styles.mediaTitle}>매장을 채우는 무드와 소품</h3>
-            <p className={styles.videoDesc}>
-              프리미엄 무인 스튜디오의 공간 분위기와 다양한 촬영 소품을 영상으로
-              담아, TONE:FIT만의 감성적인 매장 경험을 전합니다.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1} className={styles.wideVideoWrap}>
-            <video
-              className={styles.wideVideo}
-              src={encodeURI("/assets/vidio/영상3.mp4")}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
           </Reveal>
         </section>
 

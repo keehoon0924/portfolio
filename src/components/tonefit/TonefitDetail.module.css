@@ -598,74 +598,51 @@
   color: var(--tf);
 }
 
-/* ---------- 미디어(영상) 섹션 ---------- */
-.media {
-  display: grid;
-  grid-template-columns: 1.75fr 1fr;
-  gap: 56px;
-  align-items: center;
-  padding: 140px 0;
+/* ---------- ⓪ 영상 인트로 (상세페이지 최상단) ---------- */
+.videoIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 76px 0 40px;
 }
-.mediaText {
-  max-width: 46ch;
-}
-.mediaTitle {
-  font-size: clamp(28px, 3.6vw, 42px);
-  font-weight: 800;
-  line-height: 1.24;
-  letter-spacing: -0.015em;
-  margin: 14px 0 22px;
-}
-.media .blockBody {
-  font-size: 17px;
-  line-height: 1.85;
-  max-width: none;
-}
-.media .blockLabel {
-  font-size: 17px;
-}
-.videoBox {
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px -36px rgba(22, 24, 27, 0.55);
-  background: #000;
-}
-.videoEl {
-  width: 100%;
-  height: auto;
+.introBlock {
   display: block;
 }
-
-/* 16:9 가로 영상 섹션 */
-.videoSection {
-  padding: 88px 0;
+.introHead {
+  max-width: 820px;
+  margin-bottom: 28px;
 }
-.videoHead {
-  text-align: center;
-  margin-bottom: 32px;
+.introLabel {
+  color: var(--tf);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
 }
-.videoHead .mediaTitle {
-  margin: 0 0 12px;
+.introTitle {
+  font-size: clamp(28px, 3.8vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
 }
-.videoDesc {
+.introDesc {
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--tf-ink2);
-  max-width: 48ch;
-  margin: 0 auto;
+  max-width: 60ch;
 }
-.wideVideoWrap {
-  max-width: 720px;
-  margin: 0 auto;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 34px 70px -36px rgba(22, 24, 27, 0.5);
-  background: #000;
-}
-.wideVideo {
+/* 영상은 원본 비율 그대로, 콘텐츠 폭을 꽉 채워 크게 보이도록 */
+.introVideoWrap {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 44px 90px -40px rgba(22, 24, 27, 0.55);
+}
+.introVideo {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
