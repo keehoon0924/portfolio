@@ -133,70 +133,27 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
         </section>
 
-        {/* ① Hero — 카테고리·개요 + 폰 목업 */}
-        <section className={styles.hero}>
-          <Reveal className={styles.heroText}>
-            <p className={styles.category}>UI/UX · Web / Contents Design</p>
-            <h2 className={styles.heroTitle}>
-              TONE:FIT
-              <br />
-              브랜드 웹 · 콘텐츠
-            </h2>
-
-            <div className={styles.block}>
-              <h4 className={styles.blockLabel}>Overview</h4>
-              <p className={styles.blockBody}>
-                TONE:FIT은 AI 퍼스널 컬러 기술로 ‘나에게 맞는 색’을 찾아주는 무인
-                프리미엄 포토 스튜디오입니다. 유행이 아닌 데이터와 기술로
-                차별화하여, 고객에게는 무결점 화보 경험을, 예비 창업자에게는 무인
-                고수익 모델을 제안합니다. 시장·사용자 리서치부터 브랜드
-                아이덴티티, 웹·콘텐츠 디자인까지의 과정을 담았습니다.
-              </p>
-            </div>
-
-            <div className={styles.block}>
-              <h4 className={styles.blockLabel}>Participation</h4>
-              <p className={styles.blockBody}>팀 프로젝트로 진행</p>
-              <p className={styles.blockBody}>UI/UX 디자인 · 콘텐츠 제작</p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1} className={styles.phones}>
-            {["phone3", "phone4", "phone5", "phone6"].map((img, i) => (
-              <div key={img} className={`${styles.phone} ${styles[`phone${i}`]}`}>
-                <img
-                  className={styles.phoneImg}
-                  src={`/assets/images/${img}.png`}
-                  alt={`TONE:FIT 화면 ${i + 1}`}
-                  loading="lazy"
-                />
-              </div>
-            ))}
+        {/* ① KV 이미지 — 기존 Hero를 대체 */}
+        <section className={styles.imgSection}>
+          <Reveal>
+            <img
+              className={styles.fullImg}
+              src="/assets/images/tonefit-kv.png"
+              alt="TONE:FIT 키 비주얼"
+              loading="lazy"
+            />
           </Reveal>
         </section>
 
-        {/* ② Concept Explain — 좌측 설명 + 화면 갤러리 */}
-        <section className={styles.concept}>
-          <Reveal className={styles.conceptText}>
-            <h4 className={styles.blockLabel}>Concept Explain</h4>
-            <p className={styles.blockBody}>
-              ‘클린-테크(Clean-Tech)’를 핵심 무드로, 오프화이트와 포인트
-              오렌지를 활용해 갤러리 같은 신뢰감을 설계했습니다. 1px 헤어라인
-              그리드와 글래스모피즘으로 정교한 기술 이미지를 전달하고, 사진과
-              콘텐츠가 돋보이도록 여백과 위계를 정리해 가독성을 높였습니다.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1} className={styles.conceptGallery}>
-            {[1, 2, 3, 4, 5].map((n) => (
-              <img
-                key={n}
-                className={styles.shotImg}
-                src={`/assets/images/${n}.png`}
-                alt={`TONE:FIT 디자인 화면 ${n}`}
-                loading="lazy"
-              />
-            ))}
+        {/* ② About 이미지 — 브랜드 소개 */}
+        <section className={styles.imgSection}>
+          <Reveal>
+            <img
+              className={styles.fullImg}
+              src="/assets/images/tonefit-about.png"
+              alt="TONE:FIT 브랜드 소개"
+              loading="lazy"
+            />
           </Reveal>
         </section>
 
@@ -255,22 +212,32 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        {/* ⑦ Project Goal — 중앙 정렬 */}
-        <section className={styles.goal}>
-          <Reveal>
-            <p className={styles.goalLabel}>Project Goal</p>
-            <p className={styles.goalText}>
-              데이터와 기술로 ‘나에게 맞는 색’을 찾는 경험을 전하고
-              <br />
-              <span className={styles.hl}>
-                무인 프리미엄 포토 스튜디오의 새로운 기준
-              </span>
-              을 만들자!
+        {/* ⑥ Concept Explain — 좌측 설명 + 화면 갤러리 */}
+        <section className={styles.concept}>
+          <Reveal className={styles.conceptText}>
+            <h4 className={styles.blockLabel}>Concept Explain</h4>
+            <p className={styles.blockBody}>
+              ‘클린-테크(Clean-Tech)’를 핵심 무드로, 오프화이트와 포인트
+              오렌지를 활용해 갤러리 같은 신뢰감을 설계했습니다. 1px 헤어라인
+              그리드와 글래스모피즘으로 정교한 기술 이미지를 전달하고, 사진과
+              콘텐츠가 돋보이도록 여백과 위계를 정리해 가독성을 높였습니다.
             </p>
+          </Reveal>
+
+          <Reveal delay={0.1} className={styles.conceptGallery}>
+            {[1, 2, 3, 4, 5].map((n) => (
+              <img
+                key={n}
+                className={styles.shotImg}
+                src={`/assets/images/${n}.png`}
+                alt={`TONE:FIT 디자인 화면 ${n}`}
+                loading="lazy"
+              />
+            ))}
           </Reveal>
         </section>
 
-        {/* ⑩ SNS 마케팅 — 라벨 + 4카드(Instagram/Threads) */}
+        {/* ⑦ SNS 마케팅 — 라벨 + 4카드(Instagram/Threads) */}
         <section className={styles.section}>
           <Reveal className={styles.head}>
             <p className={styles.snsLabel}>
