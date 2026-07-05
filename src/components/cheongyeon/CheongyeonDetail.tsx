@@ -22,18 +22,28 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
-        {images.map((name, i) => (
-          <section key={name} className={styles.imgSection}>
-            <Reveal>
-              <img
-                className={styles.fullImg}
-                src={`/assets/cheongyeon/${name}.png`}
-                alt={`청연 상세 이미지 ${i + 1}`}
-                loading="lazy"
+        {images.map((name, i) => {
+          const src = `/assets/cheongyeon/${name}.png`;
+          return (
+            <section key={name} className={styles.imgSection}>
+              {/* 양옆을 채우는 흐릿한 배경 확장 (같은 이미지 재사용) */}
+              <div
+                className={styles.bg}
+                style={{ backgroundImage: `url("${src}")` }}
+                aria-hidden="true"
               />
-            </Reveal>
-          </section>
-        ))}
+              {/* 선명한 슬라이드 — 그리드 폭 중앙 정렬 */}
+              <Reveal className={styles.fgWrap}>
+                <img
+                  className={styles.fullImg}
+                  src={src}
+                  alt={`청연 상세 이미지 ${i + 1}`}
+                  loading="lazy"
+                />
+              </Reveal>
+            </section>
+          );
+        })}
       </div>
     </div>
   );
