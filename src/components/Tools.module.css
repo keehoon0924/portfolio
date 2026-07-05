@@ -25,7 +25,7 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 88px;
+  gap: 64px;
   width: max-content;
   padding: 0;
   margin: 0;
@@ -48,29 +48,56 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  /* 자식 타일의 3D 회전을 위한 원근 */
+  perspective: 700px;
 }
 
-/* 3D 느낌 — 부드러운 그림자로 깊이감, 호버 시 살짝 떠오름 */
-.logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  filter: drop-shadow(0 12px 18px rgba(22, 24, 27, 0.18));
-  transition: transform 0.3s var(--ease-reveal);
+/* 3D 타일 — 앱 아이콘처럼 입체감 있는 카드 위에 로고를 얹는다 */
+.tile {
+  width: 108px;
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: linear-gradient(150deg, #ffffff 0%, #e9edf2 100%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 18px 30px -10px rgba(22, 24, 27, 0.28),
+    0 6px 10px -4px rgba(22, 24, 27, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 6px rgba(22, 24, 27, 0.06);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s var(--ease-reveal),
+    box-shadow 0.35s var(--ease-reveal);
   will-change: transform;
 }
 
-.logo:hover {
-  transform: translateY(-6px) scale(1.06);
+.tile:hover {
+  transform: translateY(-8px) rotateX(9deg) rotateY(-9deg) scale(1.05);
+  box-shadow:
+    0 30px 46px -12px rgba(22, 24, 27, 0.36),
+    0 12px 18px -6px rgba(22, 24, 27, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* 로고는 타일 위로 살짝 떠오르게(translateZ) 해 깊이감을 준다 */
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(22, 24, 27, 0.22));
+  transform: translateZ(22px);
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 22px;
+  width: 108px;
+  height: 108px;
+  border-radius: 24px;
   background: linear-gradient(150deg, #ffffff, #eef0f3);
   box-shadow:
     0 12px 22px rgba(22, 24, 27, 0.14),
@@ -97,11 +124,16 @@
 
 @media (max-width: 860px) {
   .track {
-    gap: 56px;
+    gap: 44px;
   }
-  .logo,
+  .tile,
   .badge {
-    width: 80px;
-    height: 80px;
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
   }
 }

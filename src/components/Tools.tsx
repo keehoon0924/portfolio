@@ -3,29 +3,26 @@ import styles from "./Tools.module.css";
 
 /**
  * Tools — 사용 가능한 툴을 가로로 무한 슬라이드하는 마퀴 섹션.
- * 각 로고는 3D 아이콘 PNG를 로컬에서 로드한다:
+ * 각 로고는 SVG를 로컬에서 로드해 3D 타일 위에 얹는다:
  *   public/assets/images/{file}
  * 이미지가 없거나 파일명이 다르면 텍스트 배지로 자동 폴백한다.
  */
 type Tool = { name: string; file: string };
 
 const tools: Tool[] = [
-  { name: "Figma", file: "figma.png" },
-  { name: "Photoshop", file: "photoshop.png" },
-  { name: "Illustrator", file: "illustrator.png" },
-  { name: "Adobe XD", file: "adobexd.png" },
-  { name: "HTML5", file: "html5.png" },
-  { name: "CSS3", file: "css.png" },
-  { name: "JavaScript", file: "js.png" },
-  { name: "Bootstrap", file: "bootstrap.png" },
-  { name: "jQuery", file: "jQuery.png" },
-  { name: "ChatGPT", file: "gpt.png" },
-  { name: "Claude", file: "claud.png" },
-  { name: "Gemini", file: "gemini.png" },
-  { name: "Cursor", file: "cursor.png" },
-  { name: "CapCut", file: "capcut.png" },
-  { name: "Notion", file: "notion.png" },
-  { name: "GA4", file: "ga4.png" },
+  { name: "Figma", file: "figma-icon.svg" },
+  { name: "Photoshop", file: "Photoshop.svg" },
+  { name: "HTML5", file: "html5.svg" },
+  { name: "CSS3", file: "css_old.svg" },
+  { name: "JavaScript", file: "javascript-1.svg" },
+  { name: "Bootstrap", file: "bootstrap-5-1.svg" },
+  { name: "jQuery", file: "jquery-3.svg" },
+  { name: "ChatGPT", file: "chatgpt-4.svg" },
+  { name: "Claude", file: "anthropic-1.svg" },
+  { name: "Gemini", file: "gemini.svg" },
+  { name: "CapCut", file: "capcut-symbol-logo-vector.svg" },
+  { name: "Notion", file: "notion-2.svg" },
+  { name: "GA4", file: "google-analytics.svg" },
 ];
 
 function ToolItem({ tool }: { tool: Tool }) {
@@ -35,14 +32,15 @@ function ToolItem({ tool }: { tool: Tool }) {
     return <span className={styles.badge}>{tool.name}</span>;
   }
   return (
-    <img
-      className={styles.logo}
-      src={`/assets/images/${tool.file}`}
-      alt={tool.name}
-      title={tool.name}
-      loading="lazy"
-      onError={() => setBroken(true)}
-    />
+    <div className={styles.tile} title={tool.name}>
+      <img
+        className={styles.logo}
+        src={`/assets/images/${tool.file}`}
+        alt={tool.name}
+        loading="lazy"
+        onError={() => setBroken(true)}
+      />
+    </div>
   );
 }
 
