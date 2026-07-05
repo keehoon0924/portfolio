@@ -33,28 +33,9 @@
   font-family: var(--font-sans);
 }
 
-/* 이미지 스택 — 배경은 화면 전체 폭, 내용(슬라이드)은 그리드 폭 중앙 */
+/* 이미지 스택 — 화면 전체 폭(full-bleed)으로 여백 없이 이어붙임 */
 .imgSection {
-  position: relative;
   padding: 0;
-  overflow: hidden;
-}
-/* 양옆을 채우는 흐릿한 배경 확장 */
-.bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: blur(40px) saturate(1.08);
-  transform: scale(1.18);
-  z-index: 0;
-}
-/* 선명한 슬라이드 — 그리드 폭 중앙 정렬 */
-.fgWrap {
-  position: relative;
-  z-index: 1;
-  max-width: 1120px;
-  margin: 0 auto;
 }
 .fullImg {
   width: 100%;
