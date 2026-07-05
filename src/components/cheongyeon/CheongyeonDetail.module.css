@@ -1,0 +1,63 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+.close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 110;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #1e2022;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+.close:hover {
+  transform: scale(1.08);
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 56px 28px 120px;
+  font-family: var(--font-sans);
+}
+
+/* 이미지 스택 — 원본 비율 유지, 콘텐츠 폭을 꽉 채움 */
+.imgSection {
+  padding: 18px 0;
+}
+.fullImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+@media (max-width: 860px) {
+  .page {
+    padding: 48px 16px 96px;
+  }
+  .imgSection {
+    padding: 12px 0;
+  }
+  .fullImg {
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .close {
+    transition: none;
+  }
+}

@@ -7,16 +7,20 @@ import styles from "./Work.module.css";
  * 상단은 아웃라인 대형 타이포 "WORK →".
  * TONE:FIT은 데스크탑+휴대폰 목업 조합, 그 외는 단일 스크린샷.
  */
+type DetailKind = "tonefit" | "cheongyeon";
+
 type Project = {
   title: string;
   tags: string;
-  /** 단일 이미지(스크린샷) 경로 */
+  /** 단일 이미지(스크린샷) 경로 — /assets/images/ 기준 파일명 */
   img?: string;
+  /** 전체 경로 이미지(다른 폴더 사용 시) */
+  imgPath?: string;
   /** 데스크탑+휴대폰 목업 조합으로 렌더 */
   device?: { desktop: string; phone: string };
   link?: string;
-  /** 클릭 시 상세 오버레이 열기 */
-  detail?: boolean;
+  /** 클릭 시 열 상세 오버레이 종류 */
+  detail?: DetailKind;
   /** 준비 중(추가 예정) 카드 */
   soon?: boolean;
 };
@@ -26,12 +30,13 @@ const projects: Project[] = [
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
     device: { desktop: "main-pc.png", phone: "momain.png" },
-    detail: true,
+    detail: "tonefit",
   },
   {
     title: "청연 (다도 원데이클래스)",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
-    img: "cheongyeon.png",
+    imgPath: "/assets/cheongyeon/first.png",
+    detail: "cheongyeon",
   },
   {
     title: "상세 페이지",
@@ -95,7 +100,7 @@ function ProjectCard({
         phone={project.device.phone}
       />
     );
-  } else if (broken || !project.img) {
+  } else if (broken || (!project.img && !project.imgPath)) {
     media = (
       <div className={styles.placeholder}>
         <span>{project.title}</span>
@@ -105,7 +110,7 @@ function ProjectCard({
     media = (
       <img
         className={styles.shot}
-        src={`/assets/images/${project.img}`}
+        src={project.imgPath ?? `/assets/images/${project.img}`}
         alt={project.title}
         loading="lazy"
         onError={() => setBroken(true)}
@@ -142,7 +147,11 @@ function ProjectCard({
   );
 }
 
-export function Work({ onOpenTonefit }: { onOpenTonefit: () => void }) {
+export function Work({
+  onOpenDetail,
+}: {
+  onOpenDetail: (kind: DetailKind) => void;
+}) {
   return (
     <section id="work" className={styles.section}>
       <div className={styles.inner}>
@@ -167,7 +176,10 @@ export function Work({ onOpenTonefit }: { onOpenTonefit: () => void }) {
         <div className={styles.grid}>
           {projects.map((p) => (
             <Reveal key={p.title} className={styles.cardWrap}>
-              <ProjectCard project={p} onOpenDetail={onOpenTonefit} />
+              <ProjectCard
+                project={p}
+                onOpenDetail={() => p.detail && onOpenDetail(p.detail)}
+              />
             </Reveal>
           ))}
         </div>

@@ -8,9 +8,12 @@ import { Closing } from "./components/Closing";
 import { Contact } from "./components/Contact";
 import { WipPopup } from "./components/WipPopup";
 import { TonefitDetail } from "./components/tonefit/TonefitDetail";
+import { CheongyeonDetail } from "./components/cheongyeon/CheongyeonDetail";
+
+type DetailKind = "tonefit" | "cheongyeon";
 
 export default function App() {
-  const [tonefitOpen, setTonefitOpen] = useState(false);
+  const [detail, setDetail] = useState<DetailKind | null>(null);
 
   return (
     <>
@@ -19,11 +22,16 @@ export default function App() {
         <Hero />
         <About />
         <Tools />
-        <Work onOpenTonefit={() => setTonefitOpen(true)} />
+        <Work onOpenDetail={setDetail} />
         <Closing />
         <Contact />
       </main>
-      {tonefitOpen && <TonefitDetail onClose={() => setTonefitOpen(false)} />}
+      {detail === "tonefit" && (
+        <TonefitDetail onClose={() => setDetail(null)} />
+      )}
+      {detail === "cheongyeon" && (
+        <CheongyeonDetail onClose={() => setDetail(null)} />
+      )}
       <WipPopup />
     </>
   );
