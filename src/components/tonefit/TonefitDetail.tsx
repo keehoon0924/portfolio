@@ -1,238 +1,172 @@
+import { useState } from "react";
 import { Reveal } from "../Reveal";
 import styles from "./TonefitDetail.module.css";
 
 /**
- * TONE:FIT 상세 — rom& 스타일 케이스 스터디.
- * 인트로(Cover~System) → UI 쇼케이스(페이지별 플로우 목업+모바일+주석) → Closing.
- * 쇼케이스 이미지는 실제 사이트를 로컬 렌더로 캡처한 것.
+ * TONE:FIT 상세 소개 페이지 (WORK 카드 클릭 시 오버레이로 열림).
+ * 레퍼런스 구조를 따르고 내용은 전부 TONE:FIT으로 작성.
+ * 섹션: Hero → Concept → Desk research(img) → User research(img)
+ *      → IMC → Solution → Project Goal → KV 영상 → 디자인 영상
  */
 
-const problems = [
+/** Problem → Solution 한 페이지 (상단 문제 → 하단 해결) */
+const problemSolutions = [
   {
-    no: "01",
-    title: ["기술 전달의", "한계"],
-    desc: "무인 AI라는 복잡한 시스템을 기존 채널로는 한눈에 이해시키기 어려웠어요.",
-    img: "/assets/images/insta1.png",
+    problem: "비슷한 촬영 경험의 반복",
+    solTag: "Solution 1",
+    solTitle: "AI 퍼스널 컬러 매칭",
+    solBody:
+      "피부 톤을 스캔해 최적의 조명·배경을 자동 세팅하고, ‘나에게 맞는’ 무결점 화보 경험을 제공합니다.",
   },
   {
-    no: "02",
-    title: ["창업 설득의", "부재"],
-    desc: "창업자가 가장 궁금해하는 ‘수익성·운영 편의성’을 신뢰감 있게 보여줄 구조가 없었어요.",
-    img: "/assets/images/insta2.png",
+    problem: "브랜드 간 차별화 부족",
+    solTag: "Solution 2",
+    solTitle: "무인 프리미엄 공간",
+    solBody:
+      "24시간 무인 스튜디오와 다양한 FRAME 구성으로, 기술과 감성이 공존하는 차별화된 경험을 설계했습니다.",
   },
   {
-    no: "03",
-    title: ["브랜드 경험의", "단절"],
-    desc: "촬영 → 공유 → 재방문으로 이어지는 바이럴 경험이 웹에서 끊겨 있었어요.",
-    img: "/assets/images/insta3.png",
+    problem: "개인화·감성 경험의 부재",
+    solTag: "Solution 3",
+    solTitle: "콜라보·바이럴 설계",
+    solBody:
+      "캐릭터·아티스트 콜라보 프레임과 SNS 인증 요소로, 고객의 자발적 공유와 재방문을 유도합니다.",
   },
 ];
 
-const asIs = ["복잡한 기술 설명", "흩어진 창업 정보", "단절된 경험"];
-const toBe = ["3STEP 직관화", "데이터 기반 설득", "바이럴 연결"];
-
-const keywords = [
-  { ko: "정교함", en: "Precision", img: "/assets/images/insta1.png" },
-  { ko: "프리미엄", en: "Premium", img: "/assets/images/insta2.png" },
-  { ko: "신뢰", en: "Trust", img: "/assets/images/insta4.png" },
-];
-
-const colors = [
-  { hex: "#D4734A", name: "Main", desc: "사진이 가진 따뜻한 분위기와 감성적인 경험을 표현해요.", dark: true },
-  { hex: "#F8F5F0", name: "Sub", desc: "부드럽고 편안한 무드를 더해 브랜드의 친근함을 전달해요." },
-  { hex: "#F6F6F6", name: "Sub", desc: "사진과 콘텐츠가 돋보이도록 깔끔한 배경 역할을 해요." },
-  { hex: "#4C4948", name: "Gray", desc: "안정감 있는 분위기로 브랜드의 신뢰감을 표현해요.", dark: true },
-  { hex: "#1E2022", name: "Ink", desc: "중요한 정보와 콘텐츠를 명확하게 전달해요.", dark: true },
-];
-
-type Media =
-  | { type: "video"; src: string; mo: string }
-  | { type: "image"; pc: string; mo: string };
-
-type Showcase = {
-  id: string;
-  label: string;
-  title: [string, string, string];
-  media: Media;
-  left: string[];
-  right: string[];
-  mobile: string;
-};
-
-const showcases: Showcase[] = [
+/** SNS 마케팅 — 채널별 그룹 (Instagram / Threads) */
+const snsGroups = [
   {
-    id: "main",
-    label: "Main Page",
-    title: ["무인 AI 사진관의 첫인상을 ", "영상", "으로"],
-    media: {
-      type: "video",
-      src: "/assets/vidio/main-kv.webm",
-      mo: "/assets/tonefit-case/main-mo.png",
-    },
-    left: ["메인 키비주얼 영상은 모든 장면을 AI로 생성하고 CapCut으로 편집해 제작했어요."],
-    right: [
-      "핵심 카피 ‘이제는 AI 기술력으로 압도할 때’를 전면에 배치해 창업 타깃의 시선을 먼저 사로잡았어요.",
-      "GNB를 BRAND·FRAME·STORE·FRANCHISE로 정리해 목적별 진입을 빠르게 했어요.",
+    channel: "Instagram",
+    cards: [
+      {
+        img: "insta1",
+        caption:
+          "새 콜라보 프레임 오픈 소식을 화보처럼 담아, ‘나도 찍으러 가고 싶다’는 마음이 들게 했습니다.",
+      },
+      {
+        img: "insta2",
+        caption:
+          "‘내 톤을 찾는’ 브랜드 메시지를 감각적인 룩북 영상으로 풀어, 자연스럽게 방문으로 이어지게 했습니다.",
+        video: "1번 시안 영상.mp4",
+      },
     ],
-    mobile: "모바일에서도 영상·카피의 임팩트가 유지되도록 세로 비율로 재편집했어요.",
   },
+  {
+    channel: "Threads",
+    cards: [
+      {
+        img: "insta3",
+        caption:
+          "반려동물과 함께한 순간으로 대화를 열어, 댓글과 공유가 오가는 따뜻한 바이럴을 만들었습니다.",
+      },
+      {
+        img: "insta4",
+        caption:
+          "친구에게 말 걸듯한 톤으로 후기를 나눠, 재방문과 인증 참여를 부담 없이 이끌었습니다.",
+      },
+    ],
+  },
+];
+
+/** UI 쇼케이스 — 실제 사이트를 캡처해 목업에 삽입 (데스크탑 풀 + 모바일 왼쪽) */
+const uiShowcases = [
   {
     id: "identity",
     label: "Brand Identity",
-    title: ["AI가 피부를 분석하는 브랜드, ", "TONE·FIT", "으로 정의"],
-    media: {
-      type: "image",
-      pc: "/assets/tonefit-case/identity-pc.png",
-      mo: "/assets/tonefit-case/identity-mo.png",
-    },
-    left: [
+    title: "AI가 피부를 분석하는 브랜드",
+    pc: "/assets/tonefit-case/identity-pc.png",
+    mo: "/assets/tonefit-case/identity-mo.png",
+    notes: [
       "TONE(고객 고유의 피부 톤·분위기)과 FIT(기술로 완성하는 최적의 맞춤 세팅)으로 브랜드 철학을 두 축으로 정리했어요.",
+      "‘일반 포토부스가 프레임을 고르는 동안, TONE:FIT은 AI가 피부를 분석해 조명·필터·컬러를 자동 설정한다’는 차별점을 대비 구조로 보여줬어요.",
       "AI 분석 정확도·18K+ 피부톤 분류 유형 수치로 ‘기술력’을 신뢰로 증명했어요.",
     ],
-    right: [
-      "‘일반 포토부스가 프레임을 고르는 동안, TONE:FIT은 AI가 피부를 분석해 조명·필터·컬러를 자동 설정한다’는 차별점을 대비 구조로 보여줬어요.",
-    ],
-    mobile: "비교 구조를 세로 흐름으로 재구성해 차별점이 순서대로 읽히게 했어요.",
   },
   {
     id: "kiosk",
     label: "How It Works",
-    title: ["서는 순간부터 완성까지, 모든 과정을 ", "자동", "으로"],
-    media: {
-      type: "image",
-      pc: "/assets/tonefit-case/kiosk-pc.png",
-      mo: "/assets/tonefit-case/kiosk-mo.png",
-    },
-    left: [
+    title: "서는 순간부터 완성까지, 모든 과정을 자동으로",
+    pc: "/assets/tonefit-case/kiosk-pc.png",
+    mo: "/assets/tonefit-case/kiosk-mo.png",
+    notes: [
       "촬영 전 과정을 STEP 01·02·03으로 단계화해 ‘자동으로 완성된다’는 핵심을 직관적으로 전달했어요.",
-    ],
-    right: [
       "퍼스널 컬러별 시그니처 프레임과 컷 수(2·4·6 CUT)를 함께 보여줘 선택의 폭을 명확히 했어요.",
       "AI 톤 스캔·진단 정확도·프레임 보유·원격 제어를 지표로 강조해 기술 신뢰도를 높였어요.",
     ],
-    mobile: "STEP을 세로 스크롤로 재배치해 손가락 동선만으로 과정을 따라가게 했어요.",
   },
   {
     id: "frame",
     label: "Frame",
-    title: ["매달 바뀌는 ", "아티스트·캐릭터·시즌", " 프레임"],
-    media: {
-      type: "image",
-      pc: "/assets/tonefit-case/frame-pc.png",
-      mo: "/assets/tonefit-case/frame-mo.png",
-    },
-    left: [
+    title: "매달 바뀌는 아티스트·캐릭터·시즌 프레임",
+    pc: "/assets/tonefit-case/frame-pc.png",
+    mo: "/assets/tonefit-case/frame-mo.png",
+    notes: [
       "프레임을 아티스트·캐릭터·시즌 3개 카테고리로 분류해 방대한 라인업을 깔끔하게 정리했어요.",
-    ],
-    right: [
       "콜라보 프레임을 진행 기간과 함께 갤러리로 배치해 한정판 희소성을 강조했어요.",
     ],
-    mobile: "가로 스와이프 갤러리로 전환해 프레임을 넘겨보는 재미를 살렸어요.",
   },
   {
     id: "space",
     label: "Space Concept",
-    title: ["네 가지 무드로 설계한 ", "프리미엄 공간", ""],
-    media: {
-      type: "image",
-      pc: "/assets/tonefit-case/space-pc.png",
-      mo: "/assets/tonefit-case/space-mo.png",
-    },
-    left: [
+    title: "네 가지 무드로 설계한 프리미엄 공간",
+    pc: "/assets/tonefit-case/space-pc.png",
+    mo: "/assets/tonefit-case/space-mo.png",
+    notes: [
       "Pinkish Mood·Point Modern·Pure Modern·Blooming Layer 네 무드로 매장 분위기를 감각적으로 보여줬어요.",
-    ],
-    right: [
       "미드센추리 모던·미니멀리즘 컨셉으로 ‘무인=프리미엄’ 인식을 만들었어요.",
     ],
-    mobile: "무드 이미지를 풀스크린 카드로 전환해 몰입감을 높였어요.",
   },
   {
     id: "startup",
     label: "Franchise",
-    title: ["인건비 제로, ", "데이터", "로 증명하는 창업"],
-    media: {
-      type: "image",
-      pc: "/assets/tonefit-case/startup-pc.png",
-      mo: "/assets/tonefit-case/startup-mo.png",
-    },
-    left: [
+    title: "인건비 제로, 데이터로 증명하는 창업",
+    pc: "/assets/tonefit-case/startup-pc.png",
+    mo: "/assets/tonefit-case/startup-mo.png",
+    notes: [
       "‘인건비 제로, 퀄리티는 무한대’ + 30초 AI 스캔·자동 세팅·100% 무인화 3단계로 운영 부담이 없음을 증명했어요.",
-    ],
-    right: [
       "‘단 3개월 만에 누적 15만 건 돌파’ 실데이터를 전면 배치해 기대를 확신으로 바꿨어요.",
       "가맹 상담→계약→시공→세팅→교육→오픈 프로세스를 시각화해 창업 여정을 예측 가능하게 했어요.",
     ],
-    mobile: "수익 지표·프로세스를 카드로 끊어 이동 중에도 핵심만 빠르게 훑게 했어요.",
   },
 ];
 
-function ShowcaseBlock({ s }: { s: Showcase }) {
+function UiShowcase({ s }: { s: (typeof uiShowcases)[number] }) {
   return (
-    <section className={styles.show}>
-      <Reveal className={styles.showHead}>
-        <p className={styles.eyebrow}>{s.label}</p>
-        <h2 className={styles.koTitle}>
-          {s.title[0]}
-          <span className={styles.hl}>{s.title[1]}</span>
-          {s.title[2]}
-        </h2>
+    <section className={styles.scBlock}>
+      <Reveal className={styles.scHead}>
+        <p className={styles.scLabel}>{s.label}</p>
+        <h3 className={styles.scTitle}>{s.title}</h3>
       </Reveal>
-
-      <div className={styles.stageWrap}>
-        <div className={`${styles.annCol} ${styles.annLeft}`}>
-          {s.left.map((n) => (
-            <Reveal key={n} className={styles.ann}>
-              <span className={styles.annDot} />
-              {n}
-            </Reveal>
-          ))}
+      <div className={styles.scStage}>
+        {/* 모바일 목업 + 주석 — 왼쪽 (스크롤 따라오는 sticky) */}
+        <div className={styles.scRail}>
+          <div className={styles.scPhone}>
+            <span className={styles.scNotch} />
+            <img src={s.mo} alt={`${s.label} 모바일`} loading="lazy" />
+          </div>
+          <ul className={styles.scNotes}>
+            {s.notes.map((n) => (
+              <li key={n} className={styles.scNote}>
+                <span className={styles.scDot} />
+                {n}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <Reveal className={styles.stage}>
-          <div className={styles.browser}>
-            <div className={styles.browserBar}>
-              <span className={styles.bdot} />
-              <span className={styles.bdot} />
-              <span className={styles.bdot} />
-            </div>
-            <div className={styles.flowClip}>
-              {s.media.type === "video" ? (
-                <video
-                  className={styles.flowMedia}
-                  src={s.media.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              ) : (
-                <img
-                  className={styles.flowMedia}
-                  src={s.media.pc}
-                  alt={`${s.label} 데스크탑`}
-                  loading="lazy"
-                />
-              )}
-            </div>
+        {/* 데스크탑 — 브라우저 목업 안에서 전체가 아래로 흐름 */}
+        <div className={styles.scBrowser}>
+          <div className={styles.scBar}>
+            <span />
+            <span />
+            <span />
           </div>
-
-          <div className={styles.phone}>
-            <span className={styles.phoneNotch} />
-            <img src={s.media.mo} alt={`${s.label} 모바일`} loading="lazy" />
-          </div>
-        </Reveal>
-
-        <div className={`${styles.annCol} ${styles.annRight}`}>
-          {s.right.map((n) => (
-            <Reveal key={n} className={styles.ann}>
-              <span className={styles.annDot} />
-              {n}
-            </Reveal>
-          ))}
-          <Reveal className={`${styles.ann} ${styles.annMo}`}>
-            <span className={styles.annDotMo} />
-            {s.mobile}
-          </Reveal>
+          <img
+            className={styles.scShot}
+            src={s.pc}
+            alt={`${s.label} 데스크탑`}
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -240,6 +174,9 @@ function ShowcaseBlock({ s }: { s: Showcase }) {
 }
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
+  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [videoModal, setVideoModal] = useState<string | null>(null);
+
   return (
     <div
       className={styles.overlay}
@@ -251,208 +188,279 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         ✕
       </button>
 
-      {/* Cover */}
-      <section className={styles.cover}>
-        <div className={styles.inner}>
+      <div className={styles.page}>
+        {/* ⓪ 영상 인트로 — 상세페이지 진입 시 가장 먼저 보이는 2개 영상 */}
+        <section className={styles.videoIntro}>
+          {/* 영상 1 — Key Visual */}
+          <Reveal className={styles.introBlock}>
+            <div className={styles.introHead}>
+              <p className={styles.introLabel}>Key Visual</p>
+              <h3 className={styles.introTitle}>브랜드의 첫인상, KV 영상</h3>
+              <p className={styles.introDesc}>
+                메인 진입과 동시에 재생되는 키 비주얼 영상입니다. 브랜드의
+                기술력과 감성을 동시에 각인시키고 다음 스크롤로 자연스럽게
+                이어지게 설계했습니다.
+              </p>
+            </div>
+            <div className={styles.introVideoWrap}>
+              <video
+                className={styles.introVideo}
+                src="/assets/vidio/main-kv.webm"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </Reveal>
+
+          {/* 영상 2 — 매장을 채우는 무드와 소품 */}
+          <Reveal delay={0.1} className={styles.introBlock}>
+            <div className={styles.introHead}>
+              <p className={styles.introLabel}>Store Mood</p>
+              <h3 className={styles.introTitle}>매장을 채우는 무드와 소품</h3>
+              <p className={styles.introDesc}>
+                프리미엄 무인 스튜디오의 공간 분위기와 다양한 촬영 소품을 영상으로
+                담아, TONE:FIT만의 감성적인 매장 경험을 전합니다.
+              </p>
+            </div>
+            <div className={styles.introVideoWrap}>
+              <video
+                className={styles.introVideo}
+                src={encodeURI("/assets/vidio/영상3.mp4")}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ① KV 이미지 — 기존 Hero를 대체 */}
+        <section className={styles.imgSection}>
           <Reveal>
-            <p className={styles.coverCat}>UI/UX · Web / Contents Design</p>
-            <h1 className={styles.coverTitle}>TONE:FIT</h1>
-            <p className={styles.coverSub}>
-              AI 퍼스널 컬러로 ‘나에게 맞는 색’을 찾는
-              <br />
-              무인 프리미엄 포토 스튜디오 — 브랜드 웹사이트 디자인
+            <img
+              className={styles.fullImg}
+              src="/assets/images/tonefit-kv.png"
+              alt="TONE:FIT 키 비주얼"
+              loading="lazy"
+            />
+          </Reveal>
+        </section>
+
+        {/* ② About 이미지 — 브랜드 소개 */}
+        <section className={styles.imgSection}>
+          <Reveal>
+            <img
+              className={styles.fullImg}
+              src="/assets/images/tonefit-about.png"
+              alt="TONE:FIT 브랜드 소개"
+              loading="lazy"
+            />
+          </Reveal>
+        </section>
+
+        {/* ③ Desk research — 이미지 */}
+        <section className={styles.imgSection}>
+          <Reveal>
+            <img
+              className={styles.fullImg}
+              src={encodeURI("/assets/images/Desk research.png")}
+              alt="Desk research — 시장·소비자 리서치"
+              loading="lazy"
+            />
+          </Reveal>
+        </section>
+
+        {/* ④ User research — 이미지 */}
+        <section className={styles.imgSection}>
+          <Reveal>
+            <img
+              className={styles.fullImg}
+              src="/assets/images/presona.png"
+              alt="User research — 페르소나"
+              loading="lazy"
+            />
+          </Reveal>
+        </section>
+
+        {/* ⑤ Problem & Solution — 상단 문제 → 점선 → 하단 해결 */}
+        <section className={styles.section}>
+          <Reveal className={`${styles.head} ${styles.psHeadWide}`}>
+            <p className={styles.psLabel}>Problem &amp; Solution</p>
+            <h3 className={styles.headTitle}>
+              최종적으로 문제점을 도출하고, TONE:FIT의 솔루션을 제시합니다.
+            </h3>
+            <p className={styles.headDesc}>
+              앞선 리서치와 시장 분석을 바탕으로 사용자의 핵심 문제를 도출하고,
+              그에 맞는 해결 방향을 설계했습니다.
             </p>
           </Reveal>
-        </div>
-      </section>
 
-      {/* Overview */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <Reveal className={styles.centerHead}>
-            <h2 className={styles.enTitle}>Overview</h2>
-            <p className={styles.centerDesc}>
-              TONE:FIT은 전문가 없이도 매일 매출을 갱신하는 무인 AI 포토
-              스튜디오입니다. 브랜드가 가진 <b>‘기술력’과 ‘감성’</b> 두 축을
-              웹에서 동시에 설득해, 예비 창업자에게는 확신을, 방문 고객에게는
-              설렘을 주는 경험을 설계했습니다.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Background */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <Reveal className={styles.leftHead}>
-            <h2 className={styles.enTitle}>Background</h2>
-            <p className={styles.headSub}>왜 새로운 웹이 필요했을까?</p>
-          </Reveal>
-          <div className={styles.probGrid}>
-            {problems.map((p, i) => (
-              <Reveal key={p.no} delay={i * 0.08} className={styles.probCard}>
-                <div
-                  className={styles.probImg}
-                  style={{ backgroundImage: `url("${p.img}")` }}
-                />
-                <div className={styles.probBody}>
-                  <h3 className={styles.probTitle}>
-                    {p.title[0]}
-                    <br />
-                    {p.title[1]}
-                  </h3>
-                  <p className={styles.probDesc}>{p.desc}</p>
+          <div className={styles.psGrid}>
+            {problemSolutions.map((p) => (
+              <Reveal key={p.solTag} className={styles.psCol}>
+                <div className={styles.psProblem}>
+                  <span className={styles.psProblemLabel}>Problem</span>
+                  <p className={styles.psProblemText}>{p.problem}</p>
                 </div>
-                <span className={styles.probNo}>{p.no}</span>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Project Goal */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <Reveal className={styles.centerHead}>
-            <h2 className={styles.enTitle}>Project Goal</h2>
-            <p className={styles.centerDesc}>
-              기술은 <b>직관적으로</b>, 창업은 <b>신뢰감 있게</b>, 브랜드는{" "}
-              <b>감각적으로</b> 전달해 방문 고객의 설렘과 예비 창업자의 확신을
-              동시에 끌어내는 것.
-            </p>
-          </Reveal>
-          <div className={styles.venn}>
-            <div className={styles.vennRow}>
-              <span className={styles.vennLabel}>AS IS</span>
-              {asIs.map((t) => (
-                <Reveal key={t} className={`${styles.circle} ${styles.circleOutline}`}>
-                  <span>{t}</span>
-                </Reveal>
-              ))}
-            </div>
-            <div className={`${styles.vennRow} ${styles.vennRowTobe}`}>
-              {toBe.map((t, i) => (
-                <Reveal key={t} delay={i * 0.06} className={`${styles.circle} ${styles.circleFill}`}>
-                  <span>{t}</span>
-                </Reveal>
-              ))}
-              <span className={`${styles.vennLabel} ${styles.vennLabelTobe}`}>
-                TO BE
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Keywords */}
-      <section className={`${styles.section} ${styles.kwBand}`}>
-        <div className={styles.inner}>
-          <Reveal className={styles.leftHead}>
-            <h2 className={`${styles.enTitle} ${styles.enTitleLight}`}>Keywords</h2>
-            <p className={styles.headSubLight}>
-              프로젝트의 정체성을 확립하기 위해 세 개의 핵심 키워드를 설정해 디자인
-              방향성을 구체화했어요.
-            </p>
-          </Reveal>
-          <div className={styles.kwRow}>
-            {keywords.map((k, i) => (
-              <Reveal
-                key={k.ko}
-                delay={i * 0.08}
-                className={`${styles.kwCard} ${i === 1 ? styles.kwTilt : ""}`}
-              >
-                <div
-                  className={styles.kwImg}
-                  style={{ backgroundImage: `url("${k.img}")` }}
-                />
-                <div className={styles.kwLabel}>
-                  <span className={styles.kwKo}>{k.ko}</span>
-                  <span className={styles.kwEn}>{k.en}</span>
+                <span className={styles.psConnector} aria-hidden="true" />
+                <div className={styles.psSolution}>
+                  <span className={styles.psSolutionTag}>{p.solTag}</span>
+                  <div className={styles.psSolutionTitle}>{p.solTitle}</div>
+                  <p className={styles.psSolutionBody}>{p.solBody}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* System */}
-      <section className={styles.section}>
-        <div className={styles.inner}>
-          <Reveal className={styles.leftHead}>
-            <h2 className={styles.enTitle}>System</h2>
-            <p className={styles.headSub}>
-              브랜드 톤앤매너를 강화하기 위해 기존 로고와 조화로운 타이포와 브랜드
-              이미지에 부합하는 컬러를 설정했어요.
+        {/* ⑥ Concept Explain — 좌측 설명 + 화면 갤러리 */}
+        <section className={styles.concept}>
+          <Reveal className={styles.conceptText}>
+            <h4 className={styles.blockLabel}>Concept Explain</h4>
+            <p className={styles.blockBody}>
+              ‘클린-테크(Clean-Tech)’를 핵심 무드로, 오프화이트와 포인트
+              오렌지를 활용해 갤러리 같은 신뢰감을 설계했습니다. 1px 헤어라인
+              그리드와 글래스모피즘으로 정교한 기술 이미지를 전달하고, 사진과
+              콘텐츠가 돋보이도록 여백과 위계를 정리해 가독성을 높였습니다.
             </p>
           </Reveal>
-          <div className={styles.sysGrid}>
-            <Reveal className={styles.fontBlock}>
-              <div className={styles.fontTop}>
-                <div>
-                  <p className={styles.fontLabel}>Main Font</p>
-                  <p className={styles.fontName}>Poppins · Pretendard</p>
-                </div>
-                <div className={styles.fontWeights}>
-                  <span>Regular</span>
-                  <span>Medium</span>
-                  <b>Bold</b>
-                </div>
-              </div>
-              <span className={styles.fontAa}>Aa</span>
-            </Reveal>
-            <div className={styles.colorBlock}>
-              {colors.map((c) => (
-                <Reveal
-                  key={c.hex + c.name}
-                  className={`${styles.swatch} ${c.dark ? styles.swatchDark : ""}`}
-                  style={{ background: c.hex }}
-                >
-                  <div className={styles.swatchHead}>
-                    <span className={styles.swatchName}>{c.name}</span>
-                    <span className={styles.swatchHex}>{c.hex}</span>
-                  </div>
-                  <p className={styles.swatchDesc}>{c.desc}</p>
-                </Reveal>
-              ))}
+
+          <Reveal delay={0.1} className={styles.conceptGallery}>
+            {[1, 2, 3, 4, 5].map((n) => (
+              <img
+                key={n}
+                className={styles.shotImg}
+                src={`/assets/images/${n}.png`}
+                alt={`TONE:FIT 디자인 화면 ${n}`}
+                loading="lazy"
+              />
+            ))}
+          </Reveal>
+        </section>
+
+        {/* ⑥-1 UI 디자인 소개 — 풀사이즈 영상 (텍스트는 위에 얹을 자리만) */}
+        <section className={styles.scIntro}>
+          <Reveal className={styles.scVideoWrap}>
+            <video
+              className={styles.scVideo}
+              src="/assets/vidio/main-kv.webm"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <div className={styles.scVideoText}>
+              {/* TODO: 여기에 UI 소개 텍스트 입력 (자리만 잡아둠) */}
+              <span className={styles.scVideoPlaceholder}>텍스트 영역</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* UI 쇼케이스 */}
-      <section className={styles.showIntro}>
-        <div className={styles.inner}>
-          <Reveal className={styles.centerHead}>
-            <p className={styles.eyebrow}>UI Design</p>
-            <h2 className={styles.enTitle}>화면으로 보는 디자인</h2>
-            <p className={styles.centerDesc}>
-              각 페이지를 어떤 의도로 설계했는지, 데스크탑과 모바일 화면과 함께
-              풀어냈습니다.
-            </p>
           </Reveal>
-        </div>
-      </section>
+        </section>
 
-      <div className={styles.inner}>
-        {showcases.map((s) => (
-          <ShowcaseBlock key={s.id} s={s} />
+        {/* ⑥-2 UI 쇼케이스 — 페이지별 목업 + 주석 */}
+        {uiShowcases.map((s) => (
+          <UiShowcase key={s.id} s={s} />
         ))}
+
+        {/* ⑦ SNS 마케팅 — 라벨 + 4카드(Instagram/Threads) */}
+        <section className={styles.section}>
+          <Reveal className={styles.head}>
+            <p className={styles.snsLabel}>
+              <span className={styles.snsDot} />
+              SNS Marketing
+            </p>
+            <h3 className={styles.headTitle}>
+              SNS로 확장한 TONE:FIT 브랜드 경험
+            </h3>
+            <p className={styles.headDesc}>
+              Instagram과 Threads 두 채널의 특성에 맞춰 콘텐츠를 기획했습니다.
+              화보형 콘텐츠로 브랜드 무드를 각인시키고, 대화형 콘텐츠로 후기와
+              참여를 이끌어내 자연스러운 바이럴과 재방문을 유도했습니다.
+            </p>
+          </Reveal>
+
+          {snsGroups.map((g) => (
+            <div key={g.channel} className={styles.snsGroup}>
+              <p className={styles.snsChannel}>{g.channel}</p>
+              <div className={styles.snsGrid}>
+                {g.cards.map((c) => (
+                  <Reveal key={c.img} className={styles.snsCard}>
+                    <button
+                      type="button"
+                      className={styles.snsThumb}
+                      onClick={() => setLightbox(`/assets/images/${c.img}.png`)}
+                      aria-label={`${g.channel} 게시물 크게 보기`}
+                    >
+                      <img
+                        className={styles.snsImg}
+                        src={`/assets/images/${c.img}.png`}
+                        alt={c.caption}
+                        loading="lazy"
+                      />
+                    </button>
+                    <p className={styles.snsCaption}>{c.caption}</p>
+                    {c.video && (
+                      <button
+                        type="button"
+                        className={styles.snsVideoBtn}
+                        onClick={() =>
+                          setVideoModal(encodeURI(`/assets/vidio/${c.video}`))
+                        }
+                      >
+                        ▶ 영상 보기
+                      </button>
+                    )}
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
       </div>
 
-      {/* Closing */}
-      <section className={styles.closing}>
-        <Reveal>
-          <p className={styles.closingSmall}>Thank you</p>
-          <h2 className={styles.closingTitle}>TOGETHER DO BETTER</h2>
-          <span className={styles.closingMark}>TONE:FIT</span>
-        </Reveal>
-        <div className={styles.thanksBar} aria-hidden="true">
-          <span>
-            THANK YOU FOR READING&nbsp;&nbsp;·&nbsp;&nbsp;THANK YOU FOR
-            READING&nbsp;&nbsp;·&nbsp;&nbsp;
-          </span>
+      {lightbox && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="이미지 크게 보기"
+        >
+          <button className={styles.lightboxClose} aria-label="닫기">
+            ✕
+          </button>
+          <img className={styles.lightboxImg} src={lightbox} alt="확대 이미지" />
         </div>
-      </section>
+      )}
+
+      {videoModal && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setVideoModal(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="영상 보기"
+        >
+          <button className={styles.lightboxClose} aria-label="닫기">
+            ✕
+          </button>
+          <div
+            className={styles.reelFrame}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              className={styles.reelVideo}
+              src={videoModal}
+              autoPlay
+              loop
+              playsInline
+              controls
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
