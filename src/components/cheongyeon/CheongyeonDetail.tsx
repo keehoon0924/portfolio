@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "../Reveal";
 import styles from "./CheongyeonDetail.module.css";
 
@@ -28,7 +29,28 @@ const steps = [
   },
 ];
 
+/** 데스크탑 폭으로 렌더한 뒤 프레임에 맞게 축소해 PC 버전을 보여준다 */
+const DESIGN_W = 1280;
+
 export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [dims, setDims] = useState({ w: DESIGN_W, h: 800, scale: 0.45 });
+
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const update = () => {
+      const cw = el.clientWidth;
+      const ch = el.clientHeight;
+      const scale = cw / DESIGN_W;
+      setDims({ w: DESIGN_W, h: scale ? ch / scale : ch, scale });
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div
       className={styles.overlay}
@@ -84,12 +106,20 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
                     <span />
                     <span />
                   </div>
-                  <iframe
-                    className={styles.liveFrame}
-                    src="https://cheongyeon-amber.vercel.app/"
-                    title="청연 라이브 사이트"
-                    loading="lazy"
-                  />
+                  <div className={styles.frameViewport} ref={frameRef}>
+                    <iframe
+                      className={styles.liveFrame}
+                      src="https://cheongyeon-amber.vercel.app/"
+                      title="청연 라이브 사이트"
+                      loading="lazy"
+                      style={{
+                        width: `${dims.w}px`,
+                        height: `${dims.h}px`,
+                        transform: `scale(${dims.scale})`,
+                        transformOrigin: "top left",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

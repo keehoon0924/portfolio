@@ -169,9 +169,18 @@
 .browserBar span:nth-child(3) {
   background: #28c840;
 }
-.liveFrame {
+/* 프레임 보이는 영역 — 데스크탑 렌더 iframe을 축소해 담는 뷰포트 */
+.frameViewport {
+  position: relative;
   width: 100%;
   height: 74vh;
+  overflow: hidden;
+  background: #fff;
+}
+.liveFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
   border: 0;
   display: block;
   background: #fff;
