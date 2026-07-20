@@ -109,7 +109,7 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
                   <div className={styles.frameViewport} ref={frameRef}>
                     <iframe
                       className={styles.liveFrame}
-                      src="https://cheongyeon-amber.vercel.app/"
+                      src="/cheongyeon-site/"
                       title="청연 라이브 사이트"
                       loading="lazy"
                       style={{
