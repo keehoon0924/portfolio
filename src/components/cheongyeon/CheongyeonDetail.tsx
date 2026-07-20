@@ -86,7 +86,7 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
                   </div>
                   <iframe
                     className={styles.liveFrame}
-                    src="https://jurmiii.github.io/cheongyeon/"
+                    src="https://cheongyeon-amber.vercel.app/"
                     title="청연 라이브 사이트"
                     loading="lazy"
                   />
