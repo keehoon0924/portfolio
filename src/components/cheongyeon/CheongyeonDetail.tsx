@@ -30,7 +30,7 @@ const steps = [
 ];
 
 /** 데스크탑 폭으로 렌더한 뒤 프레임에 맞게 축소해 PC 버전을 보여준다 */
-const DESIGN_W = 1152;
+const DESIGN_W = 1280;
 
 export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
   const frameRef = useRef<HTMLDivElement>(null);
