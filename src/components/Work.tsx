@@ -29,7 +29,7 @@ const projects: Project[] = [
   {
     title: "TONE:FIT",
     tags: "Web | 디자인 · 개발 · 퍼블리싱 · SEO · 유지보수",
-    imgPath: "/assets/images/click.png",
+    imgPath: "/assets/tonefit/click.png",
     detail: "tonefit",
   },
   {
