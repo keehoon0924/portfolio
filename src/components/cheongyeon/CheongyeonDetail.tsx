@@ -1,56 +1,22 @@
-import { useEffect, useRef, useState } from "react";
 import { Reveal } from "../Reveal";
 import styles from "./CheongyeonDetail.module.css";
 
 /**
- * 청연(다도 원데이 클래스) 상세 페이지 — 이미지 스택 오버레이.
- * WORK 카드 클릭 시 열린다.
- * 순서: kv → style-guide → 1 → 2 → 3 → 4 → 5
+ * 청연(다도 원데이 클래스) 상세 페이지.
+ * WORK 카드 클릭 시 오버레이로 열린다.
+ *
+ * 구성
+ *  1) 케이스 스터디 슬라이드 이미지 스택 (kv → style-guide → 1~5)
+ *  2) 실제 배포된 청연 메인페이지 전체 캡처 — 브라우저 창에 크게·가운데로
+ *
  * 이미지 경로: public/assets/cheongyeon/{name}.png
  */
 const images = ["kv", "style-guide", "1", "2", "3", "4", "5"];
 
-/** 실험용 스크롤텔링 텍스트 (샘플 — 실제 문구로 교체 예정) */
-const steps = [
-  {
-    eyebrow: "Project Background",
-    title: "청연을 시작한 이유",
-    desc: "여기에 설명 텍스트가 들어갑니다. 스크롤을 내리면 텍스트와 점선이 샤라락 나타나요. (샘플 문구)",
-  },
-  {
-    eyebrow: "Design Concept",
-    title: "동양의 미감을 담다",
-    desc: "각 섹션마다 이렇게 텍스트가 하나씩 등장합니다. 한 번 나오면 그대로 유지돼요. (샘플 문구)",
-  },
-  {
-    eyebrow: "Live Site",
-    title: "직접 둘러보세요",
-    desc: "오른쪽 화면은 실제 배포된 청연 사이트예요. 그 안에서 스크롤·클릭이 됩니다. (샘플 문구)",
-  },
-];
-
-/** 데스크탑 폭으로 렌더한 뒤 프레임에 맞게 축소해 PC 버전을 보여준다 */
-const DESIGN_W = 1280;
+/** 실제 배포 사이트 주소 */
+const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
 
 export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const [dims, setDims] = useState({ w: DESIGN_W, h: 800, scale: 0.45 });
-
-  useEffect(() => {
-    const el = frameRef.current;
-    if (!el) return;
-    const update = () => {
-      const cw = el.clientWidth;
-      const ch = el.clientHeight;
-      const scale = cw / DESIGN_W;
-      setDims({ w: DESIGN_W, h: scale ? ch / scale : ch, scale });
-    };
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
   return (
     <div
       className={styles.overlay}
@@ -63,6 +29,7 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
+        {/* ① 케이스 스터디 슬라이드 */}
         {images.map((name, i) => (
           <section key={name} className={styles.imgSection}>
             <Reveal>
@@ -76,54 +43,52 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
           </section>
         ))}
 
-        {/* ── 실험: 스크롤텔링 + 라이브 사이트 iframe ── */}
-        <section className={styles.scrolly}>
-          <div className={styles.scrollyGrid}>
-            {/* 왼쪽: 스크롤 따라 등장하는 텍스트 + 꺾인 점선 */}
-            <div className={styles.narrative}>
-              {steps.map((s) => (
-                <div key={s.title} className={styles.step}>
-                  <Reveal className={styles.stepInner}>
-                    <p className={styles.stepEyebrow}>{s.eyebrow}</p>
-                    <h3 className={styles.stepTitle}>{s.title}</h3>
-                    <p className={styles.stepDesc}>{s.desc}</p>
-                    <span className={styles.lineWrap} aria-hidden="true">
-                      <span className={styles.lineDot} />
-                      <span className={styles.lineH} />
-                      <span className={styles.lineV} />
-                    </span>
-                  </Reveal>
-                </div>
-              ))}
-            </div>
+        {/* ② 실제 배포된 청연 메인페이지 — 브라우저 창에 크게·가운데 */}
+        <section className={styles.live}>
+          <Reveal className={styles.liveHead}>
+            <p className={styles.liveEyebrow}>Live Site</p>
+            <h3 className={styles.liveTitle}>
+              직접 디자인·개발한 청연 메인페이지
+            </h3>
+            <p className={styles.liveDesc}>
+              브랜딩부터 퍼블리싱·SEO까지 직접 완성해 실제 배포한 사이트입니다.
+              아래는 메인페이지 전체 화면이에요. 실제 사이트에서는 스크롤
+              인터랙션과 애니메이션이 살아 움직입니다.
+            </p>
+            <a
+              className={styles.liveBtn}
+              href={LIVE_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              실제 사이트 열기 ↗
+            </a>
+          </Reveal>
 
-            {/* 오른쪽: 고정(sticky) 라이브 사이트 */}
-            <div className={styles.stageCol}>
-              <div className={styles.stageSticky}>
-                <div className={styles.browser}>
-                  <div className={styles.browserBar}>
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <div className={styles.frameViewport} ref={frameRef}>
-                    <iframe
-                      className={styles.liveFrame}
-                      src="/cheongyeon-site/"
-                      title="청연 라이브 사이트"
-                      loading="lazy"
-                      style={{
-                        width: `${dims.w}px`,
-                        height: `${dims.h}px`,
-                        transform: `scale(${dims.scale})`,
-                        transformOrigin: "top left",
-                      }}
-                    />
-                  </div>
-                </div>
+          <Reveal className={styles.browserWrap}>
+            <div className={styles.browser}>
+              <div className={styles.browserBar}>
+                <span className={styles.dot} />
+                <span className={styles.dot} />
+                <span className={styles.dot} />
+                <div className={styles.addr}>cheongyeon-amber.vercel.app</div>
               </div>
+              <a
+                href={LIVE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.shotLink}
+                aria-label="청연 사이트 새 탭에서 열기"
+              >
+                <img
+                  className={styles.liveShot}
+                  src="/assets/cheongyeon/live-full.jpg"
+                  alt="청연 메인페이지 전체 화면"
+                  loading="lazy"
+                />
+              </a>
             </div>
-          </div>
+          </Reveal>
         </section>
       </div>
     </div>
