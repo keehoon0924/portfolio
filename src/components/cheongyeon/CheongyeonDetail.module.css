@@ -43,6 +43,28 @@
   display: block;
 }
 
+/* 실제 메인페이지 전체 화면 — 가운데 적당한 폭의 페이지 프리뷰 */
+.shotSection {
+  background: #f5f3ee;
+  padding: 72px 24px 96px;
+  display: flex;
+  justify-content: center;
+}
+.pageShot {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 40px 80px -40px rgba(22, 24, 27, 0.4);
+}
+
+@media (max-width: 860px) {
+  .shotSection {
+    padding: 48px 16px 64px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .close {
     transition: none;
