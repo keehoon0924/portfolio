@@ -33,7 +33,7 @@ const DATA = [
   {
     num: "30만 원",
     label: "전문가에게 직접 받으면 한 번에 이 정도",
-    cap: "가격이 문 앞을 막고 있었어요. 그 틈을 AI·무인이 파고듭니다.",
+    cap: "가격이 문 앞을 막고 있었습니다. 그 틈을 AI·무인으로 파고들었습니다.",
     note: "업계 평균 진단가 기준",
   },
 ];
@@ -74,64 +74,57 @@ const SEASONS = [
 /* ── 05 유저 경험 포인트 (한 포인트 = 한 이미지) ── */
 const UX_POINTS = [
   {
-    tag: "브랜드 첫인상",
-    title: "이름 세 글자에, 브랜드를 다 담았다.",
-    desc: "TONE(색조·분위기) 그리고 FIT(꼭 맞다). ‘유행 말고 나한테 맞는 색’이라는 한마디를, 들어오자마자 느끼게 했어요.",
+    tag: "브랜드 컨셉",
+    title: "이름 자체가 브랜드 메시지",
+    desc: "TONE(색조·분위기)과 FIT(꼭 맞다)을 합친 이름입니다. ‘유행하는 색’이 아니라 ‘나에게 맞는 색’을 찾아준다는 방향을, 브랜드명과 첫 화면에서 먼저 정리하고 시작했습니다.",
     img: "tonefit-05a-identity",
     alt: "TONE:FIT 브랜드 컨셉 — 색조와 어울림",
   },
   {
-    tag: "실패 없는 한 장",
-    title: "배경까지 AI가 골라주니까.",
-    desc: "피부 톤과 분위기를 읽어서 어울리는 배경과 조명을 자동으로 맞춰줘요. ‘무슨 색이 나랑 맞지?’ 고민할 필요가 없죠.",
+    tag: "AI 배경 매칭",
+    title: "배경 선택까지 AI에 맡겼다",
+    desc: "보통 셀프 스튜디오는 배경과 조명을 사용자가 직접 고릅니다. 실패 확률이 높은 지점입니다. 톤핏은 피부 톤과 분위기를 분석해 어울리는 배경·조명을 자동 세팅하도록 설계해, 고르는 부담을 덜었습니다.",
     img: "tonefit-05b-aibg",
     alt: "AI 퍼스널 배경 매칭",
   },
   {
-    tag: "혼자 말고, 함께",
-    title: "댕냥이랑도 인생네컷.",
-    desc: "1,500만 반려인구를 겨냥한 반려동물 촬영. 유저에겐 특별한 추억이고, 매장 입장에선 옆 가게가 못 따라오는 무기예요.",
+    tag: "타깃 확장",
+    title: "반려동물 촬영까지 포함",
+    desc: "1,500만 반려인구는 대부분의 셀프 스튜디오가 비워둔 시장입니다. 반려동물 전용 프레임과 촬영 존을 넣어, 사용자에게는 특별한 추억을, 점주에게는 경쟁 매장과 구분되는 차별점을 만들었습니다.",
     img: "tonefit-05pet",
     alt: "반려동물 촬영",
   },
 ];
 const UX_POINTS_2 = [
   {
-    tag: "처음이어도 괜찮게",
-    title: "무인인데, 헤맬 일이 없다.",
-    desc: "촬영부터 결제까지 STEP으로 눈앞에 보여줘요. 직원이 없어도 불안하지 않게, 화면이 절차를 대신 안내합니다.",
+    tag: "무인 경험",
+    title: "직원 없이도 헤매지 않도록",
+    desc: "무인 매장의 가장 큰 허들은 ‘혼자서 잘 할 수 있을까’ 하는 불안입니다. 촬영부터 결제까지 전 과정을 STEP으로 화면에 미리 노출해, 처음 온 사용자도 안내 없이 끝낼 수 있게 구성했습니다.",
     img: "tonefit-05b-kiosk",
     alt: "키오스크 이용 STEP",
-  },
-  {
-    tag: "가고 싶어졌다면",
-    title: "그래서, 어디로 가면 돼?",
-    desc: "카카오맵에 지역 필터와 검색을 얹어서 ‘가고 싶다 → 여기다’까지 한 화면에서 끝냈어요.",
-    img: "tonefit-05b-store",
-    alt: "매장 찾기 — 카카오맵",
   },
 ];
 
 /* ── 06 유저→창업 포인트 ── */
 const OWNER_POINTS = [
   {
-    tag: "가장 강력한 광고",
-    title: "유저가 올린 인증샷이, 곧 영업 자료.",
-    desc: "찍고 나서 알아서 올리는 SNS 후기. 이 진짜 반응이 예비 창업주에겐 ‘되는 아이템’이라는 증거가 됩니다.",
+    tag: "유저 콘텐츠",
+    title: "사용자의 후기가 곧 광고",
+    desc: "촬영 후 자발적으로 올라오는 SNS 인증샷을 그대로 브랜드 자산으로 활용했습니다. 만들어낸 광고가 아니라 실제 반응이라, 창업을 검토하는 점주에게 ‘되는 아이템’이라는 근거로 작동합니다.",
     img: "tonefit-06-viral",
     alt: "실제 고객이 공유한 SNS 반응",
   },
   {
-    tag: "숫자로 증명",
-    title: "광고 없이, 3개월 만에 15만 건.",
-    desc: "MZ세대가 먼저 알아본 성장 곡선이에요. 억지로 밀어붙인 게 아니라 경험이 좋아서 퍼졌다는 걸, 그래프 하나로 보여줍니다.",
+    tag: "성장 지표",
+    title: "3개월, 누적 15만 건",
+    desc: "광고비를 들인 수치가 아니라, 경험이 좋아 자연스럽게 퍼진 결과입니다. 창업을 고민하는 사람에게는 감성적인 설득보다 이 곡선 하나가 더 강하게 작동한다고 보고, 지표를 전면에 배치했습니다.",
     img: "tonefit-06-startup",
     alt: "3개월 누적 15만 건 성장 그래프",
   },
   {
-    tag: "관심 → 창업",
-    title: "그 관심을, 창업 상담까지.",
-    desc: "가맹비·교육비 혜택과 선착순 프로모션으로 ‘괜찮은데?’ 하던 마음을 ‘나도 한번 열어볼까’로 넘깁니다.",
+    tag: "창업 전환",
+    title: "관심을 상담으로 잇는 마지막 단계",
+    desc: "유저 경험에 설득된 점주가 이탈하지 않도록, 같은 흐름 안에 창업 전환 페이지를 뒀습니다. 가맹비·교육비 혜택과 수익 구조를 함께 제시해, ‘괜찮은데’에서 ‘문의해보자’로 넘어가게 구성했습니다.",
     img: "tonefit-05a-main-hero",
     alt: "TONE:FIT 창업 프로모션",
   },
@@ -254,8 +247,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <Reveal className={`${styles.dataCard} ${styles.quoteCard}`}>
               <p className={styles.quoteMark}>“</p>
               <p className={styles.quoteText}>
-                인생네컷은 이제 ‘찍는 곳’이 아니라 ‘같이 공유하는 문화’예요.
-                톤핏은 퍼스널컬러를 그 문화 위에 얹었습니다.
+                인생네컷은 이제 ‘찍는 곳’이 아니라 ‘공유하는 문화’가 됐습니다.
+                톤핏은 퍼스널컬러를 그 문화 위에 얹는 방향으로 잡았습니다.
               </p>
               <p className={styles.quoteBy}>— 팀 기획 노트</p>
             </Reveal>
@@ -319,8 +312,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal className={styles.bridgeCap}>
-            유저가 남긴 ‘공유’가, 그대로 창업주의 ‘검증’ 근거가 됩니다. 그래서 유저
-            경험을 잘 만들수록 창업 세일즈도 세져요.
+            유저가 남긴 ‘공유’가 그대로 점주의 ‘검증’ 근거가 됩니다. 유저 경험을
+            제대로 설계할수록 창업 세일즈도 강해지는 구조로 잡았습니다.
           </Reveal>
         </section>
 
@@ -329,7 +322,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.head}>
             <Label>04 BRAND IDENTITY</Label>
             <h2 className={styles.headTitle}>
-              내 색을 찾아주는 브랜드는, 색부터 남달라야 하니까.
+              내 색을 찾아주는 브랜드라면, 색부터 달라야 한다고 봤습니다.
             </h2>
           </Reveal>
 
@@ -356,8 +349,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               </div>
             ))}
             <p className={styles.seasonCap}>
-              콘텐츠 색은 4계절 톤으로 따로 굴려서, 브랜드 컬러와 부딪히지 않게
-              했어요.
+              콘텐츠 색은 4계절 톤으로 분리해, 브랜드 컬러와 부딪히지 않도록
+              운용했습니다.
             </p>
           </Reveal>
 
@@ -397,11 +390,13 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           {/* 콜라보 프레임 — 전체 폭 갤러리 */}
           <div className={styles.gallery}>
             <Reveal className={styles.galleryHead}>
-              <p className={styles.pTag}>다시 올 이유</p>
-              <h3 className={styles.pTitle}>프레임이, 매달 바뀐다.</h3>
+              <p className={styles.pTag}>재방문 장치</p>
+              <h3 className={styles.pTitle}>프레임을 매달 교체하는 구조</h3>
               <p className={styles.pDesc}>
-                트렌디한 IP 콜라보 프레임을 매달 새로 열어요. 유저는 ‘이번 달은
-                뭐지?’ 하고 다시 오고, 매장은 콘텐츠가 알아서 채워집니다.
+                한 번 찍고 나면 다시 올 이유가 없다는 것이 셀프 스튜디오의
+                약점입니다. IP 콜라보 프레임을 매달 교체하는 구조로 만들어,
+                사용자에게는 재방문 이유를, 점주에게는 별도 제작 없이 채워지는
+                콘텐츠를 확보하도록 설계했습니다.
               </p>
             </Reveal>
             <Reveal delay={0.08} className={styles.frameStrip}>
@@ -430,8 +425,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               잘 만든 유저 경험은, 그대로 창업 제안서가 된다.
             </h2>
             <p className={styles.headLead}>
-              유저의 만족을 B2B 세일즈로 잇는 것 — 이게 이 사이트의 진짜
-              목적이에요.
+              유저의 만족을 B2B 세일즈로 잇는 것 — 이 사이트를 설계한 진짜
+              목적입니다.
             </p>
           </Reveal>
 
