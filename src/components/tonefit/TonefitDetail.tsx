@@ -5,9 +5,8 @@ import styles from "./TonefitDetail.module.css";
 
 /**
  * TONE:FIT 케이스 스터디 (WORK 카드 클릭 시 오버레이).
- * 비핸스 스타일 세로 스크롤 단일 페이지 — Poppi Donuts 레퍼런스의 깔끔한
- * "번호 기능카드 → 점선 연결선 → 이미지" 레이아웃을 따른다.
- * 이중 페르소나 관점: 유저 경험을 창업주(B2B) 세일즈 근거로 재활용.
+ * 비핸스 스타일 세로 스크롤 — 한 포인트 = 한 이미지로 명확히 분리.
+ * 이중 페르소나: 유저 경험을 창업주(B2B) 세일즈 근거로 재활용한 설계.
  * 이미지 경로: /assets/tonefit/*  (없으면 CaseImage가 파일명 플레이스홀더)
  */
 
@@ -27,14 +26,14 @@ const META: [string, string][] = [
 const DATA = [
   {
     num: "46.5%",
-    label: "20대 퍼스널컬러 컨설팅 이용 경험 (관심은 55%)",
-    cap: "찍고 싶은 수요는 이미 크다",
+    label: "20대의 절반 가까이가 이미 퍼스널컬러를 받아봤다",
+    cap: "찍고 싶은 마음은 이미 충분한데,",
     note: "엠브레인 트렌드모니터 2024 · 20–39세 1,200명",
   },
   {
-    num: "최대 30만 원",
-    label: "전문가 대면 퍼스널컬러 진단 1회 비용",
-    cap: "높은 가격 장벽 = 무인·AI가 파고들 틈",
+    num: "30만 원",
+    label: "전문가에게 직접 받으면 한 번에 이 정도",
+    cap: "가격이 문 앞을 막고 있었어요. 그 틈을 AI·무인이 파고듭니다.",
     note: "업계 평균 진단가 기준",
   },
 ];
@@ -53,7 +52,7 @@ const OWNER_JOURNEY = [
   { step: "검증", desc: "유저 반응 확인", tag: "Viral" },
   { step: "차별성", desc: "AI·콜라보·반려동물" },
   { step: "신뢰", desc: "운영·원격지원" },
-  { step: "상담", desc: "창업 상담 연결", tag: "Startup" },
+  { step: "상담", desc: "창업 상담", tag: "Startup" },
 ];
 
 /* ── 04 컬러 ── */
@@ -72,110 +71,70 @@ const SEASONS = [
   { name: "겨울 쿨", hex: "#8E3B5A" },
 ];
 
-/* ── 05 / 06 기능 블록 (번호카드 → 연결선 → 이미지) ── */
-const UX_BLOCKS = [
+/* ── 05 유저 경험 포인트 (한 포인트 = 한 이미지) ── */
+const UX_POINTS = [
   {
-    tag: "05-1 첫인상 · 탐색",
-    title: "스크롤 3초 안에, 스튜디오 안에 들어온 느낌을.",
-    cards: [
-      { title: "영상 KV + 무드 컬러", desc: "공간감을 먼저 전달해 몰입시킵니다." },
-      {
-        title: "Brand Story",
-        desc: "‘왜 퍼스널컬러·왜 무인’을 서사로 풀어 신뢰를 쌓습니다.",
-      },
-    ],
-    images: [
-      { src: "tonefit-05a-main-hero", alt: "메인 히어로 + About" },
-      { src: "tonefit-05a-identity", alt: "Brand Story 상단" },
-    ],
+    tag: "브랜드 첫인상",
+    title: "이름 세 글자에, 브랜드를 다 담았다.",
+    desc: "TONE(색조·분위기) 그리고 FIT(꼭 맞다). ‘유행 말고 나한테 맞는 색’이라는 한마디를, 들어오자마자 느끼게 했어요.",
+    img: "tonefit-05a-identity",
+    alt: "TONE:FIT 브랜드 컨셉 — 색조와 어울림",
   },
   {
-    tag: "05-2 누구와 찍는가 · 욕구",
-    title: "혼자가 아니라, ‘누구와’ 찍을지까지 설계했습니다.",
-    cards: [
-      {
-        title: "AI 배경 매칭",
-        desc: "피부톤·분위기를 분석해 배경·조명을 자동 세팅. ‘실패 없는 인생샷’.",
-      },
-      {
-        title: "반려동물 촬영",
-        desc: "유저에겐 특별한 추억, 창업주에겐 경쟁 매장이 못 주는 차별화 아이템.",
-      },
-    ],
-    images: [
-      { src: "tonefit-05pet", alt: "반려동물 촬영 섹션" },
-      { src: "tonefit-05b-aibg", alt: "AI 배경 매칭" },
-    ],
+    tag: "실패 없는 한 장",
+    title: "배경까지 AI가 골라주니까.",
+    desc: "피부 톤과 분위기를 읽어서 어울리는 배경과 조명을 자동으로 맞춰줘요. ‘무슨 색이 나랑 맞지?’ 고민할 필요가 없죠.",
+    img: "tonefit-05b-aibg",
+    alt: "AI 퍼스널 배경 매칭",
   },
   {
-    tag: "05-4 혼자서도 괜찮은 무인 경험 · 신뢰",
-    title: "무인이 불안하지 않도록, 절차를 눈으로 보여줬습니다.",
-    cards: [
-      {
-        title: "키오스크 STEP 01~03",
-        desc: "이용 절차를 시각화해 무인 심리 허들을 제거했습니다.",
-      },
-      {
-        title: "Store 페이지",
-        desc: "카카오맵 + 지역필터 + 검색으로 ‘가고싶다→어디로?’를 한 화면에.",
-      },
-    ],
-    images: [
-      { src: "tonefit-05b-kiosk", alt: "키오스크 STEP 01~03" },
-      { src: "tonefit-05b-store", alt: "Store 카카오맵" },
-    ],
+    tag: "혼자 말고, 함께",
+    title: "댕냥이랑도 인생네컷.",
+    desc: "1,500만 반려인구를 겨냥한 반려동물 촬영. 유저에겐 특별한 추억이고, 매장 입장에선 옆 가게가 못 따라오는 무기예요.",
+    img: "tonefit-05pet",
+    alt: "반려동물 촬영",
   },
 ];
-const OWNER_BLOCK = {
-  tag: "06-1 유저 경험이 곧 세일즈",
-  title: "잘 만든 유저 경험은, 그 자체가 창업 제안서가 됩니다.",
-  cards: [
-    {
-      title: "유저의 공유 = 창업주의 증거",
-      desc: "인스타 인증샷·바이럴 섹션을 그대로 창업주 설득 자료로 재활용했습니다.",
-    },
-    {
-      title: "창업 전환 페이지",
-      desc: "Startup에서 수익구조·운영지원·계약 프로세스를 제시해 상담으로 연결.",
-    },
-  ],
-  images: [
-    { src: "tonefit-06-viral", alt: "실제 고객 공유 반응 · 바이럴" },
-    { src: "tonefit-06-startup", alt: "Startup 페이지" },
-  ],
-};
-
-/* ── 07 인터랙션 ── */
-const INTERACTIONS = [
+const UX_POINTS_2 = [
   {
-    kind: "timeline",
-    title: "스크롤 내러티브",
-    body: "Brand Story를 GSAP ScrollTrigger 40여 구간으로 나눠, 스크롤에 따라 브랜드 서사가 순차 전개되도록 설계했습니다.",
+    tag: "처음이어도 괜찮게",
+    title: "무인인데, 헤맬 일이 없다.",
+    desc: "촬영부터 결제까지 STEP으로 눈앞에 보여줘요. 직원이 없어도 불안하지 않게, 화면이 절차를 대신 안내합니다.",
+    img: "tonefit-05b-kiosk",
+    alt: "키오스크 이용 STEP",
   },
   {
-    kind: "zoom",
-    title: "배경 줌아웃",
-    body: "24시간 무인 섹션의 배경을 scale 1.2 → 1.0으로 좁혀, 공간이 눈앞으로 다가오는 몰입감을 만들었습니다.",
-  },
-  {
-    kind: "a11y",
-    title: "모두를 위한 모션",
-    body: "prefers-reduced-motion 사용자에겐 애니메이션 없이 완성 상태를 즉시 제공합니다. 화려함보다 접근성.",
+    tag: "가고 싶어졌다면",
+    title: "그래서, 어디로 가면 돼?",
+    desc: "카카오맵에 지역 필터와 검색을 얹어서 ‘가고 싶다 → 여기다’까지 한 화면에서 끝냈어요.",
+    img: "tonefit-05b-store",
+    alt: "매장 찾기 — 카카오맵",
   },
 ];
 
-/* ── 08 기여도 (임시값 — 사용자 확인 후 수정) ── */
-const CONTRIB = [
-  { label: "웹 기획", value: 30, color: "var(--tf-terracotta)" },
-  { label: "UI 디자인", value: 30, color: "var(--tf-ink)" },
-  { label: "퍼블리싱·인터랙션", value: 30, color: "var(--tf-clay)" },
-  { label: "협업·QA", value: 10, color: "var(--tf-charcoal)" },
-];
-const ROLES = [
-  { no: "01", title: "웹 기획", desc: "이중 페르소나 IA·저니 설계" },
-  { no: "02", title: "UI 디자인", desc: "메인 + 서브 총 9개 페이지" },
-  { no: "03", title: "퍼블리싱", desc: "GSAP 인터랙션 · 반응형" },
-  { no: "04", title: "매장찾기", desc: "Kakao Map API 필터·검색" },
+/* ── 06 유저→창업 포인트 ── */
+const OWNER_POINTS = [
+  {
+    tag: "가장 강력한 광고",
+    title: "유저가 올린 인증샷이, 곧 영업 자료.",
+    desc: "찍고 나서 알아서 올리는 SNS 후기. 이 진짜 반응이 예비 창업주에겐 ‘되는 아이템’이라는 증거가 됩니다.",
+    img: "tonefit-06-viral",
+    alt: "실제 고객이 공유한 SNS 반응",
+  },
+  {
+    tag: "숫자로 증명",
+    title: "광고 없이, 3개월 만에 15만 건.",
+    desc: "MZ세대가 먼저 알아본 성장 곡선이에요. 억지로 밀어붙인 게 아니라 경험이 좋아서 퍼졌다는 걸, 그래프 하나로 보여줍니다.",
+    img: "tonefit-06-startup",
+    alt: "3개월 누적 15만 건 성장 그래프",
+  },
+  {
+    tag: "관심 → 창업",
+    title: "그 관심을, 창업 상담까지.",
+    desc: "가맹비·교육비 혜택과 선착순 프로모션으로 ‘괜찮은데?’ 하던 마음을 ‘나도 한번 열어볼까’로 넘깁니다.",
+    img: "tonefit-05a-main-hero",
+    alt: "TONE:FIT 창업 프로모션",
+  },
 ];
 
 /** 섹션 라벨 (01 OVERVIEW 형식) */
@@ -183,42 +142,30 @@ function Label({ children }: { children: string }) {
   return <p className={styles.label}>{children}</p>;
 }
 
-/** 번호 기능카드 → 점선 연결선 → 이미지 (레퍼런스 핵심 레이아웃) */
-function FeatureBlock({
+/** 한 포인트 = 텍스트 + 점선 연결선 + 한 이미지 */
+function Point({
   tag,
   title,
-  cards,
-  images,
+  desc,
+  img,
+  alt,
 }: {
   tag: string;
   title: string;
-  cards: { title: string; desc: string }[];
-  images: { src: string; alt: string }[];
+  desc: string;
+  img: string;
+  alt: string;
 }) {
   return (
-    <div className={styles.feature}>
-      <Reveal className={styles.featHead}>
-        <p className={styles.featTag}>{tag}</p>
-        <h3 className={styles.featTitle}>{title}</h3>
+    <div className={styles.point}>
+      <Reveal className={styles.pText}>
+        <p className={styles.pTag}>{tag}</p>
+        <h3 className={styles.pTitle}>{title}</h3>
+        <p className={styles.pDesc}>{desc}</p>
       </Reveal>
-      <div className={styles.featBody}>
-        <Reveal className={styles.featCards}>
-          {cards.map((c, i) => (
-            <div key={c.title} className={styles.fCard}>
-              <span className={styles.fNum}>{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <p className={styles.fTitle}>{c.title}</p>
-                <p className={styles.fDesc}>{c.desc}</p>
-              </div>
-            </div>
-          ))}
-        </Reveal>
-        <Reveal delay={0.1} className={styles.featMedia}>
-          {images.map((im) => (
-            <CaseImage key={im.src} src={`${IMG}/${im.src}.png`} alt={im.alt} />
-          ))}
-        </Reveal>
-      </div>
+      <Reveal delay={0.08} className={styles.pMedia}>
+        <CaseImage src={`${IMG}/${img}.png`} alt={alt} />
+      </Reveal>
     </div>
   );
 }
@@ -248,7 +195,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               </span>
             </h1>
             <p className={styles.ovLead}>
-              One Site, Two Users — 찍는 사람과 여는 사람을 동시에 설계하다.
+              한 사이트, 두 사람 — 찍으러 오는 유저와 매장을 여는 창업주를 동시에
+              설계했습니다.
             </p>
             <dl className={styles.meta}>
               {META.map(([k, v]) => (
@@ -286,11 +234,11 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.head}>
             <Label>02 BACKGROUND &amp; GOAL</Label>
             <h2 className={styles.headTitle}>
-              퍼스널컬러는 뜨는데, 왜 ‘무인 매장’이어야 할까?
+              퍼스널컬러는 뜨는데, 왜 하필 ‘무인 매장’일까?
             </h2>
             <p className={styles.headLead}>
-              두 사람의 문제를 동시에 풀어야 했습니다. 찍고 싶은 유저, 그리고
-              창업하려는 예비 사업주.
+              찍고 싶은 유저와, 창업하려는 사업주. 두 사람의 고민을 한 번에
+              풀어야 했습니다.
             </p>
           </Reveal>
 
@@ -306,8 +254,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <Reveal className={`${styles.dataCard} ${styles.quoteCard}`}>
               <p className={styles.quoteMark}>“</p>
               <p className={styles.quoteText}>
-                인생네컷은 ‘찍는 곳’이 아니라 ‘공유하는 문화’가 됐다. 톤핏은
-                퍼스널컬러를 그 문화 위에 올린다.
+                인생네컷은 이제 ‘찍는 곳’이 아니라 ‘같이 공유하는 문화’예요.
+                톤핏은 퍼스널컬러를 그 문화 위에 얹었습니다.
               </p>
               <p className={styles.quoteBy}>— 팀 기획 노트</p>
             </Reveal>
@@ -317,13 +265,13 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <div className={`${styles.goal} ${styles.goalUser}`}>
               <span className={styles.goalTag}>유저에게</span>
               <p className={styles.goalText}>
-                ‘내 퍼컬 궁금하다’를 <b>‘가서 찍고 싶다’</b>로
+                ‘내 퍼컬 궁금한데’를 <b>‘가서 찍어보고 싶다’</b>로
               </p>
             </div>
             <div className={`${styles.goal} ${styles.goalOwner}`}>
               <span className={styles.goalTag}>창업주에게</span>
               <p className={styles.goalText}>
-                ‘괜찮은 아이템이네’를 <b>‘나도 이 매장 열고 싶다’</b>로
+                ‘아이템 괜찮네’를 <b>‘나도 열어볼까’</b>로
               </p>
             </div>
           </Reveal>
@@ -333,7 +281,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         <section className={styles.section}>
           <Reveal className={styles.head}>
             <Label>03 DUAL PERSONA JOURNEY</Label>
-            <h2 className={styles.headTitle}>한 사이트, 두 사람의 여정.</h2>
+            <h2 className={styles.headTitle}>한 사이트를 걷는, 두 사람의 길.</h2>
           </Reveal>
 
           <Reveal className={styles.tracks}>
@@ -371,8 +319,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal className={styles.bridgeCap}>
-            유저의 ‘공유’가 창업주의 ‘검증’ 근거가 되는 <b>선순환</b>. 유저 경험을
-            잘 만들수록 창업 세일즈가 강해집니다.
+            유저가 남긴 ‘공유’가, 그대로 창업주의 ‘검증’ 근거가 됩니다. 그래서 유저
+            경험을 잘 만들수록 창업 세일즈도 세져요.
           </Reveal>
         </section>
 
@@ -381,7 +329,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.head}>
             <Label>04 BRAND IDENTITY</Label>
             <h2 className={styles.headTitle}>
-              ‘내 컬러를 찾는 브랜드’는, 색을 다루는 방식부터 달라야 합니다.
+              내 색을 찾아주는 브랜드는, 색부터 남달라야 하니까.
             </h2>
           </Reveal>
 
@@ -408,8 +356,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               </div>
             ))}
             <p className={styles.seasonCap}>
-              콘텐츠 컬러는 4계절 톤으로 분리 운용해 브랜드 컬러와 충돌시키지
-              않습니다.
+              콘텐츠 색은 4계절 톤으로 따로 굴려서, 브랜드 컬러와 부딪히지 않게
+              했어요.
             </p>
           </Reveal>
 
@@ -430,25 +378,31 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
         </section>
 
-        {/* ══════════ 05 USER EXPERIENCE DESIGN ══════════ */}
+        {/* ══════════ 05 USER EXPERIENCE ══════════ */}
         <section className={styles.section}>
           <Reveal className={styles.head}>
-            <Label>05 USER EXPERIENCE DESIGN</Label>
-            <h2 className={styles.headTitle}>먼저 유저가 찍고 싶게 만든다.</h2>
+            <Label>05 USER EXPERIENCE</Label>
+            <h2 className={styles.headTitle}>먼저, 찍고 싶게 만든다.</h2>
             <p className={styles.headLead}>
-              이 경험 하나하나가 뒤에서 창업주를 설득하는 세일즈 근거가 됩니다.
+              이 경험 하나하나가, 뒤에서 창업주를 설득하는 근거가 됩니다.
             </p>
           </Reveal>
 
-          {UX_BLOCKS.slice(0, 2).map((b) => (
-            <FeatureBlock key={b.tag} {...b} />
-          ))}
+          <div className={styles.points}>
+            {UX_POINTS.map((p) => (
+              <Point key={p.img} {...p} />
+            ))}
+          </div>
 
-          {/* 05-3 콜라보 프레임 — 전체 폭 갤러리 */}
+          {/* 콜라보 프레임 — 전체 폭 갤러리 */}
           <div className={styles.gallery}>
-            <Reveal className={styles.featHead}>
-              <p className={styles.featTag}>05-3 다시 오게 만드는 장치 · 재방문</p>
-              <h3 className={styles.featTitle}>매달 바뀌는 프레임 = 다시 올 이유.</h3>
+            <Reveal className={styles.galleryHead}>
+              <p className={styles.pTag}>다시 올 이유</p>
+              <h3 className={styles.pTitle}>프레임이, 매달 바뀐다.</h3>
+              <p className={styles.pDesc}>
+                트렌디한 IP 콜라보 프레임을 매달 새로 열어요. 유저는 ‘이번 달은
+                뭐지?’ 하고 다시 오고, 매장은 콘텐츠가 알아서 채워집니다.
+              </p>
             </Reveal>
             <Reveal delay={0.08} className={styles.frameStrip}>
               {[1, 2, 3].map((n) => (
@@ -459,15 +413,13 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                 />
               ))}
             </Reveal>
-            <Reveal className={styles.galleryCap}>
-              트렌디 IP × 퍼스널컬러 콜라보를 매달 교체 → 유저 재방문 훅 +
-              창업주에겐 ‘콘텐츠가 계속 공급되는 매장’이라는 세일즈 포인트.
-            </Reveal>
           </div>
 
-          {UX_BLOCKS.slice(2).map((b) => (
-            <FeatureBlock key={b.tag} {...b} />
-          ))}
+          <div className={styles.points}>
+            {UX_POINTS_2.map((p) => (
+              <Point key={p.img} {...p} />
+            ))}
+          </div>
         </section>
 
         {/* ══════════ 06 FROM USER TO OWNER ══════════ */}
@@ -475,144 +427,26 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.head}>
             <Label>06 FROM USER TO OWNER</Label>
             <h2 className={styles.headTitle}>
-              잘 만든 유저 경험은, 그 자체가 창업 제안서가 됩니다.
+              잘 만든 유저 경험은, 그대로 창업 제안서가 된다.
             </h2>
             <p className={styles.headLead}>
-              유저 경험과 B2B 세일즈를 하나의 흐름으로 연결한 것이, 이 사이트의
-              진짜 설계 의도입니다.
+              유저의 만족을 B2B 세일즈로 잇는 것 — 이게 이 사이트의 진짜
+              목적이에요.
             </p>
           </Reveal>
-          <FeatureBlock {...OWNER_BLOCK} />
-        </section>
 
-        {/* ══════════ 07 INTERACTION & RESPONSIVE ══════════ */}
-        <section className={`${styles.section} ${styles.dark}`}>
-          <Reveal className={styles.head}>
-            <Label>07 INTERACTION &amp; RESPONSIVE</Label>
-            <h2 className={styles.headTitle}>움직임에도 근거가 있습니다.</h2>
-          </Reveal>
-
-          <div className={styles.interGrid}>
-            {INTERACTIONS.map((it) => (
-              <Reveal key={it.title} className={styles.interCard}>
-                <div className={styles.interViz} aria-hidden="true">
-                  {it.kind === "timeline" && (
-                    <div className={styles.vizTimeline}>
-                      {[0, 1, 2, 3].map((i) => (
-                        <span key={i} className={styles.tlDot} />
-                      ))}
-                    </div>
-                  )}
-                  {it.kind === "zoom" && (
-                    <div className={styles.vizZoom}>
-                      <span className={styles.zoomOuter} />
-                      <span className={styles.zoomInner} />
-                    </div>
-                  )}
-                  {it.kind === "a11y" && (
-                    <div className={styles.vizA11y}>
-                      <span>reduced-motion</span>
-                    </div>
-                  )}
-                </div>
-                <h3 className={styles.interTitle}>{it.title}</h3>
-                <p className={styles.interBody}>{it.body}</p>
-              </Reveal>
+          <div className={styles.points}>
+            {OWNER_POINTS.map((p) => (
+              <Point key={p.img} {...p} />
             ))}
           </div>
-
-          <Reveal className={styles.subLabel} style={{ color: "#cfcfcf" }}>
-            RESPONSIVE
-          </Reveal>
-          <div className={styles.respGrid}>
-            <Reveal className={styles.respRow}>
-              <CaseImage
-                src={`${IMG}/tonefit-05b-store.png`}
-                alt="Store PC — 지도+리스트 병렬"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-01-hero-mo.png`}
-                alt="Store 모바일 — 지도 우선"
-                phone
-                className={styles.respPhone}
-              />
-              <p className={styles.respCap}>
-                <b>Store</b> — PC는 지도+리스트 병렬, 모바일은 지도 우선 + 시트형.
-              </p>
-            </Reveal>
-            <Reveal delay={0.08} className={styles.respRow}>
-              <CaseImage
-                src={`${IMG}/tonefit-01-hero-pc.png`}
-                alt="Main PC — 12단 그리드"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-01-hero-mo.png`}
-                alt="Main 모바일 — 재배열"
-                phone
-                className={styles.respPhone}
-              />
-              <p className={styles.respCap}>
-                <b>Main</b> — 12단 그리드, 1024px 이하에서 재배열.
-              </p>
-            </Reveal>
-          </div>
         </section>
 
-        {/* ══════════ 08 ROLE & CONTRIBUTION ══════════ */}
-        <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <Label>08 ROLE &amp; CONTRIBUTION</Label>
-            <h2 className={styles.headTitle}>
-              기획부터 퍼블리싱까지, TONE:FIT 경험 전반에 참여했습니다.
-            </h2>
-          </Reveal>
-
-          <div className={styles.roleWrap}>
-            <Reveal className={styles.contrib}>
-              <div className={styles.contribBar}>
-                {CONTRIB.map((c) => (
-                  <span
-                    key={c.label}
-                    className={styles.contribSeg}
-                    style={{ width: `${c.value}%`, background: c.color }}
-                  />
-                ))}
-              </div>
-              <ul className={styles.contribLegend}>
-                {CONTRIB.map((c) => (
-                  <li key={c.label}>
-                    <span
-                      className={styles.legendDot}
-                      style={{ background: c.color }}
-                    />
-                    {c.label} <b>{c.value}%</b>
-                  </li>
-                ))}
-              </ul>
-              <p className={styles.todoNote}>
-                ※ 실제 기여도·업무는 사용자 확인 후 수정 (임시값)
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.1} className={styles.roleList}>
-              {ROLES.map((r) => (
-                <div key={r.no} className={styles.roleItem}>
-                  <span className={styles.roleNo}>{r.no}</span>
-                  <div>
-                    <p className={styles.roleTitle}>{r.title}</p>
-                    <p className={styles.roleDesc}>{r.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ══════════ 09 CTA ══════════ */}
+        {/* ══════════ CTA ══════════ */}
         <section className={styles.cta}>
           <Reveal className={styles.ctaInner}>
             <h2 className={styles.ctaTitle}>
-              기획한 브랜드 경험을 실제 반응형 웹사이트로 구현했습니다.
+              기획한 브랜드 경험을, 실제 반응형 웹사이트로 완성했습니다.
             </h2>
             <div className={styles.ctaBtns}>
               <a
