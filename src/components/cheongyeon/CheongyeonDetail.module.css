@@ -46,7 +46,8 @@
 /* ── PC / 모바일 토글 미리보기 ── */
 .preview {
   background: #f5f3ee;
-  padding: 64px 24px 96px;
+  /* 양옆 여백 240px (좁은 화면에선 자동으로 줄어듦) */
+  padding: 64px clamp(16px, 13vw, 240px) 96px;
 }
 
 /* 토글 (아임웹 스타일 알약 버튼) */
@@ -97,7 +98,7 @@
 /* PC 프레임 (브라우저 창) */
 .pcFrame {
   width: 100%;
-  max-width: 1040px;
+  max-width: none;
   height: min(74vh, 760px);
   display: flex;
   flex-direction: column;
