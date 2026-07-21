@@ -11,6 +11,7 @@ import styles from "./TonefitDetail.module.css";
  */
 
 const IMG = "/assets/tonefit";
+const CASE = "/assets/tonefit-case";
 const LIVE_URL = "https://ad-portfolio-tonefitcom.netlify.app";
 const GITHUB_URL = "https://github.com/keehoon0924/tone-fit";
 
@@ -71,93 +72,48 @@ const SEASONS = [
   { name: "겨울 쿨", hex: "#8E3B5A" },
 ];
 
-/* ── 05 유저 경험 포인트 (한 포인트 = 한 이미지) ── */
+/* ── 05 유저 경험 포인트 (본문만 · 한 포인트 = 한 이미지) ── */
 const UX_POINTS = [
   {
-    tag: "브랜드 컨셉",
-    title: "이름 자체가 브랜드 메시지",
     desc: "TONE(색조·분위기)과 FIT(꼭 맞다)을 합친 이름입니다. ‘유행하는 색’이 아니라 ‘나에게 맞는 색’을 찾아준다는 방향을, 브랜드명과 첫 화면에서 먼저 정리하고 시작했습니다.",
-    img: "tonefit-05a-identity",
+    img: `${IMG}/tonefit-05a-identity.png`,
     alt: "TONE:FIT 브랜드 컨셉 — 색조와 어울림",
   },
   {
-    tag: "AI 배경 매칭",
-    title: "배경 선택까지 AI에 맡겼다",
-    desc: "보통 셀프 스튜디오는 배경과 조명을 사용자가 직접 고릅니다. 실패 확률이 높은 지점입니다. 톤핏은 피부 톤과 분위기를 분석해 어울리는 배경·조명을 자동 세팅하도록 설계해, 고르는 부담을 덜었습니다.",
-    img: "tonefit-05b-aibg",
-    alt: "AI 퍼스널 배경 매칭",
+    desc: "인디핑크·로즈골드를 기본으로 Pinkish / Point Modern / Pure Modern 세 가지 무드로 공간을 구성했습니다. 어디서 찍어도 사진이 나오는 배경을 만들어, 사용자에게는 촬영 만족도를, 점주에게는 그대로 쓸 수 있는 인테리어 가이드를 함께 담았습니다.",
+    img: `${CASE}/space-pc.png`,
+    alt: "TONE:FIT 공간 컨셉 — 세 가지 무드",
   },
   {
-    tag: "타깃 확장",
-    title: "반려동물 촬영까지 포함",
-    desc: "1,500만 반려인구는 대부분의 셀프 스튜디오가 비워둔 시장입니다. 반려동물 전용 프레임과 촬영 존을 넣어, 사용자에게는 특별한 추억을, 점주에게는 경쟁 매장과 구분되는 차별점을 만들었습니다.",
-    img: "tonefit-05pet",
-    alt: "반려동물 촬영",
+    desc: "한 번 찍으면 다시 올 이유가 없다는 것이 셀프 스튜디오의 약점입니다. IP 콜라보 프레임을 매달 교체하는 구조로 만들어, 사용자에게는 다시 올 이유를, 점주에게는 별도 제작 없이 채워지는 콘텐츠를 확보하도록 설계했습니다.",
+    img: `${IMG}/tonefit-05c-frame-1.png`,
+    alt: "IP 콜라보 프레임",
   },
-];
-const UX_POINTS_2 = [
   {
-    tag: "무인 경험",
-    title: "직원 없이도 헤매지 않도록",
-    desc: "무인 매장의 가장 큰 허들은 ‘혼자서 잘 할 수 있을까’ 하는 불안입니다. 촬영부터 결제까지 전 과정을 STEP으로 화면에 미리 노출해, 처음 온 사용자도 안내 없이 끝낼 수 있게 구성했습니다.",
-    img: "tonefit-05b-kiosk",
+    desc: "촬영은 세 단계입니다. 원하는 프레임과 배경을 고르고, 화면 안내에 따라 촬영하고, 결제와 출력까지 끝냅니다. 직원 없이 화면 안내만 따라가면 되도록 이용 흐름을 짰습니다.",
+    img: `${IMG}/tonefit-05b-kiosk.png`,
     alt: "키오스크 이용 STEP",
   },
 ];
 
-/* ── 06 유저→창업 포인트 ── */
-const OWNER_POINTS = [
-  {
-    tag: "유저 콘텐츠",
-    title: "사용자의 후기가 곧 광고",
-    desc: "촬영 후 자발적으로 올라오는 SNS 인증샷을 그대로 브랜드 자산으로 활용했습니다. 만들어낸 광고가 아니라 실제 반응이라, 창업을 검토하는 점주에게 ‘되는 아이템’이라는 근거로 작동합니다.",
-    img: "tonefit-06-viral",
-    alt: "실제 고객이 공유한 SNS 반응",
-  },
-  {
-    tag: "성장 지표",
-    title: "3개월, 누적 15만 건",
-    desc: "광고비를 들인 수치가 아니라, 경험이 좋아 자연스럽게 퍼진 결과입니다. 창업을 고민하는 사람에게는 감성적인 설득보다 이 곡선 하나가 더 강하게 작동한다고 보고, 지표를 전면에 배치했습니다.",
-    img: "tonefit-06-startup",
-    alt: "3개월 누적 15만 건 성장 그래프",
-  },
-  {
-    tag: "창업 전환",
-    title: "관심을 상담으로 잇는 마지막 단계",
-    desc: "유저 경험에 설득된 점주가 이탈하지 않도록, 같은 흐름 안에 창업 전환 페이지를 뒀습니다. 가맹비·교육비 혜택과 수익 구조를 함께 제시해, ‘괜찮은데’에서 ‘문의해보자’로 넘어가게 구성했습니다.",
-    img: "tonefit-05a-main-hero",
-    alt: "TONE:FIT 창업 프로모션",
-  },
-];
+/* ── 06 유저→창업 리드 ── */
+const OWNER_LEAD =
+  "톤핏은 찍으러 오는 유저만큼, 매장을 여는 점주도 고객으로 봤습니다. 앞선 유저 경험을 근거로 — 인건비 없는 무인 운영, 3개월 누적 15만 건의 성장, 상권별 매출, 가맹 경쟁력, 계약 프로세스까지 — 한 흐름으로 정리해, 관심을 실제 창업 문의로 잇도록 구성했습니다.";
 
 /** 섹션 라벨 (01 OVERVIEW 형식) */
 function Label({ children }: { children: string }) {
   return <p className={styles.label}>{children}</p>;
 }
 
-/** 한 포인트 = 텍스트 + 점선 연결선 + 한 이미지 */
-function Point({
-  tag,
-  title,
-  desc,
-  img,
-  alt,
-}: {
-  tag: string;
-  title: string;
-  desc: string;
-  img: string;
-  alt: string;
-}) {
+/** 한 포인트 = 본문 + 점선 연결선 + 한 이미지 (제목·뱃지 없음) */
+function Point({ desc, img, alt }: { desc: string; img: string; alt: string }) {
   return (
     <div className={styles.point}>
       <Reveal className={styles.pText}>
-        <p className={styles.pTag}>{tag}</p>
-        <h3 className={styles.pTitle}>{title}</h3>
         <p className={styles.pDesc}>{desc}</p>
       </Reveal>
       <Reveal delay={0.08} className={styles.pMedia}>
-        <CaseImage src={`${IMG}/${img}.png`} alt={alt} />
+        <CaseImage src={img} alt={alt} />
       </Reveal>
     </div>
   );
@@ -375,43 +331,10 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         <section className={styles.section}>
           <Reveal className={styles.head}>
             <Label>05 USER EXPERIENCE</Label>
-            <h2 className={styles.headTitle}>먼저, 찍고 싶게 만든다.</h2>
-            <p className={styles.headLead}>
-              이 경험 하나하나가, 뒤에서 창업주를 설득하는 근거가 됩니다.
-            </p>
           </Reveal>
 
           <div className={styles.points}>
             {UX_POINTS.map((p) => (
-              <Point key={p.img} {...p} />
-            ))}
-          </div>
-
-          {/* 콜라보 프레임 — 전체 폭 갤러리 */}
-          <div className={styles.gallery}>
-            <Reveal className={styles.galleryHead}>
-              <p className={styles.pTag}>재방문 장치</p>
-              <h3 className={styles.pTitle}>프레임을 매달 교체하는 구조</h3>
-              <p className={styles.pDesc}>
-                한 번 찍고 나면 다시 올 이유가 없다는 것이 셀프 스튜디오의
-                약점입니다. IP 콜라보 프레임을 매달 교체하는 구조로 만들어,
-                사용자에게는 재방문 이유를, 점주에게는 별도 제작 없이 채워지는
-                콘텐츠를 확보하도록 설계했습니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.08} className={styles.frameStrip}>
-              {[1, 2, 3].map((n) => (
-                <CaseImage
-                  key={n}
-                  src={`${IMG}/tonefit-05c-frame-${n}.png`}
-                  alt={`콜라보 프레임 ${n}`}
-                />
-              ))}
-            </Reveal>
-          </div>
-
-          <div className={styles.points}>
-            {UX_POINTS_2.map((p) => (
               <Point key={p.img} {...p} />
             ))}
           </div>
@@ -421,20 +344,23 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         <section className={`${styles.section} ${styles.alt}`}>
           <Reveal className={styles.head}>
             <Label>06 FROM USER TO OWNER</Label>
-            <h2 className={styles.headTitle}>
-              잘 만든 유저 경험은, 그대로 창업 제안서가 된다.
-            </h2>
-            <p className={styles.headLead}>
-              유저의 만족을 B2B 세일즈로 잇는 것 — 이 사이트를 설계한 진짜
-              목적입니다.
-            </p>
+            <p className={styles.ownerLead}>{OWNER_LEAD}</p>
           </Reveal>
 
-          <div className={styles.points}>
-            {OWNER_POINTS.map((p) => (
-              <Point key={p.img} {...p} />
-            ))}
-          </div>
+          {/* 창업 섹션 전체 캡처 — 브라우저 창(내부 스크롤)으로 통째 노출 */}
+          <Reveal className={styles.startupWindow}>
+            <div className={styles.winBar}>
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className={styles.winScroll}>
+              <CaseImage
+                src={`${CASE}/startup-pc.png`}
+                alt="TONE:FIT 창업 안내 — 무인 운영 · 성장 지표 · 상권별 매출 · 가맹 경쟁력 · 계약 프로세스"
+              />
+            </div>
+          </Reveal>
         </section>
 
         {/* ══════════ CTA ══════════ */}
