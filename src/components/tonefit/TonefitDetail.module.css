@@ -570,31 +570,78 @@
   margin-bottom: 16px;
 }
 .pDesc {
-  font-size: 15.5px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.85;
   color: var(--tf-charcoal);
-  max-width: 420px;
-}
-.pMedia {
-  min-width: 0;
+  max-width: 440px;
 }
 
-/* 콜라보 프레임 갤러리 (전체 폭) */
-.gallery {
-  padding-top: clamp(48px, 6vw, 76px);
-  border-top: 1px dashed rgba(76, 73, 72, 0.16);
+/* 브라우저 창 (내부 스크롤) — 풀페이지 섹션을 컴팩트하게 담는다 */
+.pWindow {
+  height: min(66vh, 560px);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e2dc;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 66px -34px rgba(30, 32, 34, 0.4);
+  min-width: 0;
 }
-.galleryHead {
-  max-width: 640px;
-  margin-bottom: 30px;
+.winBar {
+  flex: 0 0 auto;
+  height: 32px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e5e2dc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 13px;
 }
-.galleryHead .pDesc {
-  max-width: 640px;
+.winBar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #cfccc5;
 }
-.frameStrip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.winBar span:nth-child(1) {
+  background: #ff5f57;
+}
+.winBar span:nth-child(2) {
+  background: #febc2e;
+}
+.winBar span:nth-child(3) {
+  background: #28c840;
+}
+.winScroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+}
+.winScroll :global(.wrap),
+.winScroll img {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 06 창업 섹션 — 전체 폭 큰 창 */
+.startupWindow {
+  display: flex;
+  flex-direction: column;
+  height: min(84vh, 900px);
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e2dc;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -40px rgba(30, 32, 34, 0.45);
+}
+.startupWindow .winScroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* ══ 07 인터랙션 ══ */
