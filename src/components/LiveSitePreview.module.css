@@ -52,7 +52,7 @@
 .viewport {
   position: relative;
   width: 100%;
-  height: min(80vh, 820px);
+  height: min(88vh, 960px);
   overflow: hidden;
   background: #fff;
 }
@@ -68,7 +68,7 @@
 /* PC — 브라우저 창 */
 .pcWindow {
   width: 100%;
-  max-width: min(1180px, 92vw);
+  max-width: min(1320px, 94vw);
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
