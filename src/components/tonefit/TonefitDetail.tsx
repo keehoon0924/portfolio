@@ -5,9 +5,9 @@ import styles from "./TonefitDetail.module.css";
 
 /**
  * TONE:FIT 케이스 스터디 (WORK 카드 클릭 시 오버레이).
- * 비핸스 스타일 세로 스크롤 단일 페이지. 이중 페르소나 관점:
- *  표면 사용자 = 찍으러 오는 유저 / 진짜 결제자 = 매장을 여는 예비 창업주(B2B).
- *  유저 경험 자체를 창업주 세일즈 근거로 재활용한 설계를 서사로 풀어낸다.
+ * 비핸스 스타일 세로 스크롤 단일 페이지 — Poppi Donuts 레퍼런스의 깔끔한
+ * "번호 기능카드 → 점선 연결선 → 이미지" 레이아웃을 따른다.
+ * 이중 페르소나 관점: 유저 경험을 창업주(B2B) 세일즈 근거로 재활용.
  * 이미지 경로: /assets/tonefit/*  (없으면 CaseImage가 파일명 플레이스홀더)
  */
 
@@ -43,16 +43,16 @@ const DATA = [
 const USER_JOURNEY = [
   { step: "발견", desc: "SNS 인증샷" },
   { step: "탐색", desc: "브랜드·프레임 구경", tag: "Main" },
-  { step: "욕구", desc: "“나도 저렇게 찍고 싶다”" },
-  { step: "신뢰", desc: "무인 이용법 확인", tag: "Smart Kiosk" },
+  { step: "욕구", desc: "“나도 저렇게”" },
+  { step: "신뢰", desc: "무인 이용법 확인", tag: "Kiosk" },
   { step: "방문·촬영", desc: "매장 방문", tag: "Store" },
-  { step: "공유", desc: "내 프레임 업로드" },
+  { step: "공유", desc: "프레임 업로드" },
 ];
 const OWNER_JOURNEY = [
   { step: "관심", desc: "창업 아이템 탐색" },
-  { step: "검증", desc: "유저 반응·바이럴 확인", tag: "Viral" },
-  { step: "차별성", desc: "AI테크·콜라보·반려동물" },
-  { step: "신뢰", desc: "운영·원격지원 확인" },
+  { step: "검증", desc: "유저 반응 확인", tag: "Viral" },
+  { step: "차별성", desc: "AI·콜라보·반려동물" },
+  { step: "신뢰", desc: "운영·원격지원" },
   { step: "상담", desc: "창업 상담 연결", tag: "Startup" },
 ];
 
@@ -72,12 +72,85 @@ const SEASONS = [
   { name: "겨울 쿨", hex: "#8E3B5A" },
 ];
 
+/* ── 05 / 06 기능 블록 (번호카드 → 연결선 → 이미지) ── */
+const UX_BLOCKS = [
+  {
+    tag: "05-1 첫인상 · 탐색",
+    title: "스크롤 3초 안에, 스튜디오 안에 들어온 느낌을.",
+    cards: [
+      { title: "영상 KV + 무드 컬러", desc: "공간감을 먼저 전달해 몰입시킵니다." },
+      {
+        title: "Brand Story",
+        desc: "‘왜 퍼스널컬러·왜 무인’을 서사로 풀어 신뢰를 쌓습니다.",
+      },
+    ],
+    images: [
+      { src: "tonefit-05a-main-hero", alt: "메인 히어로 + About" },
+      { src: "tonefit-05a-identity", alt: "Brand Story 상단" },
+    ],
+  },
+  {
+    tag: "05-2 누구와 찍는가 · 욕구",
+    title: "혼자가 아니라, ‘누구와’ 찍을지까지 설계했습니다.",
+    cards: [
+      {
+        title: "AI 배경 매칭",
+        desc: "피부톤·분위기를 분석해 배경·조명을 자동 세팅. ‘실패 없는 인생샷’.",
+      },
+      {
+        title: "반려동물 촬영",
+        desc: "유저에겐 특별한 추억, 창업주에겐 경쟁 매장이 못 주는 차별화 아이템.",
+      },
+    ],
+    images: [
+      { src: "tonefit-05pet", alt: "반려동물 촬영 섹션" },
+      { src: "tonefit-05b-aibg", alt: "AI 배경 매칭" },
+    ],
+  },
+  {
+    tag: "05-4 혼자서도 괜찮은 무인 경험 · 신뢰",
+    title: "무인이 불안하지 않도록, 절차를 눈으로 보여줬습니다.",
+    cards: [
+      {
+        title: "키오스크 STEP 01~03",
+        desc: "이용 절차를 시각화해 무인 심리 허들을 제거했습니다.",
+      },
+      {
+        title: "Store 페이지",
+        desc: "카카오맵 + 지역필터 + 검색으로 ‘가고싶다→어디로?’를 한 화면에.",
+      },
+    ],
+    images: [
+      { src: "tonefit-05b-kiosk", alt: "키오스크 STEP 01~03" },
+      { src: "tonefit-05b-store", alt: "Store 카카오맵" },
+    ],
+  },
+];
+const OWNER_BLOCK = {
+  tag: "06-1 유저 경험이 곧 세일즈",
+  title: "잘 만든 유저 경험은, 그 자체가 창업 제안서가 됩니다.",
+  cards: [
+    {
+      title: "유저의 공유 = 창업주의 증거",
+      desc: "인스타 인증샷·바이럴 섹션을 그대로 창업주 설득 자료로 재활용했습니다.",
+    },
+    {
+      title: "창업 전환 페이지",
+      desc: "Startup에서 수익구조·운영지원·계약 프로세스를 제시해 상담으로 연결.",
+    },
+  ],
+  images: [
+    { src: "tonefit-06-viral", alt: "실제 고객 공유 반응 · 바이럴" },
+    { src: "tonefit-06-startup", alt: "Startup 페이지" },
+  ],
+};
+
 /* ── 07 인터랙션 ── */
 const INTERACTIONS = [
   {
     kind: "timeline",
     title: "스크롤 내러티브",
-    body: "Brand Story를 GSAP ScrollTrigger 40여 구간으로 나눠, 스크롤에 따라 브랜드 서사가 순차적으로 전개되도록 설계했습니다.",
+    body: "Brand Story를 GSAP ScrollTrigger 40여 구간으로 나눠, 스크롤에 따라 브랜드 서사가 순차 전개되도록 설계했습니다.",
   },
   {
     kind: "zoom",
@@ -87,7 +160,7 @@ const INTERACTIONS = [
   {
     kind: "a11y",
     title: "모두를 위한 모션",
-    body: "prefers-reduced-motion 사용자에겐 애니메이션 없이 완성 상태를 즉시 제공합니다. 화려함보다 접근성을 우선했습니다.",
+    body: "prefers-reduced-motion 사용자에겐 애니메이션 없이 완성 상태를 즉시 제공합니다. 화려함보다 접근성.",
   },
 ];
 
@@ -108,6 +181,46 @@ const ROLES = [
 /** 섹션 라벨 (01 OVERVIEW 형식) */
 function Label({ children }: { children: string }) {
   return <p className={styles.label}>{children}</p>;
+}
+
+/** 번호 기능카드 → 점선 연결선 → 이미지 (레퍼런스 핵심 레이아웃) */
+function FeatureBlock({
+  tag,
+  title,
+  cards,
+  images,
+}: {
+  tag: string;
+  title: string;
+  cards: { title: string; desc: string }[];
+  images: { src: string; alt: string }[];
+}) {
+  return (
+    <div className={styles.feature}>
+      <Reveal className={styles.featHead}>
+        <p className={styles.featTag}>{tag}</p>
+        <h3 className={styles.featTitle}>{title}</h3>
+      </Reveal>
+      <div className={styles.featBody}>
+        <Reveal className={styles.featCards}>
+          {cards.map((c, i) => (
+            <div key={c.title} className={styles.fCard}>
+              <span className={styles.fNum}>{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <p className={styles.fTitle}>{c.title}</p>
+                <p className={styles.fDesc}>{c.desc}</p>
+              </div>
+            </div>
+          ))}
+        </Reveal>
+        <Reveal delay={0.1} className={styles.featMedia}>
+          {images.map((im) => (
+            <CaseImage key={im.src} src={`${IMG}/${im.src}.png`} alt={im.alt} />
+          ))}
+        </Reveal>
+      </div>
+    </div>
+  );
 }
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
@@ -258,8 +371,8 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </Reveal>
 
           <Reveal className={styles.bridgeCap}>
-            유저의 ‘공유’가 창업주의 ‘검증’ 근거가 되는 <b>선순환</b>. 그래서 유저
-            경험을 잘 만들수록 창업 세일즈가 강해집니다.
+            유저의 ‘공유’가 창업주의 ‘검증’ 근거가 되는 <b>선순환</b>. 유저 경험을
+            잘 만들수록 창업 세일즈가 강해집니다.
           </Reveal>
         </section>
 
@@ -276,10 +389,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.colorGrid}>
             {COLORS.map((c) => (
               <div key={c.name} className={styles.colorChip}>
-                <span
-                  className={styles.swatch}
-                  style={{ background: c.hex }}
-                />
+                <span className={styles.swatch} style={{ background: c.hex }} />
                 <p className={styles.colorName}>{c.name}</p>
                 <p className={styles.colorHex}>{c.hex}</p>
                 <p className={styles.colorNote}>{c.note}</p>
@@ -330,69 +440,15 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             </p>
           </Reveal>
 
-          {/* 05-1 첫인상 */}
-          <div className={styles.exp}>
-            <Reveal className={styles.expText}>
-              <p className={styles.expTag}>05-1 첫인상 · 탐색</p>
-              <h3 className={styles.expTitle}>
-                스크롤 3초 안에, 스튜디오 안에 들어온 느낌을.
-              </h3>
-              <p className={styles.expCard}>
-                <b>영상 KV + 무드 컬러</b>로 공간감을 먼저 전달합니다.
-              </p>
-              <p className={styles.expCard}>
-                <b>Brand Story</b>에서 ‘왜 퍼스널컬러·왜 무인’을 서사로 풀어
-                신뢰를 쌓습니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className={styles.expMedia2}>
-              <CaseImage
-                src={`${IMG}/tonefit-05a-main-hero.png`}
-                alt="메인 히어로 + About"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-05a-identity.png`}
-                alt="Brand Story 상단"
-              />
-            </Reveal>
-          </div>
+          {UX_BLOCKS.slice(0, 2).map((b) => (
+            <FeatureBlock key={b.tag} {...b} />
+          ))}
 
-          {/* 05-2 AI 배경 & 반려동물 */}
-          <div className={`${styles.exp} ${styles.expReverse}`}>
-            <Reveal className={styles.expText}>
-              <p className={styles.expTag}>05-2 누구와 찍는가 · 욕구</p>
-              <h3 className={styles.expTitle}>
-                혼자가 아니라, ‘누구와’ 찍을지까지 설계했습니다.
-              </h3>
-              <p className={styles.expCard}>
-                <b>AI 배경 매칭</b> — 피부톤·분위기를 분석해 배경·조명을 자동
-                세팅. 유저에겐 ‘실패 없는 인생샷’.
-              </p>
-              <p className={styles.expCard}>
-                <b>반려동물 촬영</b> — 유저에겐 특별한 추억, 창업주에겐 경쟁
-                매장이 못 주는 차별화 아이템. 한 컷으로 두 페르소나를 동시에
-                설득합니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className={styles.expMedia2}>
-              <CaseImage
-                src={`${IMG}/tonefit-05pet.png`}
-                alt="반려동물 촬영 섹션"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-05b-aibg.png`}
-                alt="AI Personal Background Matching"
-              />
-            </Reveal>
-          </div>
-
-          {/* 05-3 콜라보 프레임 */}
-          <div className={styles.expWide}>
-            <Reveal className={styles.head}>
-              <p className={styles.expTag}>05-3 다시 오게 만드는 장치 · 재방문</p>
-              <h3 className={styles.expTitle}>
-                매달 바뀌는 프레임 = 다시 올 이유.
-              </h3>
+          {/* 05-3 콜라보 프레임 — 전체 폭 갤러리 */}
+          <div className={styles.gallery}>
+            <Reveal className={styles.featHead}>
+              <p className={styles.featTag}>05-3 다시 오게 만드는 장치 · 재방문</p>
+              <h3 className={styles.featTitle}>매달 바뀌는 프레임 = 다시 올 이유.</h3>
             </Reveal>
             <Reveal delay={0.08} className={styles.frameStrip}>
               {[1, 2, 3].map((n) => (
@@ -403,42 +459,15 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                 />
               ))}
             </Reveal>
-            <Reveal className={styles.expCaption}>
+            <Reveal className={styles.galleryCap}>
               트렌디 IP × 퍼스널컬러 콜라보를 매달 교체 → 유저 재방문 훅 +
               창업주에겐 ‘콘텐츠가 계속 공급되는 매장’이라는 세일즈 포인트.
-              Swiper 갤러리로 탐색 동선을 단축했습니다.
             </Reveal>
           </div>
 
-          {/* 05-4 무인 경험 */}
-          <div className={styles.exp}>
-            <Reveal className={styles.expText}>
-              <p className={styles.expTag}>
-                05-4 혼자서도 괜찮은 무인 경험 · 신뢰
-              </p>
-              <h3 className={styles.expTitle}>
-                무인이 불안하지 않도록, 절차를 눈으로 보여줬습니다.
-              </h3>
-              <p className={styles.expCard}>
-                <b>키오스크 이용 절차(STEP 01~03)</b>를 시각화해 무인 심리 허들을
-                제거했습니다.
-              </p>
-              <p className={styles.expCard}>
-                <b>Store 페이지</b>는 카카오맵 + 지역 필터 + 검색으로
-                “가고싶다→어디로?”를 한 화면에 해결합니다.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className={styles.expMedia2}>
-              <CaseImage
-                src={`${IMG}/tonefit-05b-kiosk.png`}
-                alt="키오스크 STEP 01~03"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-05b-store.png`}
-                alt="Store 카카오맵"
-              />
-            </Reveal>
-          </div>
+          {UX_BLOCKS.slice(2).map((b) => (
+            <FeatureBlock key={b.tag} {...b} />
+          ))}
         </section>
 
         {/* ══════════ 06 FROM USER TO OWNER ══════════ */}
@@ -448,34 +477,12 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <h2 className={styles.headTitle}>
               잘 만든 유저 경험은, 그 자체가 창업 제안서가 됩니다.
             </h2>
+            <p className={styles.headLead}>
+              유저 경험과 B2B 세일즈를 하나의 흐름으로 연결한 것이, 이 사이트의
+              진짜 설계 의도입니다.
+            </p>
           </Reveal>
-
-          <div className={styles.exp}>
-            <Reveal className={styles.expText}>
-              <p className={styles.expCard}>
-                <b>유저의 공유 = 창업주의 증거.</b> 인스타 인증샷·바이럴 섹션을
-                그대로 창업주 설득 자료로 재활용했습니다. (마케팅 퍼널 재활용)
-              </p>
-              <p className={styles.expCard}>
-                <b>창업 전환 페이지.</b> Startup에서 수익구조·운영지원·계약
-                프로세스를 제시해 관심을 상담으로 연결합니다.
-              </p>
-              <p className={styles.expHilite}>
-                이게 이 사이트의 진짜 설계 의도 — 유저 경험과 B2B 세일즈를 하나의
-                흐름으로 연결.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className={styles.expMedia2}>
-              <CaseImage
-                src={`${IMG}/tonefit-06-viral.png`}
-                alt="실제 고객 공유 반응 · 바이럴 섹션"
-              />
-              <CaseImage
-                src={`${IMG}/tonefit-06-startup.png`}
-                alt="Startup 페이지"
-              />
-            </Reveal>
-          </div>
+          <FeatureBlock {...OWNER_BLOCK} />
         </section>
 
         {/* ══════════ 07 INTERACTION & RESPONSIVE ══════════ */}
