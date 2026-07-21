@@ -515,7 +515,7 @@
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: clamp(28px, 4vw, 56px);
-  align-items: center;
+  align-items: start;
   margin-top: 56px;
 }
 .expReverse {

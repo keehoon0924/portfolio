@@ -3,34 +3,29 @@ import styles from "./CaseImage.module.css";
 
 /**
  * 케이스 스터디 이미지 슬롯.
- * 이미지가 있으면 렌더, 없으면(로드 실패) 파일명을 보여주는 플레이스홀더.
- * → 이미지가 아직 없어도 빌드/레이아웃이 깨지지 않는다.
+ * 이미지를 자연 비율 그대로(잘림 없이) 보여준다.
+ * 이미지가 없으면(로드 실패) 파일명 플레이스홀더 → 빌드/레이아웃이 깨지지 않는다.
  */
 export function CaseImage({
   src,
   alt = "",
   className,
-  ratio,
-  contain,
-  position,
+  phone,
 }: {
   src: string;
   alt?: string;
   className?: string;
-  /** aspect-ratio (예: "16 / 10") */
-  ratio?: string;
-  /** object-fit: contain */
-  contain?: boolean;
-  /** object-position */
-  position?: string;
+  /** 모바일 스크린샷용 둥근 스타일 */
+  phone?: boolean;
 }) {
   const [err, setErr] = useState(false);
   const name = src.split("/").pop();
 
   return (
     <div
-      className={[styles.wrap, className].filter(Boolean).join(" ")}
-      style={ratio ? { aspectRatio: ratio } : undefined}
+      className={[styles.wrap, phone ? styles.phone : "", className]
+        .filter(Boolean)
+        .join(" ")}
     >
       {err ? (
         <div className={styles.ph}>
@@ -45,10 +40,6 @@ export function CaseImage({
           alt={alt}
           loading="lazy"
           className={styles.img}
-          style={{
-            objectFit: contain ? "contain" : "cover",
-            objectPosition: position ?? "center top",
-          }}
           onError={() => setErr(true)}
         />
       )}

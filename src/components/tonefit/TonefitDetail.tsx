@@ -1,7 +1,6 @@
 import { Reveal } from "../Reveal";
 import { LiveSitePreview } from "../LiveSitePreview";
 import { CaseImage } from "./CaseImage";
-import { PhoneFrame } from "./PhoneFrame";
 import styles from "./TonefitDetail.module.css";
 
 /**
@@ -158,17 +157,14 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               <CaseImage
                 src={`${IMG}/tonefit-01-hero-pc.png`}
                 alt="TONE:FIT 메인 히어로 (PC)"
-                ratio="16 / 10"
               />
             </div>
-            <PhoneFrame className={styles.ovPhone}>
-              <CaseImage
-                src={`${IMG}/tonefit-01-hero-mo.png`}
-                alt="TONE:FIT 메인 히어로 (모바일)"
-                className={styles.ovPhoneImg}
-                ratio="9 / 19"
-              />
-            </PhoneFrame>
+            <CaseImage
+              src={`${IMG}/tonefit-01-hero-mo.png`}
+              alt="TONE:FIT 메인 히어로 (모바일)"
+              phone
+              className={styles.ovPhone}
+            />
           </Reveal>
         </section>
 
@@ -328,9 +324,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
         <section className={styles.section}>
           <Reveal className={styles.head}>
             <Label>05 USER EXPERIENCE DESIGN</Label>
-            <h2 className={styles.headTitle}>
-              먼저 유저가 찍고 싶게 만든다.
-            </h2>
+            <h2 className={styles.headTitle}>먼저 유저가 찍고 싶게 만든다.</h2>
             <p className={styles.headLead}>
               이 경험 하나하나가 뒤에서 창업주를 설득하는 세일즈 근거가 됩니다.
             </p>
@@ -355,12 +349,10 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               <CaseImage
                 src={`${IMG}/tonefit-05a-main-hero.png`}
                 alt="메인 히어로 + About"
-                ratio="16 / 11"
               />
               <CaseImage
                 src={`${IMG}/tonefit-05a-identity.png`}
                 alt="Brand Story 상단"
-                ratio="16 / 11"
               />
             </Reveal>
           </div>
@@ -386,12 +378,10 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               <CaseImage
                 src={`${IMG}/tonefit-05pet.png`}
                 alt="반려동물 촬영 섹션"
-                ratio="16 / 11"
               />
               <CaseImage
                 src={`${IMG}/tonefit-05b-aibg.png`}
                 alt="AI Personal Background Matching"
-                ratio="16 / 11"
               />
             </Reveal>
           </div>
@@ -410,7 +400,6 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                   key={n}
                   src={`${IMG}/tonefit-05c-frame-${n}.png`}
                   alt={`콜라보 프레임 ${n}`}
-                  ratio="3 / 4"
                 />
               ))}
             </Reveal>
@@ -424,7 +413,9 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           {/* 05-4 무인 경험 */}
           <div className={styles.exp}>
             <Reveal className={styles.expText}>
-              <p className={styles.expTag}>05-4 혼자서도 괜찮은 무인 경험 · 신뢰</p>
+              <p className={styles.expTag}>
+                05-4 혼자서도 괜찮은 무인 경험 · 신뢰
+              </p>
               <h3 className={styles.expTitle}>
                 무인이 불안하지 않도록, 절차를 눈으로 보여줬습니다.
               </h3>
@@ -441,12 +432,10 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               <CaseImage
                 src={`${IMG}/tonefit-05b-kiosk.png`}
                 alt="키오스크 STEP 01~03"
-                ratio="16 / 11"
               />
               <CaseImage
                 src={`${IMG}/tonefit-05b-store.png`}
                 alt="Store 카카오맵"
-                ratio="16 / 11"
               />
             </Reveal>
           </div>
@@ -480,12 +469,10 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
               <CaseImage
                 src={`${IMG}/tonefit-06-viral.png`}
                 alt="실제 고객 공유 반응 · 바이럴 섹션"
-                ratio="16 / 11"
               />
               <CaseImage
                 src={`${IMG}/tonefit-06-startup.png`}
                 alt="Startup 페이지"
-                ratio="16 / 11"
               />
             </Reveal>
           </div>
@@ -533,34 +520,30 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           <div className={styles.respGrid}>
             <Reveal className={styles.respRow}>
               <CaseImage
-                src={`${IMG}/tonefit-06-store-pc.png`}
+                src={`${IMG}/tonefit-05b-store.png`}
                 alt="Store PC — 지도+리스트 병렬"
-                ratio="16 / 10"
               />
-              <PhoneFrame className={styles.respPhone}>
-                <CaseImage
-                  src={`${IMG}/tonefit-06-store-mo.png`}
-                  alt="Store 모바일 — 지도 우선"
-                  ratio="9 / 19"
-                />
-              </PhoneFrame>
+              <CaseImage
+                src={`${IMG}/tonefit-01-hero-mo.png`}
+                alt="Store 모바일 — 지도 우선"
+                phone
+                className={styles.respPhone}
+              />
               <p className={styles.respCap}>
                 <b>Store</b> — PC는 지도+리스트 병렬, 모바일은 지도 우선 + 시트형.
               </p>
             </Reveal>
             <Reveal delay={0.08} className={styles.respRow}>
               <CaseImage
-                src={`${IMG}/tonefit-06-main-pc.png`}
+                src={`${IMG}/tonefit-01-hero-pc.png`}
                 alt="Main PC — 12단 그리드"
-                ratio="16 / 10"
               />
-              <PhoneFrame className={styles.respPhone}>
-                <CaseImage
-                  src={`${IMG}/tonefit-06-main-mo.png`}
-                  alt="Main 모바일 — 재배열"
-                  ratio="9 / 19"
-                />
-              </PhoneFrame>
+              <CaseImage
+                src={`${IMG}/tonefit-01-hero-mo.png`}
+                alt="Main 모바일 — 재배열"
+                phone
+                className={styles.respPhone}
+              />
               <p className={styles.respCap}>
                 <b>Main</b> — 12단 그리드, 1024px 이하에서 재배열.
               </p>
