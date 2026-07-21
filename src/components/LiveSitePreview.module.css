@@ -1,0 +1,162 @@
+/* 실제 사이트 라이브 미리보기 (아임웹 방식) — 딤 배경 + PC/모바일 토글 */
+.live {
+  background: #1e1f23;
+  padding: 40px 24px 64px;
+}
+
+/* 토글 (알약 버튼 — 어두운 배경 위) */
+.toggle {
+  display: flex;
+  width: max-content;
+  gap: 4px;
+  padding: 5px;
+  margin: 0 auto 26px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: #b7b8bd;
+  font: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.toggleBtn svg {
+  width: 18px;
+  height: 18px;
+}
+.toggleOn {
+  background: #fff;
+  color: #1e2022;
+  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.6);
+}
+
+/* 미리보기 무대 */
+.stage {
+  display: flex;
+  justify-content: center;
+}
+
+/* 공통: 실제 사이트가 보이는 뷰포트 (안에서 스크롤) */
+.viewport {
+  position: relative;
+  width: 100%;
+  height: min(80vh, 820px);
+  overflow: hidden;
+  background: #fff;
+}
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+
+/* PC — 브라우저 창 */
+.pcWindow {
+  width: 100%;
+  max-width: min(1180px, 92vw);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.7);
+}
+.winBar {
+  height: 38px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e0ddd6;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+}
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #cfccc5;
+  flex: 0 0 auto;
+}
+.dot:nth-child(1) {
+  background: #ff5f57;
+}
+.dot:nth-child(2) {
+  background: #febc2e;
+}
+.dot:nth-child(3) {
+  background: #28c840;
+}
+.addr {
+  flex: 1;
+  margin-left: 10px;
+  height: 24px;
+  max-width: 340px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #ddd9d2;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #8a8780;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 모바일 — 폰 프레임 */
+.phone {
+  position: relative;
+  width: 396px;
+  max-width: 92vw;
+  padding: 12px;
+  background: #1c1c1e;
+  border-radius: 44px;
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.75);
+}
+.phone .viewport {
+  border-radius: 32px;
+}
+.notch {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 6px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .live {
+    padding: 32px 12px 52px;
+  }
+  .addr {
+    display: none;
+  }
+  .viewport {
+    height: 72vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggleBtn {
+    transition: none;
+  }
+}

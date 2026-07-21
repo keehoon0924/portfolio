@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Reveal } from "../Reveal";
+import { LiveSitePreview } from "../LiveSitePreview";
 import styles from "./TonefitDetail.module.css";
+
+/** 실제 배포 사이트 주소 */
+const LIVE_URL = "https://ad-portfolio-tonefitcom.netlify.app";
 
 /**
  * TONE:FIT 상세 소개 페이지 (WORK 카드 클릭 시 오버레이로 열림).
@@ -291,6 +295,9 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             </div>
           ))}
         </section>
+
+        {/* 실제 사이트 라이브 미리보기 */}
+        <LiveSitePreview url={LIVE_URL} />
       </div>
 
       {lightbox && (
