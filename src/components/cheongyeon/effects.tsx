@@ -374,6 +374,61 @@ function UnrollItem({
   );
 }
 
+/* ── 실제 사이트 라이브 프레임 (PC 폭 그대로 축소해 인라인 임베드) ── */
+export function LiveFrame({
+  url,
+  height = "80vh",
+}: {
+  url: string;
+  height?: string;
+}) {
+  const DESIGN_W = 1440;
+  const vpRef = useRef<HTMLDivElement>(null);
+  const [dims, setDims] = useState({ scale: 0.7, h: 900 });
+
+  useEffect(() => {
+    const el = vpRef.current;
+    if (!el) return;
+    const update = () => {
+      const cw = el.clientWidth;
+      const ch = el.clientHeight;
+      const scale = cw / DESIGN_W;
+      setDims({ scale, h: scale ? ch / scale : ch });
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const addr = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+  return (
+    <div className={styles.liveFrame}>
+      <div className={styles.lfBar}>
+        <span />
+        <span />
+        <span />
+        <div className={styles.lfAddr}>{addr}</div>
+      </div>
+      <div className={styles.lfViewport} ref={vpRef} style={{ height }}>
+        <iframe
+          className={styles.lfIframe}
+          src={url}
+          title="청연 실제 사이트"
+          loading="lazy"
+          style={{
+            width: `${DESIGN_W}px`,
+            height: `${dims.h}px`,
+            transform: `scale(${dims.scale})`,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ── 패럴럭스 이미지 (스크롤에 따라 배경이 천천히 이동) ── */
 export function Parallax({
   src,

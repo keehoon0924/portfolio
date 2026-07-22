@@ -6,11 +6,8 @@ import {
   BrushDraw,
   CountStat,
   Petals,
-  Orbit,
-  CardFan,
-  ScrollUnroll,
   Parallax,
-  type OrbitItem,
+  LiveFrame,
 } from "./effects";
 
 /**
@@ -22,62 +19,13 @@ import {
 
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
-
-/* 06 시그니처 오빗 — 계절의 차 (실제 사이트 4종) */
-const ORBIT: OrbitItem[] = [
-  {
-    img: `${IMG}/11.png`,
-    name: "동백꽃차",
-    desc: "붉게 피어난 동백을 닮은, 봄의 첫 차입니다.",
-  },
-  {
-    img: `${IMG}/13.png`,
-    name: "냉녹차",
-    desc: "여름의 열기를 식히는 서늘하고 맑은 한 잔입니다.",
-  },
-  {
-    img: `${IMG}/14.png`,
-    name: "국화차",
-    desc: "가을 들녘의 국화 향을 그대로 담았습니다.",
-  },
-  {
-    img: `${IMG}/background.png`,
-    name: "우롱차",
-    desc: "겨울, 오래 우려 깊어진 따뜻한 차입니다.",
-  },
-];
-
-/* 07 공간 카드-팬 */
-const SPACE_CARDS = [
-  { img: `${IMG}/space/3.png`, label: "차를 발견하는 공간" },
-  { img: `${IMG}/space/4.png`, label: "머무름의 공간" },
-  { img: `${IMG}/space/5.png`, label: "배움의 공간" },
-  { img: `${IMG}/space/6.png`, label: "차의 깊이를 경험하는 공간" },
-];
-
-/* 08 철학 족자 */
-const PHILOSOPHY = [
-  { ko: "고요함", hanja: "靜", desc: "차를 우리는 동안 만들어지는 조용한 시간을 지켰습니다." },
-  { ko: "기다림", hanja: "待", desc: "우러날 때까지 기다리는 마음을, 화면의 속도에도 담았습니다." },
-  { ko: "자연", hanja: "自然", desc: "계절의 색과 재료를 그대로 브랜드의 언어로 삼았습니다." },
-  { ko: "인연", hanja: "因緣", desc: "한 잔을 사이에 둔 사람과 사람의 만남을 이야기했습니다." },
-  { ko: "여운", hanja: "餘韻", desc: "다 마신 뒤에도 남는 감각을, 떠난 화면에 남기려 했습니다." },
-];
+/* 실제 사이트 각 효과 페이지 (PC 라이브 임베드) */
+const LIVE_ORBIT = "https://cheongyeon-amber.vercel.app/class/season";
+const LIVE_SPACE = "https://cheongyeon-amber.vercel.app/space";
+const LIVE_ABOUT = "https://cheongyeon-amber.vercel.app/about";
 
 /* 10 재방문 흐름 */
 const FLOW = ["발견", "체험", "몰입", "힐링", "기록", "재방문"];
-
-/* 11 적용 효과 */
-const EFFECTS = [
-  { t: "잉크 번짐 리빌", d: "이미지가 3초에 걸쳐 번지듯 떠오릅니다." },
-  { t: "스스로 그려지는 붓선", d: "SVG 마스크를 스크롤에 맞춰 그려냈습니다." },
-  { t: "찻사발 오빗", d: "핀 고정 후 링이 회전해 계절 차가 중앙으로 옵니다." },
-  { t: "카드-팬 전개", d: "쌓인 카드가 중앙에서 부채꼴로 펼쳐집니다." },
-  { t: "족자 언롤", d: "다섯 철학이 두루마리처럼 펼쳐집니다." },
-  { t: "가로 핀 스크롤", d: "클래스 소개를 가로로 밀며 읽게 했습니다." },
-  { t: "무한 마퀴", d: "제품·리뷰를 requestAnimationFrame으로 끊김 없이 흘렸습니다." },
-  { t: "방향 인식 헤더", d: "스크롤 방향에 따라 헤더가 숨고 나타납니다." },
-];
 
 /* 이미지 로드 실패 시 조용히 숨김 (레이아웃 유지) */
 function Img({
@@ -159,8 +107,7 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
           <Reveal className={styles.hookText}>
             <ChapLabel light>01 QUESTION</ChapLabel>
             <h2 className={`${styles.h} ${styles.hLight}`}>
-              다도라는 말은 익숙한데,
-              <br />막상 무엇을 하는 시간인지는 몰랐습니다.
+              다도라는 말은 익숙한데, 막상 무엇을 하는 시간인지는 몰랐습니다.
             </h2>
           </Reveal>
         </section>
@@ -248,70 +195,44 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
           <p className={styles.fx}>적용 효과 · 잉크 번짐 리빌 + 스스로 그려지는 붓선(SVG mask)</p>
         </section>
 
-        {/* ══ 06 시그니처 · 찻사발 오빗 (재현) ══ */}
-        <section className={`${styles.section} ${styles.paper} ${styles.orbitChap}`}>
+        {/* ══ 06 시그니처 · 찻사발 오빗 (실제 사이트 라이브) ══ */}
+        <section className={`${styles.section} ${styles.paper}`}>
           <Reveal className={styles.head}>
             <ChapLabel>06 SIGNATURE</ChapLabel>
-            <h2 className={styles.h}>
-              스크롤을 내리면, 계절의 차가 하나씩 중앙으로 돌아옵니다.
-            </h2>
+            <h2 className={styles.h}>스크롤에 따라, 계절의 차가 궤도를 돕니다.</h2>
             <p className={styles.p}>
-              실제 사이트의 시그니처 연출 — 보이지 않는 원형 링 위의 찻사발이
-              스크롤에 맞춰 회전하는 <b>오빗</b>을 그대로 재현했습니다.
+              보이지 않는 원형 궤도 위의 찻사발이 스크롤에 맞춰 회전하며 계절의
+              차를 하나씩 중앙으로 데려옵니다. 아래에서 실제 화면을 직접
+              스크롤해 볼 수 있습니다.
             </p>
           </Reveal>
-          <Orbit items={ORBIT} />
-          <p className={styles.fx}>적용 효과 · 핀 고정 + 스냅 회전 오빗 + 꽃잎 파티클</p>
+          <LiveFrame url={LIVE_ORBIT} />
         </section>
 
-        {/* ══ 07 쇼케이스 C · 공간 (카드-팬 재현) ══ */}
+        {/* ══ 07 공간 (실제 사이트 라이브) ══ */}
         <section className={styles.section}>
           <Reveal className={styles.head}>
             <ChapLabel>07 SPACE</ChapLabel>
             <h2 className={styles.h}>머무는 공간 — 차정과 다실.</h2>
             <p className={styles.p}>
               쌓여 있던 카드가 중앙에서 부채꼴로 펼쳐지며 공간을 소개합니다.
+              아래 실제 화면을 스크롤하면 그대로 확인할 수 있습니다.
             </p>
           </Reveal>
-          <CardFan images={SPACE_CARDS} />
-          <p className={styles.fx}>적용 효과 · 핀 고정 카드-팬 전개 + clipPath 자막 와이프</p>
+          <LiveFrame url={LIVE_SPACE} />
         </section>
 
-        {/* ══ 08 쇼케이스 D · 철학 (족자 언롤 재현) ══ */}
+        {/* ══ 08 철학 (실제 사이트 라이브) ══ */}
         <section className={`${styles.section} ${styles.paper}`}>
           <Reveal className={styles.head}>
             <ChapLabel>08 PHILOSOPHY</ChapLabel>
             <h2 className={styles.h}>청연이 담은 다섯 가지 마음.</h2>
             <p className={styles.p}>
-              스크롤이 닿으면 두루마리가 하나씩 펼쳐지도록 만들었습니다.
+              스크롤이 닿으면 두루마리가 하나씩 펼쳐지며 청연의 철학을
+              전합니다. 아래 실제 화면에서 직접 확인해 보세요.
             </p>
           </Reveal>
-          <ScrollUnroll title="靑淵" items={PHILOSOPHY} />
-          <p className={styles.fx}>적용 효과 · 족자(두루마리) 언롤 — 순차 펼침</p>
-        </section>
-
-        {/* ══ 09 클래스 & 티 컬렉션 ══ */}
-        <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <ChapLabel>09 CLASS & COLLECTION</ChapLabel>
-            <h2 className={styles.h}>클래스와 찻잎, 계절로 잇다.</h2>
-          </Reveal>
-          <InkReveal className={styles.tallFrame}>
-            <Img
-              className={styles.tallImg}
-              src={`${IMG}/tea-collection/3.png`}
-              alt="계절 찻잎 컬렉션"
-            />
-          </InkReveal>
-          <div className={styles.two2}>
-            <InkReveal className={styles.miniShot}>
-              <Img src={`${IMG}/tea-class/2.png`} alt="다도 클래스 소개" />
-            </InkReveal>
-            <InkReveal className={styles.miniShot} delay={0.1}>
-              <Img src={`${IMG}/tea-class/3.png`} alt="클래스 상세" />
-            </InkReveal>
-          </div>
-          <p className={styles.fx}>적용 효과 · 가로 핀 스크롤 + 무한 마퀴 캐러셀</p>
+          <LiveFrame url={LIVE_ABOUT} />
         </section>
 
         {/* ══ 10 재방문 흐름 ══ */}
@@ -378,28 +299,9 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
               <p className={styles.roleSub}>React · GSAP ScrollTrigger · 반응형</p>
             </Reveal>
           </div>
-          <Reveal className={styles.subLabel}>적용한 인터랙션 효과</Reveal>
-          <div className={styles.fxGrid}>
-            {EFFECTS.map((e) => (
-              <Reveal key={e.t} className={styles.fxCard}>
-                <p className={styles.fxTitle}>{e.t}</p>
-                <p className={styles.fxDesc}>{e.d}</p>
-              </Reveal>
-            ))}
-          </div>
         </section>
 
-        {/* ══ 12 전환 배너 + 라이브 ══ */}
-        <section
-          className={`${styles.bleed} ${styles.banner}`}
-          style={{ backgroundImage: `url(${IMG}/13.png)` }}
-        >
-          <span className={styles.dim} aria-hidden="true" />
-          <Reveal className={`${styles.bleedText} ${styles.bleedCenter}`}>
-            <p className={styles.bannerText}>이제, 실제 화면입니다</p>
-          </Reveal>
-        </section>
-
+        {/* ══ 12 라이브 (전체 사이트) ══ */}
         <div className={styles.liveWrap}>
           <LiveSitePreview url={LIVE_URL} />
         </div>

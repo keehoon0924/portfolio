@@ -38,6 +38,9 @@
   padding: 0;
   font-family: var(--font-sans);
   color: var(--cy-ink);
+  /* 한글은 단어(어절) 단위로만 줄바꿈 — 음절 중간 끊김 방지 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* ══ 공통 타이포 ══ */
@@ -287,21 +290,22 @@
   gap: 10px;
 }
 .dot {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 999px;
   background: var(--cy-forest);
   box-shadow: 0 0 0 5px rgba(251, 248, 242, 0.9);
 }
 .stepNum {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--cy-plum);
 }
 .stepLabel {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--cy-ink);
 }
 /* 재방문 → 발견 순환 화살표 */
