@@ -1,8 +1,15 @@
 .overlay {
+  --cy-hanji: #bfae96;
+  --cy-ink: #232323;
+  --cy-gold: #e1bf6a;
+  --cy-forest: #1c3a2b;
+  --cy-plum: #8b5f6c;
+  --cy-paper: #fbf8f2;
+
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: #ffffff;
+  background: #fff;
   overflow-y: auto;
 }
 
@@ -27,24 +34,447 @@
 }
 
 .page {
-  max-width: none;
   margin: 0;
   padding: 0;
   font-family: var(--font-sans);
+  color: var(--cy-ink);
 }
 
-/* 이미지 스택 — 화면 전체 폭(full-bleed)으로 여백 없이 이어붙임 */
-.imgSection {
-  padding: 0;
+/* ══ 공통 타이포 ══ */
+.h {
+  font-size: 48px;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--cy-ink);
 }
-.fullImg {
+.hLight {
+  color: #fff;
+}
+.p {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--cy-ink);
+  max-width: 640px;
+}
+.pLight {
+  color: #fff;
+}
+.h + .p {
+  margin-top: 48px;
+}
+.p + .p {
+  margin-top: 24px;
+}
+.forest {
+  color: var(--cy-forest);
+  font-weight: 700;
+}
+.gold {
+  color: var(--cy-gold);
+}
+
+/* ══ 섹션 골격 ══ */
+.section {
+  padding: 120px clamp(24px, 6vw, 80px);
+}
+.paper {
+  background: var(--cy-paper);
+}
+
+/* ══ 2컬럼 (텍스트 + 이미지) ══ */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.twoReverse .colText {
+  order: 2;
+}
+.twoReverse .colImg {
+  order: 1;
+}
+.colImg {
+  min-width: 0;
+  min-height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(191, 174, 150, 0.18);
+}
+.roundImg {
   width: 100%;
   height: auto;
   display: block;
 }
 
+/* ══ S1 표지 ══ */
+.cover {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--cy-hanji);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.coverGrad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.7),
+    transparent 55%
+  );
+}
+.coverText {
+  position: relative;
+  z-index: 1;
+  padding: clamp(32px, 6vw, 80px);
+}
+.coverBrand {
+  font-family: "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
+  font-size: clamp(48px, 6vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--cy-ink);
+}
+.coverHanja {
+  color: var(--cy-forest);
+}
+.coverSub {
+  font-size: clamp(15px, 1.6vw, 20px);
+  line-height: 1.6;
+  color: var(--cy-ink);
+  margin-top: 8px;
+}
+.coverSub:first-of-type {
+  margin-top: 22px;
+}
+
+/* ══ 풀블리드 (S3 · 배너) ══ */
+.bleed {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.bleedTall {
+  min-height: 80vh;
+  background-color: var(--cy-forest);
+}
+.dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.35);
+}
+.banner .dim {
+  background: rgba(20, 18, 16, 0.3);
+}
+.bleedText {
+  position: relative;
+  z-index: 1;
+  padding: 96px clamp(24px, 6vw, 80px);
+}
+.bleedCenter {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.bleedCenter .p {
+  max-width: 720px;
+}
+.banner {
+  min-height: 52vh;
+  background-color: var(--cy-plum);
+}
+.bannerText {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* ══ 스타일 가이드 (풀폭 단독) ══ */
+.guideSec {
+  padding-top: 0;
+}
+.guideWrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.guideImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(35, 35, 35, 0.1);
+}
+
+/* ══ S5 경험 흐름 ══ */
+.flowSec {
+  position: relative;
+  padding: 120px clamp(24px, 6vw, 80px);
+  background-color: var(--cy-paper);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+/* 텍스처 위 가독성 확보용 옅은 페이퍼 워시 */
+.flowWash {
+  position: absolute;
+  inset: 0;
+  background: rgba(251, 248, 242, 0.55);
+}
+.flowInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.flowHead {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.flowHead .p {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.flow {
+  position: relative;
+}
+.flowSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+/* 좌 → 우로 그려지는 점선 연결선 */
+.flowSteps::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 4%;
+  right: 4%;
+  border-top: 1px dashed rgba(35, 35, 35, 0.25);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s ease;
+}
+.flow:global(.is-visible) .flowSteps::before {
+  transform: scaleX(1);
+}
+.step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--cy-forest);
+  box-shadow: 0 0 0 5px rgba(251, 248, 242, 0.9);
+}
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--cy-plum);
+}
+.stepLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cy-ink);
+}
+/* 재방문 → 발견 순환 화살표 */
+.loop {
+  display: block;
+  width: 100%;
+  height: 54px;
+  margin-top: 18px;
+  overflow: visible;
+}
+.loopPath,
+.loopHead {
+  stroke: var(--cy-gold);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.loopPath {
+  stroke-dasharray: 1700;
+  stroke-dashoffset: 1700;
+  transition: stroke-dashoffset 1.4s ease 0.25s;
+}
+.flow:global(.is-visible) .loopPath {
+  stroke-dashoffset: 0;
+}
+.loopHead {
+  opacity: 0;
+  transition: opacity 0.25s ease 1.5s;
+}
+.flow:global(.is-visible) .loopHead {
+  opacity: 1;
+}
+
+/* ══ 리서치 상세 ══ */
+.detailLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cy-plum);
+  text-align: center;
+  margin-bottom: 48px;
+}
+.detailStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+.detailWrap {
+  width: 100%;
+  max-width: 1400px;
+}
+.detailImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+/* ══ 라이브 미리보기 ══ */
+.liveWrap {
+  margin-top: 120px;
+}
+
+/* ══ 반응형 ══ */
+@media (max-width: 1024px) {
+  .h {
+    font-size: 38px;
+    line-height: 1.3;
+  }
+  .section {
+    padding: 96px clamp(24px, 5vw, 48px);
+  }
+  .flowSec {
+    padding: 96px clamp(24px, 5vw, 48px);
+  }
+  .two {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .twoReverse .colText,
+  .twoReverse .colImg {
+    order: 0;
+  }
+  .h + .p {
+    margin-top: 40px;
+  }
+  /* 세로 스텝으로 전환 */
+  .flowSteps {
+    flex-direction: column;
+    gap: 0;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .flowSteps::before {
+    top: 8px;
+    bottom: 8px;
+    left: 7px;
+    right: auto;
+    width: 0;
+    border-top: 0;
+    border-left: 1px dashed rgba(35, 35, 35, 0.25);
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  .flow:global(.is-visible) .flowSteps::before {
+    transform: scaleY(1);
+  }
+  .step {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 14px;
+    padding: 16px 0;
+  }
+  .loop {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .h {
+    font-size: 32px;
+    line-height: 1.35;
+  }
+  .p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .h + .p {
+    margin-top: 32px;
+  }
+  .p + .p {
+    margin-top: 16px;
+  }
+  .section {
+    padding: 64px 24px;
+  }
+  .flowSec {
+    padding: 64px 24px;
+  }
+  .cover,
+  .bleedTall,
+  .banner {
+    min-height: 62vh;
+  }
+  .bleedText {
+    padding: 64px 24px;
+  }
+  .coverBrand {
+    font-size: 40px;
+  }
+  .liveWrap {
+    margin-top: 72px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .close {
     transition: none;
+  }
+  .flowSteps::before {
+    transition: none;
+    transform: none;
+  }
+  .loopPath {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+  .loopHead {
+    transition: none;
+    opacity: 1;
   }
 }
