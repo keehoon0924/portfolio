@@ -478,3 +478,211 @@
     opacity: 1;
   }
 }
+
+/* ══════════ 12챕터 추가 클래스 ══════════ */
+
+/* 섹션 헤드 + 챕터 라벨 */
+.head {
+  max-width: 820px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.chap {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--cy-plum);
+  margin-bottom: 18px;
+}
+.chapLight {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 01 훅 */
+.hook {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cy-forest);
+}
+.hook .hookBg {
+  position: absolute;
+  inset: 0;
+}
+.hookBg .dim {
+  background: rgba(20, 18, 16, 0.5);
+}
+.hookText {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 80px);
+  text-align: center;
+}
+
+/* 02 인사이트 */
+.insight {
+  text-align: center;
+}
+.insightText {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.insightText .p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.statRow {
+  display: flex;
+  justify-content: center;
+  gap: clamp(40px, 8vw, 120px);
+  margin-top: 64px;
+  flex-wrap: wrap;
+}
+
+/* 붓선 래퍼 */
+.brushWrap {
+  width: 200px;
+  max-width: 60%;
+  margin: 32px auto 0;
+}
+
+/* 큰 스트립 → 스크롤 프레임 */
+.tallFrame {
+  max-width: 1120px;
+  margin: 0 auto;
+  max-height: 720px;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -28px rgba(35, 35, 35, 0.4);
+  background: var(--cy-paper);
+}
+.tallImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 06 오빗 챕터는 헤더 아래 오빗이 스크롤 구간을 가짐 */
+.orbitChap {
+  padding-bottom: 0;
+}
+
+/* 07 미니샷 2열 */
+.two2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 40px auto 0;
+}
+.miniShot {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -20px rgba(35, 35, 35, 0.3);
+}
+.miniShot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 효과 캡션 */
+.fx {
+  margin: 26px auto 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--cy-clay, #bc8f76);
+}
+
+/* 11 역할 & 효과 */
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 64px;
+}
+.roleCard {
+  background: #fff;
+  border: 1px solid rgba(191, 174, 150, 0.35);
+  border-radius: 18px;
+  padding: 32px 28px;
+  text-align: center;
+}
+.roleTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--cy-plum);
+  margin-bottom: 14px;
+}
+.roleMain {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--cy-forest);
+  line-height: 1;
+}
+.roleSub {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--cy-charcoal, #4c4948);
+}
+.subLabel {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--cy-plum);
+  margin-bottom: 28px;
+}
+.fxGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.fxCard {
+  background: var(--cy-paper);
+  border: 1px solid rgba(191, 174, 150, 0.3);
+  border-radius: 14px;
+  padding: 22px 20px;
+}
+.fxTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cy-ink);
+  margin-bottom: 8px;
+}
+.fxDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--cy-charcoal, #4c4948);
+}
+
+@media (max-width: 1024px) {
+  .fxGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .roleGrid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+  .two2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .fxGrid {
+    grid-template-columns: 1fr;
+  }
+  .head {
+    margin-bottom: 40px;
+  }
+}
