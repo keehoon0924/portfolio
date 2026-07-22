@@ -1,74 +1,88 @@
 import { Reveal } from "../Reveal";
 import { LiveSitePreview } from "../LiveSitePreview";
 import styles from "./CheongyeonDetail.module.css";
-import {
-  InkReveal,
-  BrushDraw,
-  CountStat,
-  Petals,
-  Parallax,
-} from "./effects";
+import { InkReveal } from "./effects";
 
 /**
- * 청연(靑淵) — 전통 다도 원데이 클래스 케이스 스터디 (풀 12챕터).
- * 실제 배포 사이트(GSAP)의 시그니처 스크롤 효과를 외부 라이브러리 없이 재현한다.
- * 서사: "다도가 뭔지 모르던 사람 → 청연에서 힐링을 경험".
- * 이미지: /assets/cheongyeon/*  (폴더명 공백은 %20)
+ * 청연(靑淵) — 전통 다도 원데이 클래스 · UI 디자인 케이스 스터디.
+ * "무엇을 느꼈고 → 왜 문제라 봤고 → 그래서 이렇게 기획/디자인했다"를 보여주는
+ * 에디토리얼 구성. 큰 이미지 + 옆 주석(디자인 의사결정). 라이브는 맨 하단 1개.
+ * 이미지: /assets/cheongyeon/*  (폴더 공백은 %20)
  */
 
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
 
-/* 05~08 쇼케이스 — 좌측 본문 + 우측 실제 캡처(스크롤 창). 움직임은 하단 라이브에서. */
-const SHOWCASE = [
+/* 04 메인 — 전체를 길게, 지점별 결정 주석 */
+const MAIN_IMAGES = [
+  `${IMG}/main/메인%20kv.png`,
+  `${IMG}/main/2.png`,
+  `${IMG}/main/4.png`,
+  `${IMG}/main/5.png`,
+  `${IMG}/main/6.png`,
+  `${IMG}/main/7.png`,
+  `${IMG}/main/8.png`,
+  `${IMG}/main/9.png`,
+  `${IMG}/main/10.png`,
+];
+const MAIN_NOTES = [
   {
-    label: "05 FOUR SEASONS",
-    title: "계절의 흐름을 따라, 차와 함께.",
-    body: "봄·여름·가을·겨울, 계절마다 다른 차와 시간을 담았습니다. 잉크가 번지듯 떠오르는 이미지와 스스로 그려지는 붓선으로, 사계절의 결을 한 흐름으로 이었습니다.",
-    images: [`${IMG}/season-tea/2.png`],
-    live: "https://cheongyeon-amber.vercel.app/seasontea",
+    head: "KV를 영상으로 두었습니다",
+    text: "다도가 ‘멈춰서 차를 우리는 시간’이라는 걸, 첫 화면의 느린 움직임으로 먼저 체감시키고 싶었습니다.",
   },
   {
-    label: "06 SIGNATURE",
-    title: "스크롤에 따라, 계절의 차가 궤도를 돕니다.",
-    body: "보이지 않는 원형 궤도 위의 찻사발이 스크롤에 맞춰 회전하며, 계절의 차를 하나씩 중앙으로 데려옵니다. 청연에서 가장 공들인 시그니처 화면입니다.",
-    images: [`${IMG}/main/6.png`],
-    live: "https://cheongyeon-amber.vercel.app/",
-    paper: true,
+    head: "사계절을 스크롤 스토리로",
+    text: "봄부터 겨울까지 장면을 순서대로 이어, 처음 온 사람도 흐름을 타며 읽게 했습니다.",
   },
   {
-    label: "07 SPACE",
-    title: "머무는 공간 — 차정과 다실.",
-    body: "쌓여 있던 카드가 중앙에서 부채꼴로 펼쳐지며 공간을 소개합니다. 차를 발견하는 자리부터 배움의 자리까지, 머무는 시간을 공간으로 풀었습니다.",
-    images: [
-      `${IMG}/space/kv.png`,
-      `${IMG}/space/2.png`,
-      `${IMG}/space/3.png`,
-      `${IMG}/space/4.png`,
-      `${IMG}/space/5.png`,
-      `${IMG}/space/6.png`,
-      `${IMG}/space/7.png`,
-    ],
-    live: "https://cheongyeon-amber.vercel.app/space",
-  },
-  {
-    label: "08 PHILOSOPHY",
-    title: "청연이 담은 다섯 가지 마음.",
-    body: "고요함·기다림·자연·인연·여운. 스크롤이 닿으면 두루마리가 하나씩 펼쳐지며 청연의 철학을 전합니다.",
-    images: [
-      `${IMG}/brand%20story/kv.png`,
-      `${IMG}/brand%20story/2.png`,
-      `${IMG}/brand%20story/3.png`,
-      `${IMG}/brand%20story/4.png`,
-      `${IMG}/brand%20story/5.png`,
-    ],
-    live: "https://cheongyeon-amber.vercel.app/about",
-    paper: true,
+    head: "계절 차는 궤도로 돌립니다",
+    text: "네 계절의 차를 하나씩 중앙으로 데려와, 한 번에 하나씩 집중해 보도록 설계했습니다.",
   },
 ];
 
-/* 10 재방문 흐름 */
-const FLOW = ["발견", "체험", "몰입", "힐링", "기록", "재방문"];
+const SPACE_IMAGES = [
+  `${IMG}/space/kv.png`,
+  `${IMG}/space/2.png`,
+  `${IMG}/space/3.png`,
+  `${IMG}/space/4.png`,
+  `${IMG}/space/5.png`,
+  `${IMG}/space/6.png`,
+  `${IMG}/space/7.png`,
+];
+const SPACE_NOTES = [
+  {
+    head: "발견과 배움을 나눴습니다",
+    text: "차를 고르는 자리(차정)와 배우는 자리(다실)를 분리해, 방문 전에도 동선을 그릴 수 있게 했습니다.",
+  },
+  {
+    head: "카드를 부채꼴로 펼칩니다",
+    text: "공간을 한눈에 훑은 뒤 하나씩 들여다보도록, 쌓인 카드가 펼쳐지는 전개로 구성했습니다.",
+  },
+];
+
+const STORY_IMAGES = [
+  `${IMG}/brand%20story/kv.png`,
+  `${IMG}/brand%20story/2.png`,
+  `${IMG}/brand%20story/3.png`,
+  `${IMG}/brand%20story/4.png`,
+  `${IMG}/brand%20story/5.png`,
+];
+const STORY_NOTES = [
+  {
+    head: "철학을 두루마리에 담았습니다",
+    text: "고요함·기다림·자연·인연·여운 — 다섯 마음을 두루마리가 펼쳐지듯 보여줬습니다.",
+  },
+  {
+    head: "읽는 속도까지 설계했습니다",
+    text: "천천히 펼쳐지는 리듬으로, 화면을 읽는 호흡 자체가 다도의 결을 닮게 했습니다.",
+  },
+];
+
+const PRINCIPLES = [
+  { ko: "장면 먼저", en: "SHOW, DON’T TELL", desc: "설명 대신 계절의 장면을 먼저 보여준다." },
+  { ko: "계절의 결", en: "FOUR SEASONS", desc: "사계절을 축으로 콘텐츠와 색을 나눈다." },
+  { ko: "여백의 속도", en: "SLOW PACE", desc: "급하지 않게, 천천히 읽히도록 비운다." },
+];
 
 /* 이미지 로드 실패 시 조용히 숨김 (레이아웃 유지) */
 function Img({
@@ -107,56 +121,49 @@ function ChapLabel({
   );
 }
 
-/** 톤핏식 쇼케이스 — 좌측 본문 + 우측 실제 캡처(브라우저 창, 내부 스크롤) */
-function Showcase({
+/** 큰 이미지 + 옆 주석(디자인 의사결정 타임라인) */
+function AnnotatedShot({
   label,
   title,
-  body,
+  intro,
   images,
-  live,
+  notes,
   paper,
 }: {
   label: string;
   title: string;
-  body: string;
+  intro?: string;
   images: string[];
-  live?: string;
+  notes: { head: string; text: string }[];
   paper?: boolean;
 }) {
   return (
     <section
-      className={[styles.section, paper ? styles.paper : "", styles.showSec]
+      className={[styles.section, paper ? styles.paper : "", styles.annoSec]
         .filter(Boolean)
         .join(" ")}
     >
-      <div className={styles.show}>
-        <Reveal className={styles.showText}>
-          <ChapLabel>{label}</ChapLabel>
-          <h2 className={styles.showTitle}>{title}</h2>
-          <p className={styles.showBody}>{body}</p>
-          {live && (
-            <a
-              className={styles.showLink}
-              href={live}
-              target="_blank"
-              rel="noreferrer"
-            >
-              움직이는 실제 화면 보기 ↗
-            </a>
-          )}
-        </Reveal>
-        <Reveal delay={0.08} className={styles.showFrame}>
-          <div className={styles.showBar}>
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className={styles.showScroll}>
-            {images.map((src, i) => (
-              <Img key={i} className={styles.showImg} src={src} alt={title} />
-            ))}
-          </div>
-        </Reveal>
+      <Reveal className={styles.annoHead}>
+        <ChapLabel>{label}</ChapLabel>
+        <h2 className={styles.h}>{title}</h2>
+        {intro && <p className={styles.pCenter}>{intro}</p>}
+      </Reveal>
+      <div className={styles.anno}>
+        <InkReveal className={styles.annoImg}>
+          {images.map((src, i) => (
+            <Img key={i} className={styles.annoImgEl} src={src} alt={title} />
+          ))}
+        </InkReveal>
+        <div className={styles.annoCol}>
+          {notes.map((n, i) => (
+            <Reveal key={i} delay={i * 0.06} className={styles.annoCard}>
+              <span className={styles.annoDot} />
+              <p className={styles.annoNum}>{`0${i + 1}`}</p>
+              <p className={styles.annoCardHead}>{n.head}</p>
+              <p className={styles.annoCardText}>{n.text}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -175,180 +182,170 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
-        {/* ══ 00 KV 표지 ══ */}
-        <section
-          className={styles.cover}
-          style={{ backgroundImage: `url(${IMG}/11.png)` }}
-        >
-          <span className={styles.coverGrad} aria-hidden="true" />
-          <Petals count={12} />
-          <Reveal className={styles.coverText}>
-            <p className={styles.coverBrand}>
-              청연 <span className={styles.coverHanja}>靑淵</span>
+        {/* ══ COVER ══ */}
+        <section className={styles.hero}>
+          <Reveal className={styles.heroInner}>
+            <p className={styles.heroTag}>UI DESIGN CASE STUDY</p>
+            <InkReveal className={styles.heroShot}>
+              <Img
+                className={styles.heroImg}
+                src={`${IMG}/first.png`}
+                alt="청연 靑淵 — 메인 화면"
+              />
+            </InkReveal>
+            <p className={styles.heroIntent}>
+              다도를 처음 만나는 사람의 눈높이에서, <b>무엇을 하는 시간인지</b>를
+              먼저 보여주는 웹을 설계했습니다.
             </p>
-            <p className={styles.coverSub}>전통 다도 원데이 클래스 · 브랜드 웹사이트</p>
-            <p className={styles.coverSub}>
-              기획 · UI 디자인 · 프론트엔드 — 다도를 처음 만나는 사람의 시선에서
-            </p>
-          </Reveal>
-        </section>
-
-        {/* ══ 01 질문 (훅) ══ */}
-        <section className={styles.hook}>
-          <Parallax
-            src={`${IMG}/brand%20story/kv.png`}
-            alt="다실 풍경"
-            className={styles.hookBg}
-          >
-            <span className={styles.dim} aria-hidden="true" />
-          </Parallax>
-          <Reveal className={styles.hookText}>
-            <ChapLabel light>01 QUESTION</ChapLabel>
-            <h2 className={`${styles.h} ${styles.hLight}`}>
-              다도라는 말은 익숙한데, 막상 무엇을 하는 시간인지는 몰랐습니다.
-            </h2>
-          </Reveal>
-        </section>
-
-        {/* ══ 02 인사이트 (기획, 가볍게) ══ */}
-        <section className={`${styles.section} ${styles.paper} ${styles.insight}`}>
-          <Reveal className={styles.insightText}>
-            <ChapLabel>02 INSIGHT</ChapLabel>
-            <h2 className={styles.h}>
-              2030에게 차는 이미 새로운 <b className={styles.forest}>힐링</b>이
-              됐습니다.
-            </h2>
-            <p className={styles.p}>
-              관심이 없어서가 아니라, 무엇을 하는지 몰라서 멀게 느껴질 뿐이었습니다.
-              청연은 그 거리를 좁히는 것에서 시작했습니다.
-            </p>
-          </Reveal>
-          <div className={styles.statRow}>
-            <CountStat to={72} suffix="%" label="2030 '차 = 힐링' 인식 (트렌드 조사)" />
-            <CountStat to={1} suffix="시간" label="일상을 바꾸는 원데이 클래스" />
-          </div>
-        </section>
-
-        {/* ══ 03 컨셉/방향 ══ */}
-        <section
-          className={`${styles.bleed} ${styles.bleedTall}`}
-          style={{ backgroundImage: `url(${IMG}/background.png)` }}
-        >
-          <span className={styles.dim} aria-hidden="true" />
-          <Reveal className={`${styles.bleedText} ${styles.bleedCenter}`}>
-            <ChapLabel light>03 CONCEPT</ChapLabel>
-            <h2 className={`${styles.h} ${styles.hLight}`}>
-              그래서 청연은, 다도를 먼저{" "}
-              <span className={styles.gold}>보여주기</span>로 했습니다.
-            </h2>
-            <p className={`${styles.p} ${styles.pLight}`}>
-              무엇을 하는지, 어떤 계절의 차인지, 어떤 시간을 보내게 되는지 —
-              설명보다 장면으로 먼저 전했습니다.
-            </p>
-            <div className={styles.brushWrap}>
-              <BrushDraw />
+            <div className={styles.heroMeta}>
+              <span>기획</span>
+              <span>UI 디자인</span>
+              <span>프론트엔드</span>
+              <span className={styles.heroMetaDim}>기획 · 디자인 40% · 개발 40%</span>
             </div>
           </Reveal>
         </section>
 
-        {/* ══ 04 디자인 시스템 ══ */}
-        <section className={`${styles.section} ${styles.paper}`}>
-          <Reveal className={styles.head}>
-            <ChapLabel>04 DESIGN SYSTEM</ChapLabel>
-            <h2 className={styles.h}>전통을 무겁지 않게.</h2>
-            <p className={styles.p}>
-              수묵의 여백과 한글 타이포를 기준으로 정리해, 처음 온 사람도 편하게
-              읽히도록 만들었습니다.
+        {/* ══ 01 WHY ══ */}
+        <section
+          className={`${styles.bleed} ${styles.stmtDark}`}
+          style={{ backgroundImage: `url(${IMG}/background.png)` }}
+        >
+          <span className={styles.dim} aria-hidden="true" />
+          <Reveal className={styles.stmtInner}>
+            <ChapLabel light>01 WHY</ChapLabel>
+            <h2 className={`${styles.stmtTitle} ${styles.hLight}`}>
+              다도는 익숙한데, 뭘 하는지는 아무도 알려주지 않았습니다.
+            </h2>
+            <p className={`${styles.stmtBody} ${styles.pLight}`}>
+              다도 클래스를 찾다가 이상했습니다. 어느 사이트를 봐도 이름·시간·금액
+              뿐이었고, 정작 ‘무엇을 하는 자리인지’는 없었습니다. 관심이 없어서가
+              아니라 <b>알 수가 없어서</b> 멀게 느껴지는 거였습니다.
             </p>
           </Reveal>
-          <InkReveal className={styles.guideWrap}>
+        </section>
+
+        {/* ══ 02 PRINCIPLE ══ */}
+        <section className={`${styles.section} ${styles.paper}`}>
+          <Reveal className={styles.stmtHead}>
+            <ChapLabel>02 PRINCIPLE</ChapLabel>
+            <h2 className={styles.stmtTitle}>
+              그래서 정한 첫 원칙 — 설명하지 말고, 보여주기.
+            </h2>
+            <p className={styles.pCenter}>
+              글로 소개하기 전에 계절의 장면과 공간을 먼저 눈에 담게 했습니다.
+              무엇을 하는지 알고 나면 부담이 줄고, 그때부터 편하게 즐길 수 있으니까요.
+            </p>
+          </Reveal>
+          <div className={styles.principles}>
+            {PRINCIPLES.map((p, i) => (
+              <Reveal key={p.ko} delay={i * 0.08} className={styles.principle}>
+                <p className={styles.prNum}>{`0${i + 1}`}</p>
+                <p className={styles.prKo}>{p.ko}</p>
+                <p className={styles.prEn}>{p.en}</p>
+                <p className={styles.prDesc}>{p.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* ══ 03 DESIGN SYSTEM ══ */}
+        <section className={styles.section}>
+          <Reveal className={styles.stmtHead}>
+            <ChapLabel>03 DESIGN SYSTEM</ChapLabel>
+            <h2 className={styles.stmtTitle}>전통을 무겁지 않게.</h2>
+            <p className={styles.pCenter}>
+              전통 소재를 쓰되 딱딱해 보이지 않도록, 수묵의 여백과 한글 타이포를
+              기준으로 색·서체·간격을 하나의 규칙으로 정리했습니다.
+            </p>
+          </Reveal>
+          <InkReveal className={styles.bigShot}>
             <Img
-              className={styles.guideImg}
+              className={styles.bigImg}
               src={`${IMG}/style-guide.png`}
               alt="청연 스타일 가이드"
             />
           </InkReveal>
         </section>
 
-        {/* ══ 05~08 쇼케이스 (톤핏식 좌측 본문 + 우측 실제 캡처) ══ */}
-        {SHOWCASE.map((s) => (
-          <Showcase key={s.label} {...s} />
-        ))}
+        {/* ══ 04 MAIN ══ */}
+        <AnnotatedShot
+          label="04 MAIN"
+          title="첫 화면부터, 무엇을 하는 곳인지 느끼도록."
+          intro="메인은 ‘보여주기’ 원칙이 가장 진하게 적용된 화면입니다. 스크롤을 따라 계절과 차를 순서대로 만나게 했습니다."
+          images={MAIN_IMAGES}
+          notes={MAIN_NOTES}
+          paper
+        />
 
-        {/* ══ 10 재방문 흐름 ══ */}
-        <section
-          className={styles.flowSec}
-          style={{ backgroundImage: `url(${IMG}/bg.png)` }}
-        >
-          <span className={styles.flowWash} aria-hidden="true" />
-          <div className={styles.flowInner}>
-            <Reveal className={styles.flowHead}>
-              <ChapLabel>10 RETURN</ChapLabel>
-              <h2 className={styles.h}>한 번의 경험이, 다시 찾는 이유가 되도록.</h2>
-              <p className={styles.p}>
-                발견에서 재방문까지, 스탬프로 다시 오실 이유를 남겼습니다.
-              </p>
-            </Reveal>
-            <Reveal className={styles.flow}>
-              <ol className={styles.flowSteps}>
-                {FLOW.map((label, i) => (
-                  <li key={label} className={styles.step}>
-                    <span className={styles.dot} />
-                    <span className={styles.stepNum}>{`0${i + 1}`}</span>
-                    <span className={styles.stepLabel}>{label}</span>
-                  </li>
-                ))}
-              </ol>
-              <svg
-                className={styles.loop}
-                viewBox="0 0 1000 60"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path
-                  className={styles.loopPath}
-                  d="M975 6 C 995 46, 900 52, 500 52 C 100 52, 25 46, 25 12"
-                  fill="none"
-                />
-                <path className={styles.loopHead} d="M16 20 L25 8 L34 20" fill="none" />
-              </svg>
-            </Reveal>
-          </div>
+        {/* ══ 05 SPACE ══ */}
+        <AnnotatedShot
+          label="05 SPACE"
+          title="머무는 시간을, 공간으로."
+          images={SPACE_IMAGES}
+          notes={SPACE_NOTES}
+        />
+
+        {/* ══ 06 STORY ══ */}
+        <AnnotatedShot
+          label="06 STORY"
+          title="브랜드의 마음을, 두루마리에 담아."
+          images={STORY_IMAGES}
+          notes={STORY_NOTES}
+          paper
+        />
+
+        {/* ══ 07 MOTION ══ */}
+        <section className={styles.section}>
+          <Reveal className={styles.stmtHead}>
+            <ChapLabel>07 MOTION</ChapLabel>
+            <h2 className={styles.stmtTitle}>움직임도, 브랜드의 언어로.</h2>
+            <p className={styles.pCenter}>
+              화려함보다 ‘여백의 속도’를 택했습니다. 잉크가 번지듯 떠오르는 등장,
+              스스로 그려지는 붓선처럼 — 급하지 않은 움직임으로 다도의 결을 살렸습니다.
+              화면을 읽는 속도가 곧 브랜드의 인상이 된다고 봤습니다.
+            </p>
+          </Reveal>
         </section>
 
-        {/* ══ 11 역할 & 적용 효과 ══ */}
+        {/* ══ 08 CLOSING ══ */}
         <section className={`${styles.section} ${styles.paper}`}>
-          <Reveal className={styles.head}>
-            <ChapLabel>11 ROLE & CRAFT</ChapLabel>
-            <h2 className={styles.h}>기획으로 시작해, 디자인과 개발로 완성했습니다.</h2>
+          <Reveal className={styles.stmtHead}>
+            <ChapLabel>08 CLOSING</ChapLabel>
+            <h2 className={styles.stmtTitle}>
+              기획으로 시작해, 디자인과 개발로 끝냈습니다.
+            </h2>
+            <p className={styles.pCenter}>
+              무엇을 하는지 모르던 사람이 ‘가서 해보고 싶다’로 바뀌는 것 — 그 한
+              걸음을 만드는 게 이 프로젝트의 목표였습니다.
+            </p>
           </Reveal>
           <div className={styles.roleGrid}>
             <Reveal className={styles.roleCard}>
-              <p className={styles.roleTag}>ROLE</p>
-              <p className={styles.roleMain}>기획자</p>
-              <p className={styles.roleSub}>컨셉 기획 · 정보 구조 · 콘텐츠 설계</p>
+              <p className={styles.roleTag}>PLAN</p>
+              <p className={styles.roleMain}>기획</p>
+              <p className={styles.roleSub}>컨셉 · 정보 구조 · 콘텐츠 설계</p>
             </Reveal>
             <Reveal className={styles.roleCard} delay={0.06}>
               <p className={styles.roleTag}>DESIGN</p>
               <p className={styles.roleMain}>40%</p>
-              <p className={styles.roleSub}>UI · 브랜드 · 모션 설계</p>
+              <p className={styles.roleSub}>UI · 브랜드 · 모션</p>
             </Reveal>
             <Reveal className={styles.roleCard} delay={0.12}>
               <p className={styles.roleTag}>DEVELOP</p>
               <p className={styles.roleMain}>40%</p>
-              <p className={styles.roleSub}>React · GSAP ScrollTrigger · 반응형</p>
+              <p className={styles.roleSub}>React · GSAP · 반응형</p>
             </Reveal>
           </div>
         </section>
 
-        {/* ══ 12 라이브 (전체 사이트) ══ */}
+        {/* ══ LIVE (전체 사이트) ══ */}
         <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <ChapLabel>12 LIVE SITE</ChapLabel>
-            <h2 className={styles.h}>전체 화면을 직접 둘러보세요.</h2>
-            <p className={styles.p}>
-              PC·모바일을 전환하며 실제 애니메이션과 반응형을 확인할 수
-              있습니다.
+          <Reveal className={styles.stmtHead}>
+            <ChapLabel>LIVE SITE</ChapLabel>
+            <h2 className={styles.stmtTitle}>실제 화면을 직접 둘러보세요.</h2>
+            <p className={styles.pCenter}>
+              PC·모바일을 전환하며 실제 움직임과 반응형을 확인할 수 있습니다.
             </p>
           </Reveal>
         </section>
