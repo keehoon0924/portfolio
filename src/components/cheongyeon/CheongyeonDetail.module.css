@@ -690,3 +690,108 @@
     margin-bottom: 40px;
   }
 }
+
+/* ══════════ 05~08 톤핏식 쇼케이스 ══════════ */
+.showSec {
+  overflow: hidden;
+}
+.show {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(40px, 6vw, 84px);
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.showText {
+  position: relative;
+  min-width: 0;
+}
+.showTitle {
+  margin-top: 4px;
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--cy-ink);
+}
+.showBody {
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--cy-charcoal, #4c4948);
+  max-width: 460px;
+}
+.showLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 30px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--cy-forest);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.showLink:hover {
+  background: #16311f;
+}
+/* 우측 실제 캡처 — 브라우저 창(내부 스크롤) */
+.showFrame {
+  height: min(64vh, 560px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #e5e2dc;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 26px 60px -30px rgba(35, 35, 35, 0.4);
+}
+.showBar {
+  height: 32px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e0ddd6;
+}
+.showBar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #cfccc5;
+}
+.showBar span:nth-child(1) { background: #ff5f57; }
+.showBar span:nth-child(2) { background: #febc2e; }
+.showBar span:nth-child(3) { background: #28c840; }
+.showScroll {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+}
+.showImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 하단 라이브는 위 섹션이 여백을 주므로 붙임 */
+.liveWrap {
+  margin-top: 0;
+}
+
+@media (max-width: 1024px) {
+  .show {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .showFrame {
+    height: min(58vh, 460px);
+  }
+}

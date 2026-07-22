@@ -7,7 +7,6 @@ import {
   CountStat,
   Petals,
   Parallax,
-  LiveFrame,
 } from "./effects";
 
 /**
@@ -19,10 +18,54 @@ import {
 
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
-/* 실제 사이트 각 효과 페이지 (PC 라이브 임베드) */
-const LIVE_ORBIT = "https://cheongyeon-amber.vercel.app/class/season";
-const LIVE_SPACE = "https://cheongyeon-amber.vercel.app/space";
-const LIVE_ABOUT = "https://cheongyeon-amber.vercel.app/about";
+
+/* 05~08 쇼케이스 — 좌측 본문 + 우측 실제 캡처(스크롤 창). 움직임은 하단 라이브에서. */
+const SHOWCASE = [
+  {
+    label: "05 FOUR SEASONS",
+    title: "계절의 흐름을 따라, 차와 함께.",
+    body: "봄·여름·가을·겨울, 계절마다 다른 차와 시간을 담았습니다. 잉크가 번지듯 떠오르는 이미지와 스스로 그려지는 붓선으로, 사계절의 결을 한 흐름으로 이었습니다.",
+    images: [`${IMG}/season-tea/2.png`],
+    live: "https://cheongyeon-amber.vercel.app/seasontea",
+  },
+  {
+    label: "06 SIGNATURE",
+    title: "스크롤에 따라, 계절의 차가 궤도를 돕니다.",
+    body: "보이지 않는 원형 궤도 위의 찻사발이 스크롤에 맞춰 회전하며, 계절의 차를 하나씩 중앙으로 데려옵니다. 청연에서 가장 공들인 시그니처 화면입니다.",
+    images: [`${IMG}/main/6.png`],
+    live: "https://cheongyeon-amber.vercel.app/",
+    paper: true,
+  },
+  {
+    label: "07 SPACE",
+    title: "머무는 공간 — 차정과 다실.",
+    body: "쌓여 있던 카드가 중앙에서 부채꼴로 펼쳐지며 공간을 소개합니다. 차를 발견하는 자리부터 배움의 자리까지, 머무는 시간을 공간으로 풀었습니다.",
+    images: [
+      `${IMG}/space/kv.png`,
+      `${IMG}/space/2.png`,
+      `${IMG}/space/3.png`,
+      `${IMG}/space/4.png`,
+      `${IMG}/space/5.png`,
+      `${IMG}/space/6.png`,
+      `${IMG}/space/7.png`,
+    ],
+    live: "https://cheongyeon-amber.vercel.app/space",
+  },
+  {
+    label: "08 PHILOSOPHY",
+    title: "청연이 담은 다섯 가지 마음.",
+    body: "고요함·기다림·자연·인연·여운. 스크롤이 닿으면 두루마리가 하나씩 펼쳐지며 청연의 철학을 전합니다.",
+    images: [
+      `${IMG}/brand%20story/kv.png`,
+      `${IMG}/brand%20story/2.png`,
+      `${IMG}/brand%20story/3.png`,
+      `${IMG}/brand%20story/4.png`,
+      `${IMG}/brand%20story/5.png`,
+    ],
+    live: "https://cheongyeon-amber.vercel.app/about",
+    paper: true,
+  },
+];
 
 /* 10 재방문 흐름 */
 const FLOW = ["발견", "체험", "몰입", "힐링", "기록", "재방문"];
@@ -61,6 +104,61 @@ function ChapLabel({
     <p className={[styles.chap, light ? styles.chapLight : ""].filter(Boolean).join(" ")}>
       {children}
     </p>
+  );
+}
+
+/** 톤핏식 쇼케이스 — 좌측 본문 + 우측 실제 캡처(브라우저 창, 내부 스크롤) */
+function Showcase({
+  label,
+  title,
+  body,
+  images,
+  live,
+  paper,
+}: {
+  label: string;
+  title: string;
+  body: string;
+  images: string[];
+  live?: string;
+  paper?: boolean;
+}) {
+  return (
+    <section
+      className={[styles.section, paper ? styles.paper : "", styles.showSec]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div className={styles.show}>
+        <Reveal className={styles.showText}>
+          <ChapLabel>{label}</ChapLabel>
+          <h2 className={styles.showTitle}>{title}</h2>
+          <p className={styles.showBody}>{body}</p>
+          {live && (
+            <a
+              className={styles.showLink}
+              href={live}
+              target="_blank"
+              rel="noreferrer"
+            >
+              움직이는 실제 화면 보기 ↗
+            </a>
+          )}
+        </Reveal>
+        <Reveal delay={0.08} className={styles.showFrame}>
+          <div className={styles.showBar}>
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className={styles.showScroll}>
+            {images.map((src, i) => (
+              <Img key={i} className={styles.showImg} src={src} alt={title} />
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 
@@ -172,68 +270,10 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
           </InkReveal>
         </section>
 
-        {/* ══ 05 쇼케이스 A · 사계절 (잉크 번짐 + 붓선 재현) ══ */}
-        <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <ChapLabel>05 FOUR SEASONS</ChapLabel>
-            <h2 className={styles.h}>계절의 흐름을 따라, 차와 함께.</h2>
-            <p className={styles.p}>
-              봄·여름·가을·겨울, 계절마다 다른 차와 시간을 담았습니다. 아래 화면은
-              스크롤에 따라 잉크가 번지듯 떠오르고, 붓선이 스스로 그려집니다.
-            </p>
-            <div className={styles.brushWrap}>
-              <BrushDraw />
-            </div>
-          </Reveal>
-          <InkReveal className={styles.tallFrame}>
-            <Img
-              className={styles.tallImg}
-              src={`${IMG}/season-tea/2.png`}
-              alt="사계절 다도 — 봄·여름·가을·겨울"
-            />
-          </InkReveal>
-          <p className={styles.fx}>적용 효과 · 잉크 번짐 리빌 + 스스로 그려지는 붓선(SVG mask)</p>
-        </section>
-
-        {/* ══ 06 시그니처 · 찻사발 오빗 (실제 사이트 라이브) ══ */}
-        <section className={`${styles.section} ${styles.paper}`}>
-          <Reveal className={styles.head}>
-            <ChapLabel>06 SIGNATURE</ChapLabel>
-            <h2 className={styles.h}>스크롤에 따라, 계절의 차가 궤도를 돕니다.</h2>
-            <p className={styles.p}>
-              보이지 않는 원형 궤도 위의 찻사발이 스크롤에 맞춰 회전하며 계절의
-              차를 하나씩 중앙으로 데려옵니다. 아래에서 실제 화면을 직접
-              스크롤해 볼 수 있습니다.
-            </p>
-          </Reveal>
-          <LiveFrame url={LIVE_ORBIT} />
-        </section>
-
-        {/* ══ 07 공간 (실제 사이트 라이브) ══ */}
-        <section className={styles.section}>
-          <Reveal className={styles.head}>
-            <ChapLabel>07 SPACE</ChapLabel>
-            <h2 className={styles.h}>머무는 공간 — 차정과 다실.</h2>
-            <p className={styles.p}>
-              쌓여 있던 카드가 중앙에서 부채꼴로 펼쳐지며 공간을 소개합니다.
-              아래 실제 화면을 스크롤하면 그대로 확인할 수 있습니다.
-            </p>
-          </Reveal>
-          <LiveFrame url={LIVE_SPACE} />
-        </section>
-
-        {/* ══ 08 철학 (실제 사이트 라이브) ══ */}
-        <section className={`${styles.section} ${styles.paper}`}>
-          <Reveal className={styles.head}>
-            <ChapLabel>08 PHILOSOPHY</ChapLabel>
-            <h2 className={styles.h}>청연이 담은 다섯 가지 마음.</h2>
-            <p className={styles.p}>
-              스크롤이 닿으면 두루마리가 하나씩 펼쳐지며 청연의 철학을
-              전합니다. 아래 실제 화면에서 직접 확인해 보세요.
-            </p>
-          </Reveal>
-          <LiveFrame url={LIVE_ABOUT} />
-        </section>
+        {/* ══ 05~08 쇼케이스 (톤핏식 좌측 본문 + 우측 실제 캡처) ══ */}
+        {SHOWCASE.map((s) => (
+          <Showcase key={s.label} {...s} />
+        ))}
 
         {/* ══ 10 재방문 흐름 ══ */}
         <section
@@ -302,6 +342,16 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
         </section>
 
         {/* ══ 12 라이브 (전체 사이트) ══ */}
+        <section className={styles.section}>
+          <Reveal className={styles.head}>
+            <ChapLabel>12 LIVE SITE</ChapLabel>
+            <h2 className={styles.h}>전체 화면을 직접 둘러보세요.</h2>
+            <p className={styles.p}>
+              PC·모바일을 전환하며 실제 애니메이션과 반응형을 확인할 수
+              있습니다.
+            </p>
+          </Reveal>
+        </section>
         <div className={styles.liveWrap}>
           <LiveSitePreview url={LIVE_URL} />
         </div>
