@@ -3,12 +3,87 @@ import styles from "./CheongyeonDetail.module.css";
 
 /**
  * 청연(靑淵) 케이스 스터디 상세.
- * 직접 디자인한 케이스 스터디 슬라이드(1~9)를 순서대로 풀폭으로 이어붙여 보여주고,
- * 맨 하단에 실제 배포 사이트 라이브 미리보기를 둔다.
+ * 직접 디자인한 슬라이드(1~7, 9)는 그리드 폭 이미지로, 공간(Solution 02) 섹션은
+ * 텍스트가 깨지지 않도록 코드로 재현(브라우저 목업 + space full.png + 주석).
+ * 맨 하단에 실제 배포 사이트 라이브 미리보기.
  */
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
-const SLIDES = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const SPACE_FULL = `${IMG}/space/space%20full.png`;
+
+/* 공간 섹션 주석 (목업 세로 위치 %) */
+const SPACE_NOTES = [
+  {
+    top: "3%",
+    head: "공간의 철학을 먼저 전달",
+    text: "시설 정보를 나열하기 전, ‘머무름’이라는 메시지로 청연이 제안하는 공간 경험을 먼저 이해하도록 구성했습니다.",
+  },
+  {
+    top: "24%",
+    head: "",
+    text: "기본 상태에서는 공간의 분위기를 보여주고, 호버 시에는 위치와 특징 정보를 추가로 제공합니다.",
+  },
+  {
+    top: "51%",
+    head: "스크롤로 펼쳐지는 공간 경험",
+    text: "한 장의 대표 이미지가 네 개의 공간 카드로 펼쳐지며, 머무름과 배움의 공간을 순차적으로 탐색하도록 설계했습니다.",
+  },
+  {
+    top: "80%",
+    head: "공간을 선택하며 이해하는 인터랙션",
+    text: "평면도 안의 번호를 선택하면 해당 공간의 이미지와 설명이 즉시 변경되어 청연 본점의 구성과 분위기를 자연스럽게 이해할 수 있도록 설계했습니다.",
+  },
+];
+
+function Slide({ n }: { n: number }) {
+  return (
+    <img
+      className={styles.slide}
+      src={`${IMG}/${n}.png`}
+      alt={`청연 케이스 스터디 ${n}`}
+      loading={n <= 2 ? "eager" : "lazy"}
+    />
+  );
+}
+
+/** 공간 섹션 — 8.png를 코드로 재현 (텍스트 크리스프) */
+function SpaceSection() {
+  return (
+    <section className={styles.spaceSec}>
+      <div className={styles.spaceHead}>
+        <p className={styles.spaceLabel}>Solution 02</p>
+        <h2 className={styles.spaceTitle}>
+          차를 발견하고 배우며 머무는
+          <br />
+          청연의 공간을 담았어요
+        </h2>
+      </div>
+
+      <div className={styles.spaceStage}>
+        <div className={styles.spaceMock}>
+          <div className={styles.spaceBar}>
+            <span />
+            <span />
+            <span />
+          </div>
+          <img
+            className={styles.spaceImg}
+            src={SPACE_FULL}
+            alt="청연 공간 소개 페이지"
+            loading="lazy"
+          />
+        </div>
+
+        {SPACE_NOTES.map((note, i) => (
+          <div key={i} className={styles.spaceNote} style={{ top: note.top }}>
+            {note.head && <p className={styles.noteHead}>{note.head}</p>}
+            <p className={styles.noteText}>{note.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
   return (
@@ -23,15 +98,14 @@ export function CheongyeonDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
-        {SLIDES.map((n) => (
-          <img
-            key={n}
-            className={styles.slide}
-            src={`${IMG}/${n}.png`}
-            alt={`청연 케이스 스터디 ${n}`}
-            loading={n <= 2 ? "eager" : "lazy"}
-          />
+        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <Slide key={n} n={n} />
         ))}
+
+        {/* 8번 공간 섹션 — 코드 재현 */}
+        <SpaceSection />
+
+        <Slide n={9} />
 
         {/* 실제 배포 사이트 라이브 미리보기 */}
         <div className={styles.liveWrap}>

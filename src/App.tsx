@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -14,6 +14,16 @@ type DetailKind = "tonefit" | "cheongyeon";
 
 export default function App() {
   const [detail, setDetail] = useState<DetailKind | null>(null);
+
+  // 상세 오버레이가 열리면 배경(body) 스크롤을 잠가 스크롤바가 하나만 보이게 한다.
+  useEffect(() => {
+    if (!detail) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [detail]);
 
   return (
     <>

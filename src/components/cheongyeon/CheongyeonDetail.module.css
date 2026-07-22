@@ -26,24 +26,148 @@
   transform: scale(1.08);
 }
 
-/* 슬라이드를 가운데 정렬해 풀폭으로 이어붙임 */
 .page {
-  max-width: 1600px;
-  margin: 0 auto;
   background: #fff;
   font-family: var(--font-sans);
 }
 
-/* 1~9 슬라이드 — 간격 없이 딱 붙여서 */
+/* 1~9 슬라이드 — 그리드 폭(업스케일 없이), 세로로 딱 붙여서 */
 .slide {
   display: block;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: auto;
   vertical-align: top;
 }
 
+/* ══ 공간(Solution 02) — 코드 재현 ══ */
+.spaceSec {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 48px);
+}
+.spaceHead {
+  text-align: center;
+  margin-bottom: clamp(44px, 6vw, 72px);
+}
+.spaceLabel {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1c3a2b;
+  margin-bottom: 18px;
+}
+.spaceTitle {
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #1c3a2b;
+  word-break: keep-all;
+}
+
+.spaceStage {
+  position: relative;
+}
+.spaceMock {
+  width: 68%;
+  margin-left: 32%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 70px -34px rgba(35, 35, 35, 0.35);
+  border: 1px solid #eceae4;
+}
+.spaceBar {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e4e1da;
+}
+.spaceBar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #cfccc5;
+}
+.spaceBar span:nth-child(1) { background: #ff5f57; }
+.spaceBar span:nth-child(2) { background: #febc2e; }
+.spaceBar span:nth-child(3) { background: #28c840; }
+.spaceImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 좌측 주석 + 점선 연결 */
+.spaceNote {
+  position: absolute;
+  left: 0;
+  width: 27%;
+  padding-right: 8px;
+  text-align: right;
+}
+.spaceNote::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: 8px;
+  width: 30px;
+  border-top: 1px dashed rgba(35, 35, 35, 0.35);
+}
+.spaceNote::before {
+  content: "";
+  position: absolute;
+  right: -38px;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #1c3a2b;
+}
+.noteHead {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #1c3a2b;
+  margin-bottom: 9px;
+  word-break: keep-all;
+}
+.noteText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #4c4948;
+  word-break: keep-all;
+}
+
 .liveWrap {
   margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .spaceMock {
+    width: 100%;
+    margin-left: 0;
+  }
+  .spaceStage {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .spaceNote {
+    position: static;
+    width: 100%;
+    padding-right: 0;
+    text-align: left;
+  }
+  .spaceNote::before,
+  .spaceNote::after {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
