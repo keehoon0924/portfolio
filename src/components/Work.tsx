@@ -7,7 +7,7 @@ import styles from "./Work.module.css";
  * 상단은 아웃라인 대형 타이포 "WORK →".
  * TONE:FIT은 데스크탑+휴대폰 목업 조합, 그 외는 단일 스크린샷.
  */
-type DetailKind = "tonefit" | "cheongyeon" | "onlyeye";
+type DetailKind = "tonefit" | "cheongyeon" | "onlyeye" | "venta";
 
 type Project = {
   title: string;
@@ -21,6 +21,8 @@ type Project = {
   link?: string;
   /** 클릭 시 열 상세 오버레이 종류 */
   detail?: DetailKind;
+  /** 커버 이미지 정렬(세로로 긴 이미지는 상단 기준) */
+  coverTop?: boolean;
   /** 준비 중(추가 예정) 카드 */
   soon?: boolean;
 };
@@ -45,10 +47,11 @@ const projects: Project[] = [
     detail: "onlyeye",
   },
   {
-    title: "카드 뉴스",
-    tags: "나중에 추가 예정, 수정 중입니다.",
-    img: "",
-    soon: true,
+    title: "VENTA",
+    tags: "Web | 전체 페이지 디자인",
+    imgPath: "/assets/venta/full%20page/main.png",
+    detail: "venta",
+    coverTop: true,
   },
 ];
 
@@ -113,6 +116,7 @@ function ProjectCard({
         src={project.imgPath ?? `/assets/images/${project.img}`}
         alt={project.title}
         loading="lazy"
+        style={project.coverTop ? { objectPosition: "top" } : undefined}
         onError={() => setBroken(true)}
       />
     );
