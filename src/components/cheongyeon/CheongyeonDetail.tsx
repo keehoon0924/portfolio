@@ -28,7 +28,7 @@ const SPACE_NOTES = [
     pair: [SPACE_1, SPACE_2] as [string, string],
   },
   {
-    top: "46%",
+    top: "82%",
     head: "스크롤로 펼쳐지는 공간 경험",
     text: "한 장의 대표 이미지가 네 개의 공간 카드로 펼쳐지며, 머무름과 배움의 공간을 순차적으로 탐색하도록 설계했습니다.",
   },
