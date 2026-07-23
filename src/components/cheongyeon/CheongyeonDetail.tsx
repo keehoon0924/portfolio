@@ -10,28 +10,33 @@ import styles from "./CheongyeonDetail.module.css";
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
 const SPACE_FULL = `${IMG}/space/space%20full.png`;
+const SPACE_1 = `${IMG}/space/space%201.png`; // 호버 전
+const SPACE_2 = `${IMG}/space/space%202.png`; // 호버 후
+const SPACE_3 = `${IMG}/space/space%203.png`; // 평면도 클릭 후
 
 /* 공간 섹션 주석 (목업 세로 위치 %) */
 const SPACE_NOTES = [
   {
-    top: "3%",
+    top: "4%",
     head: "공간의 철학을 먼저 전달",
     text: "시설 정보를 나열하기 전, ‘머무름’이라는 메시지로 청연이 제안하는 공간 경험을 먼저 이해하도록 구성했습니다.",
   },
   {
-    top: "24%",
+    top: "15%",
     head: "",
     text: "기본 상태에서는 공간의 분위기를 보여주고, 호버 시에는 위치와 특징 정보를 추가로 제공합니다.",
+    pair: [SPACE_1, SPACE_2] as [string, string],
   },
   {
-    top: "51%",
+    top: "46%",
     head: "스크롤로 펼쳐지는 공간 경험",
     text: "한 장의 대표 이미지가 네 개의 공간 카드로 펼쳐지며, 머무름과 배움의 공간을 순차적으로 탐색하도록 설계했습니다.",
   },
   {
-    top: "80%",
+    top: "92%",
     head: "공간을 선택하며 이해하는 인터랙션",
     text: "평면도 안의 번호를 선택하면 해당 공간의 이미지와 설명이 즉시 변경되어 청연 본점의 구성과 분위기를 자연스럽게 이해할 수 있도록 설계했습니다.",
+    after: SPACE_3,
   },
 ];
 
@@ -76,8 +81,22 @@ function SpaceSection() {
 
         {SPACE_NOTES.map((note, i) => (
           <div key={i} className={styles.spaceNote} style={{ top: note.top }}>
+            {"pair" in note && note.pair && (
+              <figure className={styles.hoverPair}>
+                <img src={note.pair[0]} alt="기본 상태" loading="lazy" />
+                <span className={styles.arrow} aria-hidden="true">
+                  →
+                </span>
+                <img src={note.pair[1]} alt="호버 상태" loading="lazy" />
+              </figure>
+            )}
             {note.head && <p className={styles.noteHead}>{note.head}</p>}
             <p className={styles.noteText}>{note.text}</p>
+            {"after" in note && note.after && (
+              <figure className={styles.afterShot}>
+                <img src={note.after} alt="선택(클릭) 후 상태" loading="lazy" />
+              </figure>
+            )}
           </div>
         ))}
       </div>

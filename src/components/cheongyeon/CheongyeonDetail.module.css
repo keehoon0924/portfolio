@@ -144,6 +144,44 @@
   word-break: keep-all;
 }
 
+/* 호버 전/후 카드 쌍 */
+.hoverPair {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.hoverPair img {
+  width: 40%;
+  max-width: 118px;
+  height: auto;
+  display: block;
+  border-radius: 9px;
+  border: 2px solid #1c3a2b;
+  box-shadow: 0 8px 20px -12px rgba(35, 35, 35, 0.4);
+}
+.arrow {
+  flex: 0 0 auto;
+  color: #1c3a2b;
+  font-size: 15px;
+  font-weight: 700;
+}
+/* 클릭 후 이미지 */
+.afterShot {
+  margin: 14px 0 0;
+}
+.afterShot img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  border-radius: 9px;
+  border: 1px solid rgba(28, 58, 43, 0.28);
+  box-shadow: 0 10px 26px -16px rgba(35, 35, 35, 0.4);
+}
+
 .liveWrap {
   margin-top: 0;
 }
@@ -167,6 +205,16 @@
   .spaceNote::before,
   .spaceNote::after {
     display: none;
+  }
+  .hoverPair {
+    justify-content: flex-start;
+  }
+  .hoverPair img {
+    max-width: 140px;
+  }
+  .afterShot img {
+    margin-left: 0;
+    max-width: 360px;
   }
 }
 
