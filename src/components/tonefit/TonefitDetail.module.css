@@ -41,8 +41,117 @@
   vertical-align: top;
 }
 
+/* ══ main-pc 롱 캡처 + 좌측 주석 ══ */
+.mainSec {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 48px);
+}
+.mainStage {
+  position: relative;
+}
+.mainMock {
+  width: 68%;
+  margin-left: 32%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 70px -34px rgba(30, 32, 34, 0.35);
+  border: 1px solid #ece9e4;
+}
+.mainBar {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e4e1da;
+}
+.mainBar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #cfccc5;
+}
+.mainBar span:nth-child(1) { background: #ff5f57; }
+.mainBar span:nth-child(2) { background: #febc2e; }
+.mainBar span:nth-child(3) { background: #28c840; }
+.mainImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mainNote {
+  position: absolute;
+  left: 0;
+  width: 27%;
+  padding-right: 8px;
+  text-align: right;
+}
+.mainNote::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: 10px;
+  width: 30px;
+  border-top: 1px dashed rgba(212, 115, 74, 0.5);
+}
+.mainNote::before {
+  content: "";
+  position: absolute;
+  right: -38px;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #d4734a;
+}
+.mainNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #d4734a;
+  margin-bottom: 6px;
+}
+.mainNoteHead {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #1e2022;
+  margin-bottom: 9px;
+}
+.mainNoteText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #4c4948;
+  word-break: keep-all;
+}
+
 .liveWrap {
   margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .mainMock {
+    width: 100%;
+    margin-left: 0;
+  }
+  .mainStage {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .mainNote {
+    position: static;
+    width: 100%;
+    padding-right: 0;
+    text-align: left;
+  }
+  .mainNote::before,
+  .mainNote::after {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

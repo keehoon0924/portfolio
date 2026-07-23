@@ -9,6 +9,35 @@ import styles from "./TonefitDetail.module.css";
 const IMG = "/assets/tonefit/new";
 const LIVE_URL = "https://ad-portfolio-tonefitcom.netlify.app";
 const SLIDES = [1, 2, 3, 4, 5, 6, 7];
+const MAIN_PC = `${IMG}/main-pc.png`;
+
+/* main-pc 롱 캡처 주석 (세로 위치 %) — 섹션에 맞춰 배치 */
+const MAIN_NOTES = [
+  {
+    top: "15%",
+    num: "02",
+    head: "Brand Identity",
+    text: "TONE FIT은 개인의 고유한 톤(TONE)과 그에 맞는 촬영 환경의 조화(FIT)를 중심에 둡니다. 단순한 촬영 공간을 넘어, 사용자에게 더 자연스럽고 어울리는 결과를 제안합니다.",
+  },
+  {
+    top: "30%",
+    num: "03",
+    head: "AI Smart Tone Finder",
+    text: "기존 포토부스가 사용자의 선택에 의존했다면, TONE FIT은 30초 AI 분석으로 사용자의 톤을 이해하고 맞춤 촬영 경험으로 연결합니다. 브랜드의 차별화된 기술을 가장 직접적으로 보여주는 핵심 기능입니다.",
+  },
+  {
+    top: "40%",
+    num: "04",
+    head: "Personal Background Matching",
+    text: "AI 분석 결과를 실제 촬영 환경에 반영해 사용자의 톤에 맞는 배경 조합을 제안합니다. 이를 통해 보다 자연스럽고 정돈된 결과를 완성합니다.",
+  },
+  {
+    top: "47%",
+    num: "05",
+    head: "Pet-Friendly Experience",
+    text: "반려동물과 함께하는 촬영으로 콘텐츠의 확장 가능성을 보여줍니다. 일반 고객을 넘어 반려인까지 브랜드 접점을 넓히며, 사람과 반려동물이 함께 기록하는 경험을 제안합니다.",
+  },
+];
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
   return (
@@ -32,6 +61,36 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             loading={n <= 2 ? "eager" : "lazy"}
           />
         ))}
+
+        {/* main-pc 롱 캡처 + 좌측 주석 (청연 방식) */}
+        <section className={styles.mainSec}>
+          <div className={styles.mainStage}>
+            <div className={styles.mainMock}>
+              <div className={styles.mainBar}>
+                <span />
+                <span />
+                <span />
+              </div>
+              <img
+                className={styles.mainImg}
+                src={MAIN_PC}
+                alt="TONE:FIT 메인 페이지"
+                loading="lazy"
+              />
+            </div>
+            {MAIN_NOTES.map((note) => (
+              <div
+                key={note.num}
+                className={styles.mainNote}
+                style={{ top: note.top }}
+              >
+                <p className={styles.mainNum}>{note.num}</p>
+                <p className={styles.mainNoteHead}>{note.head}</p>
+                <p className={styles.mainNoteText}>{note.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* 실제 배포 사이트 라이브 미리보기 */}
         <div className={styles.liveWrap}>
