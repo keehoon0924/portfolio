@@ -7,7 +7,7 @@ import styles from "./Work.module.css";
  * 상단은 아웃라인 대형 타이포 "WORK →".
  * TONE:FIT은 데스크탑+휴대폰 목업 조합, 그 외는 단일 스크린샷.
  */
-type DetailKind = "tonefit" | "cheongyeon";
+type DetailKind = "tonefit" | "cheongyeon" | "onlyeye";
 
 type Project = {
   title: string;
@@ -39,10 +39,10 @@ const projects: Project[] = [
     detail: "cheongyeon",
   },
   {
-    title: "상세 페이지",
-    tags: "나중에 추가 예정, 수정 중입니다.",
-    img: "",
-    soon: true,
+    title: "랜딩 페이지",
+    tags: "Landing Page | 디자인 · 퍼블리싱",
+    imgPath: "/assets/only%20eye/kv.png",
+    detail: "onlyeye",
   },
   {
     title: "카드 뉴스",

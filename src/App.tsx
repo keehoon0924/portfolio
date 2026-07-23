@@ -9,8 +9,9 @@ import { Contact } from "./components/Contact";
 import { WipPopup } from "./components/WipPopup";
 import { TonefitDetail } from "./components/tonefit/TonefitDetail";
 import { CheongyeonDetail } from "./components/cheongyeon/CheongyeonDetail";
+import { OnlyeyeDetail } from "./components/onlyeye/OnlyeyeDetail";
 
-type DetailKind = "tonefit" | "cheongyeon";
+type DetailKind = "tonefit" | "cheongyeon" | "onlyeye";
 
 export default function App() {
   const [detail, setDetail] = useState<DetailKind | null>(null);
@@ -41,6 +42,9 @@ export default function App() {
       )}
       {detail === "cheongyeon" && (
         <CheongyeonDetail onClose={() => setDetail(null)} />
+      )}
+      {detail === "onlyeye" && (
+        <OnlyeyeDetail onClose={() => setDetail(null)} />
       )}
       <WipPopup />
     </>

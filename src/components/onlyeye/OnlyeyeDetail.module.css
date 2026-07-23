@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 110;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #1e2022;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+.close:hover {
+  transform: scale(1.08);
+}
+
+.page {
+  background: #fff;
+  font-family: var(--font-sans);
+}
+
+/* 미리보기 3장 — 간격을 둔 갤러리, 가운데 정렬 */
+.previews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: clamp(56px, 8vw, 104px) clamp(16px, 4vw, 40px);
+}
+.preview {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 30px 70px -34px rgba(30, 32, 34, 0.32);
+}
+
+/* 연속 디자인 페이지 — 간격 없이 이어 붙임, 가운데 정렬 */
+.design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: clamp(48px, 7vw, 96px);
+}
+.section {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  vertical-align: top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .close {
+    transition: none;
+  }
+}
