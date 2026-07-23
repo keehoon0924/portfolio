@@ -37,6 +37,18 @@ const MAIN_NOTES = [
     head: "Pet-Friendly Experience",
     text: "반려동물과 함께하는 촬영으로 콘텐츠의 확장 가능성을 보여줍니다. 일반 고객을 넘어 반려인까지 브랜드 접점을 넓히며, 사람과 반려동물이 함께 기록하는 경험을 제안합니다.",
   },
+  {
+    top: "56%",
+    num: "06",
+    head: "Limited Collab Frame",
+    text: "매달 새롭게 교체되는 IP 콜라보 프레임으로 콘텐츠에 신선함을 더합니다. 방문할 때마다 다른 경험을 제공해, 한 번 온 고객이 다시 찾을 이유를 만듭니다.",
+  },
+  {
+    top: "67%",
+    num: "07",
+    head: "Organic Virality",
+    text: "촬영 경험이 자연스럽게 공유되도록 바이럴 구조를 설계했습니다. 사용자가 직접 남긴 콘텐츠가 브랜드 접점을 넓히고, 신뢰를 자연스럽게 쌓아가도록 구성했습니다.",
+  },
 ];
 
 export function TonefitDetail({ onClose }: { onClose: () => void }) {
@@ -52,15 +64,17 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
       </button>
 
       <div className={styles.page}>
-        {SLIDES.map((n) => (
-          <img
-            key={n}
-            className={styles.slide}
-            src={`${IMG}/${n}.png`}
-            alt={`TONE:FIT 케이스 스터디 ${n}`}
-            loading={n <= 2 ? "eager" : "lazy"}
-          />
-        ))}
+        <div className={styles.slides}>
+          {SLIDES.map((n) => (
+            <img
+              key={n}
+              className={styles.slide}
+              src={`${IMG}/${n}.png`}
+              alt={`TONE:FIT 케이스 스터디 ${n}`}
+              loading={n <= 2 ? "eager" : "lazy"}
+            />
+          ))}
+        </div>
 
         {/* main-pc 롱 캡처 + 좌측 주석 (청연 방식) */}
         <section className={styles.mainSec}>
