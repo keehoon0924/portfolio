@@ -133,8 +133,79 @@
   word-break: keep-all;
 }
 
+/* ══ 마무리 + 라이브 진입 브릿지 (청연과 동일 구성) ══ */
+.outro {
+  text-align: center;
+  padding: clamp(84px, 12vw, 168px) clamp(24px, 6vw, 60px) clamp(52px, 7vw, 88px);
+  background: linear-gradient(180deg, #ffffff 0%, #faf3ef 55%, #f4e6de 100%);
+  word-break: keep-all;
+}
+.outroLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #d4734a;
+  margin-bottom: 26px;
+}
+.outroTitle {
+  font-size: clamp(24px, 3.4vw, 40px);
+  font-weight: 800;
+  line-height: 1.42;
+  letter-spacing: -0.015em;
+  color: #1e2022;
+}
+.outroLive {
+  margin-top: 46px;
+}
+.outroTag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: #d4734a;
+  background: rgba(212, 115, 74, 0.1);
+  padding: 7px 15px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.outroLine {
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 600;
+  color: #1e2022;
+}
+.outroSub {
+  margin-top: 9px;
+  font-size: 13px;
+  color: #a9857a;
+}
+.scrollCue {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 48px auto 0;
+  color: #d4734a;
+  animation: scrollCueBounce 1.8s ease-in-out infinite;
+}
+@keyframes scrollCueBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
 .liveWrap {
   margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollCue {
+    animation: none;
+  }
 }
 
 @media (max-width: 900px) {

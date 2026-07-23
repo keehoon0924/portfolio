@@ -106,6 +106,37 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
+        {/* 마무리 + 라이브 진입 안내 (섹션 → iframe 전환 브릿지) */}
+        <section className={styles.outro}>
+          <p className={styles.outroLabel}>END OF CASE STUDY</p>
+          <h2 className={styles.outroTitle}>
+            기획부터 화면까지,
+            <br />
+            TONE:FIT을 만든 과정이었습니다.
+          </h2>
+          <div className={styles.outroLive}>
+            <span className={styles.outroTag}>LIVE SITE</span>
+            <p className={styles.outroLine}>
+              이제, 실제로 움직이는 화면을 직접 둘러보세요.
+            </p>
+            <p className={styles.outroSub}>PC · 모바일 지원</p>
+          </div>
+          <svg
+            className={styles.scrollCue}
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 9l6 6 6-6"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </section>
+
         {/* 실제 배포 사이트 라이브 미리보기 */}
         <div className={styles.liveWrap}>
           <LiveSitePreview url={LIVE_URL} />
