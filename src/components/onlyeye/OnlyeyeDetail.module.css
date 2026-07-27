@@ -42,7 +42,7 @@
 .preview {
   display: block;
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--detail-max);
   height: auto;
   border-radius: 12px;
   box-shadow: 0 30px 70px -34px rgba(30, 32, 34, 0.32);
@@ -58,7 +58,7 @@
 .section {
   display: block;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--detail-max);
   height: auto;
   vertical-align: top;
 }

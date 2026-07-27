@@ -34,6 +34,11 @@
   --pad-x: 30px;
   --pad-x-wide: 48px;
 
+  /* 상세(케이스 스터디) 그리드 — 12컬럼 · 고정 거터 24px · 콘텐츠 폭 1440px
+     (1920 화면 기준 좌우 여백 240px, 컬럼 1개 = (1440 − 24×11)/12 = 98px) */
+  --detail-max: 1440px;
+  --detail-gutter: 24px;
+
   /* Radius */
   --r-card: 12px;
   --r-panel: 16px;

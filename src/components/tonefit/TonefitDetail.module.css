@@ -42,13 +42,13 @@
 .slide {
   display: block;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--detail-max);
   height: auto;
 }
 
 /* ══ main-pc 롱 캡처 + 좌측 주석 ══ */
 .mainSec {
-  max-width: 1200px;
+  max-width: var(--detail-max);
   margin: 0 auto;
   padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 48px);
 }
@@ -135,7 +135,7 @@
 
 /* ══ 영상 파트 — 상단 가운데 텍스트 + 그리드 폭 영상 ══ */
 .videoSec {
-  max-width: 1200px;
+  max-width: var(--detail-max);
   margin: 0 auto;
   padding: clamp(56px, 8vw, 104px) clamp(20px, 4vw, 48px);
 }
@@ -181,7 +181,7 @@
 
 /* ══ SNS 마케팅 ══ */
 .snsSec {
-  max-width: 1200px;
+  max-width: var(--detail-max);
   margin: 0 auto;
   padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 48px)
     clamp(56px, 8vw, 104px);
@@ -209,7 +209,7 @@
 .snsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px 48px;
+  gap: var(--detail-gutter);
   align-items: start;
 }
 .snsCard {
