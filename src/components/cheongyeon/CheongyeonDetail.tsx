@@ -46,12 +46,14 @@ const SPACE_NOTES = [
 
 function Slide({ n }: { n: number }) {
   return (
-    <img
-      className={styles.slide}
-      src={`${IMG}/${n}.png`}
-      alt={`청연 케이스 스터디 ${n}`}
-      loading={n <= 2 ? "eager" : "lazy"}
-    />
+    <section className={styles.slideSec}>
+      <img
+        className={styles.slide}
+        src={`${IMG}/${n}.png`}
+        alt={`청연 케이스 스터디 ${n}`}
+        loading={n <= 2 ? "eager" : "lazy"}
+      />
+    </section>
   );
 }
 
