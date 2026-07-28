@@ -6,7 +6,6 @@ import { Tools } from "./components/Tools";
 import { Work } from "./components/Work";
 import { Closing } from "./components/Closing";
 import { Contact } from "./components/Contact";
-import { WipPopup } from "./components/WipPopup";
 import { TonefitDetail } from "./components/tonefit/TonefitDetail";
 import { CheongyeonDetail } from "./components/cheongyeon/CheongyeonDetail";
 import { OnlyeyeDetail } from "./components/onlyeye/OnlyeyeDetail";
@@ -48,7 +47,6 @@ export default function App() {
         <OnlyeyeDetail onClose={() => setDetail(null)} />
       )}
       {detail === "venta" && <VentaDetail onClose={() => setDetail(null)} />}
-      <WipPopup />
     </>
   );
 }
