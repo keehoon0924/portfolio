@@ -46,6 +46,51 @@
   vertical-align: top;
 }
 
+/* ══ 메인 페이지 쇼케이스 — 하늘 배경 위에 가운데 정렬 ══ */
+.showcase {
+  background: #f2f7fc url("/assets/venta/bg.png") top center / 100% auto no-repeat;
+  padding: clamp(56px, 7vw, 112px) clamp(20px, 4vw, 48px) clamp(72px, 9vw, 150px);
+  text-align: center;
+}
+.showcaseHead {
+  max-width: 640px;
+  margin: 0 auto clamp(36px, 5vw, 60px);
+}
+.showcaseLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: #5b6b7d;
+  margin-bottom: 18px;
+}
+.showcaseTitle {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #1a2430;
+  margin-bottom: 12px;
+}
+.showcaseSub {
+  font-size: 15px;
+  font-weight: 600;
+  color: #40566b;
+  margin-bottom: 18px;
+}
+.showcaseDesc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #5b6b7d;
+  word-break: keep-all;
+}
+.showcasePage {
+  display: block;
+  width: min(820px, 92%);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 40px 90px -45px rgba(28, 48, 78, 0.4);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .close {
     transition: none;
