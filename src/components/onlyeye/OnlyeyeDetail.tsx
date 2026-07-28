@@ -7,7 +7,7 @@ import styles from "./OnlyeyeDetail.module.css";
  *       하나의 연속된 디자인 페이지로 이어 붙임. 모두 그리드 폭 · 가운데 정렬.
  */
 const IMG = "/assets/only%20eye";
-const PREVIEWS = [1, 2, 4]; // go 폴더 미리보기 3장
+const PREVIEWS = [1, 5]; // go 폴더 미리보기 — 페르소나(2)·목업(4) 제거, 2번 자리에 5 배치
 const SECTIONS: (number | string)[] = [
   "kv",
   2,
