@@ -60,8 +60,7 @@ const MAIN_NOTES = [
     body: "페이지의 마지막에는 함께 달리는 사람들의 장면을 배치해 개별 상품의 소개를 넘어 지속적인 움직임이라는 VENTA의 브랜드 메시지를 다시 한번 강조했습니다.",
   },
 ];
-// 메인 페이지(main)는 아래 bg 쇼케이스로 별도 표현. 나머지는 순서대로 이어 붙임.
-// 각 페이지 위에 타이틀+서브타이틀(가운데 정렬)을 붙일 수 있음.
+// 메인 페이지(main)는 bg 쇼케이스로 별도 표현. all은 헤더 있는 페이지.
 type Page = { name: string; title?: string; desc?: string };
 const PAGES: Page[] = [
   {
@@ -69,13 +68,38 @@ const PAGES: Page[] = [
     title: "전체 상품 페이지",
     desc: "러닝·데일리·트레일 제품을 동일한 각도와 규칙적인 그리드로 배치해 형태와 컬러를 한눈에 비교하고, 카테고리와 정렬 기능을 통해 원하는 상품을 빠르게 탐색할 수 있도록 구성했습니다.",
   },
-  { name: "air" },
-  { name: "one" },
-  { name: "pro" },
-  { name: "login" },
-  { name: "join membership" },
-  { name: "enter membership information" },
-  { name: "membership registration completed" },
+];
+// PRODUCT DETAIL(air/one/pro) 다음의 멤버십 흐름 페이지들
+const PAGES_AFTER = [
+  "login",
+  "join membership",
+  "enter membership information",
+  "membership registration completed",
+];
+
+/* ── PRODUCT DETAIL — 대표 상세페이지(air, 크롭) + 우측 주석 3개 + 3제품 시스템 ── */
+const DETAIL = "/assets/venta/detail";
+const PD_ANNOS = [
+  {
+    top: "12%",
+    title: "01. 제품 이미지 영역",
+    body: "다양한 각도와 컬러 옵션을 통해 제품의 디테일과 특징을 직관적으로 전달합니다.",
+  },
+  {
+    top: "46%",
+    title: "02. 라이프스타일 착화 영역",
+    body: "실제 착용 컷을 통해 제품의 착화감과 스타일을 자연스럽게 보여줍니다.",
+  },
+  {
+    top: "68%",
+    title: "03. 캠페인 배너 영역",
+    body: "제품의 사용 맥락과 가치를 감성적인 비주얼로 전달하고, 하단 버튼으로 다음 제품 상세 페이지까지 자연스럽게 연결되도록 구성했습니다.",
+  },
+];
+const PD_CARDS = [
+  { badge: "A", name: "VENTA DAILY ONE", kw: "일상 · 가벼움 · 도심", imgs: ["daily-1", "daily-2"] },
+  { badge: "B", name: "VENTA TRAIL PRO", kw: "자연 · 접지력 · 아웃도어", imgs: ["trail-1", "trail-2"] },
+  { badge: "C", name: "VENTA AERO RUNNING", kw: "러닝 · 경량감 · 역동성", imgs: ["run-1", "run-2"] },
 ];
 
 export function VentaDetail({ onClose }: { onClose: () => void }) {
@@ -153,6 +177,78 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
                 loading="lazy"
               />
             </div>
+          ))}
+        </div>
+
+        {/* PRODUCT DETAIL — 대표 상세페이지 + 우측 주석 + 3제품 시스템 */}
+        <section className={styles.pd}>
+          <div className={styles.pdHeader}>
+            <h3 className={styles.pdTitle}>PRODUCT DETAIL</h3>
+            <p className={styles.pdDesc}>
+              VENTA의 상세 페이지 시스템은 일관된 구조 안에서
+              <br />
+              제품별 사용 맥락과 무드에 맞춘 비주얼을 유연하게 담아냅니다.
+            </p>
+          </div>
+
+          <div className={styles.pdStage}>
+            <img
+              className={styles.pdPage}
+              src={`${DETAIL}/rep.png`}
+              alt="VENTA 상세 페이지 대표 예시 (에어로 러닝)"
+              loading="lazy"
+            />
+            {PD_ANNOS.map((a, i) => (
+              <div key={i} className={styles.pdNote} style={{ top: a.top }}>
+                <p className={styles.pdNoteTitle}>{a.title}</p>
+                <p className={styles.pdNoteBody}>{a.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.pdSystem}>
+            <p className={styles.pdSystemTitle}>
+              3가지 제품, 하나의 일관된 상세 페이지 시스템
+            </p>
+            <div className={styles.pdCards}>
+              {PD_CARDS.map((c) => (
+                <div key={c.badge} className={styles.pdCard}>
+                  <div className={styles.pdCardHead}>
+                    <span className={styles.pdBadge}>{c.badge}</span>
+                    <div>
+                      <p className={styles.pdCardName}>{c.name}</p>
+                      <p className={styles.pdCardKw}>{c.kw}</p>
+                    </div>
+                  </div>
+                  <div className={styles.pdCardImgs}>
+                    {c.imgs.map((im) => (
+                      <img
+                        key={im}
+                        src={`${DETAIL}/${im}.png`}
+                        alt={`${c.name} 착화 컷`}
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className={styles.pdTagline}>
+              일관된 구조, 달라지는 무드. VENTA는 모든 발걸음의 순간을
+              디자인합니다.
+            </p>
+          </div>
+        </section>
+
+        <div className={styles.pageList}>
+          {PAGES_AFTER.map((name) => (
+            <img
+              key={name}
+              className={styles.pageShot}
+              src={`${DIR}/${encodeURIComponent(name)}.png`}
+              alt={`VENTA ${name}`}
+              loading="lazy"
+            />
           ))}
         </div>
       </div>
