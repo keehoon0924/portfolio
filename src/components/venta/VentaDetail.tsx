@@ -71,6 +71,7 @@ const PAGES: Page[] = [
   },
   { name: "air" },
   { name: "one" },
+  { name: "pro" },
   { name: "login" },
   { name: "join membership" },
   { name: "enter membership information" },
