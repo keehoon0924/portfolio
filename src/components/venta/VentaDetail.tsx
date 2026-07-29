@@ -288,6 +288,15 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
             ))}
           </div>
         </section>
+
+        {/* 마무리 — 브랜드 클로징 (담백한 한 줄) */}
+        <section className={styles.ventaOutro}>
+          <div className={styles.ventaOutroMark} />
+          <p className={styles.ventaOutroBrand}>OWN THE MOVE</p>
+          <p className={styles.ventaOutroSlogan}>
+            가볍게 움직이고, 더 멀리 나아가다.
+          </p>
+        </section>
       </div>
     </div>
   );
