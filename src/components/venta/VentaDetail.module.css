@@ -82,13 +82,63 @@
   color: #5b6b7d;
   word-break: keep-all;
 }
+/* 메인 페이지 이미지 + 좌우 교차 주석 스테이지 */
+.pageStage {
+  position: relative;
+  width: clamp(460px, 50vw, 720px);
+  margin: 0 auto;
+}
 .showcasePage {
   display: block;
-  width: min(820px, 92%);
+  width: 100%;
   height: auto;
-  margin: 0 auto;
   border-radius: 6px;
   box-shadow: 0 40px 90px -45px rgba(28, 48, 78, 0.4);
+}
+.note {
+  position: absolute;
+  width: clamp(200px, 18vw, 290px);
+}
+.noteRight {
+  left: 100%;
+  margin-left: clamp(20px, 2.5vw, 40px);
+  text-align: right;
+}
+.noteLeft {
+  right: 100%;
+  margin-right: clamp(20px, 2.5vw, 40px);
+  text-align: left;
+}
+.noteTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: #6d8194;
+  margin-bottom: 14px;
+  word-break: keep-all;
+}
+.noteBody {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #0a121a;
+  word-break: keep-all;
+}
+
+@media (max-width: 1024px) {
+  .pageStage {
+    width: 92%;
+  }
+  .note {
+    position: static;
+    width: 100%;
+    margin: 22px auto 0;
+    text-align: left;
+  }
+  .noteRight,
+  .noteLeft {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
