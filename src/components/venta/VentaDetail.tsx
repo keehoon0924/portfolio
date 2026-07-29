@@ -61,14 +61,20 @@ const MAIN_NOTES = [
   },
 ];
 // 메인 페이지(main)는 아래 bg 쇼케이스로 별도 표현. 나머지는 순서대로 이어 붙임.
-const ORDER = [
-  "all",
-  "air",
-  "one",
-  "login",
-  "join membership",
-  "enter membership information",
-  "membership registration completed",
+// 각 페이지 위에 타이틀+서브타이틀(가운데 정렬)을 붙일 수 있음.
+type Page = { name: string; title?: string; desc?: string };
+const PAGES: Page[] = [
+  {
+    name: "all",
+    title: "전체 상품 페이지",
+    desc: "러닝·데일리·트레일 제품을 동일한 각도와 규칙적인 그리드로 배치해 형태와 컬러를 한눈에 비교하고, 카테고리와 정렬 기능을 통해 원하는 상품을 빠르게 탐색할 수 있도록 구성했습니다.",
+  },
+  { name: "air" },
+  { name: "one" },
+  { name: "login" },
+  { name: "join membership" },
+  { name: "enter membership information" },
+  { name: "membership registration completed" },
 ];
 
 export function VentaDetail({ onClose }: { onClose: () => void }) {
@@ -131,14 +137,21 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
         </section>
 
         <div className={styles.pageList}>
-          {ORDER.map((name) => (
-            <img
-              key={name}
-              className={styles.pageShot}
-              src={`${DIR}/${encodeURIComponent(name)}.png`}
-              alt={`VENTA ${name}`}
-              loading="lazy"
-            />
+          {PAGES.map((pg) => (
+            <div key={pg.name} className={styles.pageBlock}>
+              {pg.title && (
+                <div className={styles.pageHead}>
+                  <h3 className={styles.pageTitle}>{pg.title}</h3>
+                  {pg.desc && <p className={styles.pageDesc}>{pg.desc}</p>}
+                </div>
+              )}
+              <img
+                className={styles.pageShot}
+                src={`${DIR}/${encodeURIComponent(pg.name)}.png`}
+                alt={`VENTA ${pg.name}`}
+                loading="lazy"
+              />
+            </div>
           ))}
         </div>
       </div>
