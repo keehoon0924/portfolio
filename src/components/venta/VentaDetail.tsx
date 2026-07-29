@@ -69,12 +69,32 @@ const PAGES: Page[] = [
     desc: "러닝·데일리·트레일 제품을 동일한 각도와 규칙적인 그리드로 배치해 형태와 컬러를 한눈에 비교하고, 카테고리와 정렬 기능을 통해 원하는 상품을 빠르게 탐색할 수 있도록 구성했습니다.",
   },
 ];
-// PRODUCT DETAIL(air/one/pro) 다음의 멤버십 흐름 페이지들
-const PAGES_AFTER = [
-  "login",
-  "join membership",
-  "enter membership information",
-  "membership registration completed",
+// 회원가입 여정 — 가로 4스텝 플로우 (썸네일은 CSS로 상단 클립)
+const FLOW = [
+  {
+    no: "01",
+    name: "로그인",
+    file: "login",
+    desc: "소셜 로그인으로 진입 장벽을 낮췄습니다.",
+  },
+  {
+    no: "02",
+    name: "회원가입",
+    file: "join membership",
+    desc: "가입 방식을 한 화면에서 선택하도록 구성했습니다.",
+  },
+  {
+    no: "03",
+    name: "정보 입력",
+    file: "enter membership information",
+    desc: "단계 표시로 남은 과정을 알려 이탈을 줄였습니다.",
+  },
+  {
+    no: "04",
+    name: "가입 완료",
+    file: "membership registration completed",
+    desc: "완료 후 추천 상품으로 쇼핑까지 연결했습니다.",
+  },
 ];
 
 /* ── PRODUCT DETAIL — 대표 상세페이지(air, 크롭) + 우측 주석 3개 + 3제품 시스템 ── */
@@ -233,17 +253,44 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        <div className={styles.pageList}>
-          {PAGES_AFTER.map((name) => (
-            <img
-              key={name}
-              className={styles.pageShot}
-              src={`${DIR}/${encodeURIComponent(name)}.png`}
-              alt={`VENTA ${name}`}
-              loading="lazy"
-            />
-          ))}
-        </div>
+        {/* 회원가입 여정 — 가로 4스텝 플로우 */}
+        <section className={styles.flow}>
+          <div className={styles.flowHead}>
+            <p className={styles.flowLabel}>MEMBERSHIP FLOW</p>
+            <h3 className={styles.flowTitle}>회원가입 여정</h3>
+            <p className={styles.flowDesc}>
+              가입 시작부터 완료까지의 흐름을 최소한의 단계로 설계해, 진입
+              장벽과 이탈을 줄이고 자연스럽게 첫 구매까지 이어지도록
+              구성했습니다.
+            </p>
+          </div>
+
+          <div className={styles.flowSteps}>
+            {FLOW.map((s, i) => (
+              <div key={s.file} className={styles.flowRow}>
+                <div className={styles.flowStep}>
+                  <div className={styles.flowStepHead}>
+                    <span className={styles.flowStepNo}>{s.no}</span>
+                    <span className={styles.flowStepName}>{s.name}</span>
+                  </div>
+                  <div className={styles.flowThumb}>
+                    <img
+                      src={`${DIR}/${encodeURIComponent(s.file)}.png`}
+                      alt={`VENTA ${s.name} 화면`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className={styles.flowStepDesc}>{s.desc}</p>
+                </div>
+                {i < FLOW.length - 1 && (
+                  <span className={styles.flowArrow} aria-hidden="true">
+                    →
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
