@@ -93,7 +93,7 @@ const FLOW = [
     no: "04",
     name: "가입 완료",
     file: "membership registration completed",
-    desc: "완료 후 추천 상품으로 쇼핑까지 연결했습니다.",
+    desc: "가입과 동시에 웰컴 쿠폰과 회원 혜택을 안내해 첫 구매로 자연스럽게 이어지도록 구성했습니다.",
   },
 ];
 
