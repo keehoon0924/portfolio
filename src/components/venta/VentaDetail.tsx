@@ -274,7 +274,11 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
                 </div>
                 <div className={styles.flowThumb}>
                   <img
-                    src={`${DIR}/${encodeURIComponent(s.file)}.png`}
+                    src={
+                      s.file === "login"
+                        ? `${DETAIL}/login-nf.png`
+                        : `${DIR}/${encodeURIComponent(s.file)}.png`
+                    }
                     alt={`VENTA ${s.name} 화면`}
                     loading="lazy"
                   />
