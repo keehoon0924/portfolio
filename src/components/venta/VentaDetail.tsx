@@ -130,11 +130,11 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        <div className={styles.design}>
+        <div className={styles.pageList}>
           {ORDER.map((name) => (
             <img
               key={name}
-              className={styles.section}
+              className={styles.pageShot}
               src={`${DIR}/${encodeURIComponent(name)}.png`}
               alt={`VENTA ${name}`}
               loading="lazy"

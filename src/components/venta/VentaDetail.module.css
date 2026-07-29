@@ -141,6 +141,28 @@
   }
 }
 
+/* main 아래 나머지 페이지 — main과 동일한 크기·가운데 정렬 */
+.pageList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 5vw, 72px);
+  padding: clamp(40px, 5vw, 72px) clamp(20px, 4vw, 48px) clamp(56px, 8vw, 104px);
+}
+.pageShot {
+  display: block;
+  width: clamp(460px, 50vw, 720px);
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 40px 90px -45px rgba(28, 48, 78, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .pageShot {
+    width: 92%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .close {
     transition: none;
