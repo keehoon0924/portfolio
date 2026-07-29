@@ -69,30 +69,30 @@ const PAGES: Page[] = [
     desc: "러닝·데일리·트레일 제품을 동일한 각도와 규칙적인 그리드로 배치해 형태와 컬러를 한눈에 비교하고, 카테고리와 정렬 기능을 통해 원하는 상품을 빠르게 탐색할 수 있도록 구성했습니다.",
   },
 ];
-// 회원가입 여정 — 가로 4스텝 플로우 (썸네일은 CSS로 상단 클립)
+// 회원가입 4스텝 플로우 — 각 화면의 핵심 영역만 크롭(detail/step-*.png)해서 글씨가 읽히게
 const FLOW = [
   {
     no: "01",
     name: "로그인",
-    file: "login",
+    file: "step-login",
     desc: "소셜 로그인으로 진입 장벽을 낮췄습니다.",
   },
   {
     no: "02",
     name: "회원가입",
-    file: "join membership",
+    file: "step-join",
     desc: "가입 방식을 한 화면에서 선택하도록 구성했습니다.",
   },
   {
     no: "03",
     name: "정보 입력",
-    file: "enter membership information",
+    file: "step-enter",
     desc: "단계 표시로 남은 과정을 알려 이탈을 줄였습니다.",
   },
   {
     no: "04",
     name: "가입 완료",
-    file: "membership registration completed",
+    file: "step-done",
     desc: "완료 후 추천 상품으로 쇼핑까지 연결했습니다.",
   },
 ];
@@ -257,7 +257,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
         <section className={styles.flow}>
           <div className={styles.flowHead}>
             <p className={styles.flowLabel}>MEMBERSHIP FLOW</p>
-            <h3 className={styles.flowTitle}>회원가입 여정</h3>
+            <h3 className={styles.flowTitle}>회원가입</h3>
             <p className={styles.flowDesc}>
               가입 시작부터 완료까지의 흐름을 최소한의 단계로 설계해, 진입
               장벽과 이탈을 줄이고 자연스럽게 첫 구매까지 이어지도록
@@ -275,7 +275,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
                   </div>
                   <div className={styles.flowThumb}>
                     <img
-                      src={`${DIR}/${encodeURIComponent(s.file)}.png`}
+                      src={`${DETAIL}/${s.file}.png`}
                       alt={`VENTA ${s.name} 화면`}
                       loading="lazy"
                     />
