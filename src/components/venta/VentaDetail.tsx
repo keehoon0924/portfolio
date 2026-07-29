@@ -69,30 +69,30 @@ const PAGES: Page[] = [
     desc: "러닝·데일리·트레일 제품을 동일한 각도와 규칙적인 그리드로 배치해 형태와 컬러를 한눈에 비교하고, 카테고리와 정렬 기능을 통해 원하는 상품을 빠르게 탐색할 수 있도록 구성했습니다.",
   },
 ];
-// 회원가입 4스텝 플로우 — 각 화면의 핵심 영역만 크롭(detail/step-*.png)해서 글씨가 읽히게
+// 회원가입 4스텝 — 2x2 그리드, 전체 페이지 원본 이미지 그대로 크게
 const FLOW = [
   {
     no: "01",
     name: "로그인",
-    file: "step-login",
+    file: "login",
     desc: "소셜 로그인으로 진입 장벽을 낮췄습니다.",
   },
   {
     no: "02",
     name: "회원가입",
-    file: "step-join",
+    file: "join membership",
     desc: "가입 방식을 한 화면에서 선택하도록 구성했습니다.",
   },
   {
     no: "03",
     name: "정보 입력",
-    file: "step-enter",
+    file: "enter membership information",
     desc: "단계 표시로 남은 과정을 알려 이탈을 줄였습니다.",
   },
   {
     no: "04",
     name: "가입 완료",
-    file: "step-done",
+    file: "membership registration completed",
     desc: "완료 후 추천 상품으로 쇼핑까지 연결했습니다.",
   },
 ];
@@ -266,27 +266,20 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
           </div>
 
           <div className={styles.flowSteps}>
-            {FLOW.map((s, i) => (
-              <div key={s.file} className={styles.flowRow}>
-                <div className={styles.flowStep}>
-                  <div className={styles.flowStepHead}>
-                    <span className={styles.flowStepNo}>{s.no}</span>
-                    <span className={styles.flowStepName}>{s.name}</span>
-                  </div>
-                  <div className={styles.flowThumb}>
-                    <img
-                      src={`${DETAIL}/${s.file}.png`}
-                      alt={`VENTA ${s.name} 화면`}
-                      loading="lazy"
-                    />
-                  </div>
-                  <p className={styles.flowStepDesc}>{s.desc}</p>
+            {FLOW.map((s) => (
+              <div key={s.file} className={styles.flowStep}>
+                <div className={styles.flowStepHead}>
+                  <span className={styles.flowStepNo}>{s.no}</span>
+                  <span className={styles.flowStepName}>{s.name}</span>
                 </div>
-                {i < FLOW.length - 1 && (
-                  <span className={styles.flowArrow} aria-hidden="true">
-                    →
-                  </span>
-                )}
+                <div className={styles.flowThumb}>
+                  <img
+                    src={`${DIR}/${encodeURIComponent(s.file)}.png`}
+                    alt={`VENTA ${s.name} 화면`}
+                    loading="lazy"
+                  />
+                </div>
+                <p className={styles.flowStepDesc}>{s.desc}</p>
               </div>
             ))}
           </div>

@@ -381,18 +381,15 @@
   word-break: keep-all;
 }
 .flowSteps {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: clamp(6px, 1vw, 16px);
-}
-.flowRow {
-  display: contents;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 56px) clamp(28px, 4vw, 60px);
+  align-items: start;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 .flowStep {
-  flex: 1 1 0;
   min-width: 0;
-  max-width: 260px;
   text-align: center;
 }
 .flowStepHead {
@@ -400,7 +397,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .flowStepNo {
   flex: 0 0 auto;
@@ -417,53 +414,35 @@
   font-weight: 700;
 }
 .flowStepName {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   color: #1a2430;
 }
 .flowThumb {
   width: 100%;
-  aspect-ratio: 5 / 6;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #e6e9ec;
-  box-shadow: 0 20px 44px -28px rgba(28, 48, 78, 0.3);
+  box-shadow: 0 26px 54px -32px rgba(28, 48, 78, 0.32);
   background: #fff;
 }
 .flowThumb img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
   display: block;
 }
 .flowStepDesc {
-  margin-top: 14px;
-  font-size: 13px;
-  line-height: 1.6;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.65;
   color: #5b6b7d;
   word-break: keep-all;
 }
-.flowArrow {
-  flex: 0 0 auto;
-  align-self: center;
-  margin-top: clamp(60px, 9vw, 130px);
-  color: #b7c0c9;
-  font-size: clamp(16px, 2vw, 24px);
-}
 
-@media (max-width: 860px) {
+@media (max-width: 680px) {
   .flowSteps {
-    flex-direction: column;
-    align-items: center;
-  }
-  .flowStep {
-    max-width: 340px;
-    width: 100%;
-  }
-  .flowArrow {
-    margin-top: 0;
-    transform: rotate(90deg);
+    grid-template-columns: 1fr;
+    max-width: 420px;
   }
 }
 
