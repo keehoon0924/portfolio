@@ -96,10 +96,10 @@ const PD_ANNOS = [
     body: "제품의 사용 맥락과 가치를 감성적인 비주얼로 전달하고, 하단 버튼으로 다음 제품 상세 페이지까지 자연스럽게 연결되도록 구성했습니다.",
   },
 ];
-const PD_CARDS = [
-  { badge: "A", name: "VENTA DAILY ONE", kw: "일상 · 가벼움 · 도심", imgs: ["daily-1", "daily-2"] },
-  { badge: "B", name: "VENTA TRAIL PRO", kw: "자연 · 접지력 · 아웃도어", imgs: ["trail-1", "trail-2"] },
-  { badge: "C", name: "VENTA AERO RUNNING", kw: "러닝 · 경량감 · 역동성", imgs: ["run-1", "run-2"] },
+// air(대표)를 크게 봤으니, 나머지 2제품은 같은 상세페이지를 작게 나란히 → 일관성 증명
+const PD_PAGES = [
+  { file: "one-rep", name: "VENTA DAILY ONE", kw: "일상 · 가벼움 · 도심" },
+  { file: "pro-rep", name: "VENTA TRAIL PRO", kw: "자연 · 접지력 · 아웃도어" },
 ];
 
 export function VentaDetail({ onClose }: { onClose: () => void }) {
@@ -210,26 +210,19 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
             <p className={styles.pdSystemTitle}>
               3가지 제품, 하나의 일관된 상세 페이지 시스템
             </p>
-            <div className={styles.pdCards}>
-              {PD_CARDS.map((c) => (
-                <div key={c.badge} className={styles.pdCard}>
-                  <div className={styles.pdCardHead}>
-                    <span className={styles.pdBadge}>{c.badge}</span>
-                    <div>
-                      <p className={styles.pdCardName}>{c.name}</p>
-                      <p className={styles.pdCardKw}>{c.kw}</p>
-                    </div>
+            <div className={styles.pdPages}>
+              {PD_PAGES.map((pg) => (
+                <div key={pg.file} className={styles.pdPageItem}>
+                  <div className={styles.pdPageLabel}>
+                    <span className={styles.pdPageName}>{pg.name}</span>
+                    <span className={styles.pdPageKw}>{pg.kw}</span>
                   </div>
-                  <div className={styles.pdCardImgs}>
-                    {c.imgs.map((im) => (
-                      <img
-                        key={im}
-                        src={`${DETAIL}/${im}.png`}
-                        alt={`${c.name} 착화 컷`}
-                        loading="lazy"
-                      />
-                    ))}
-                  </div>
+                  <img
+                    className={styles.pdPageShot}
+                    src={`${DETAIL}/${pg.file}.png`}
+                    alt={`${pg.name} 상세 페이지`}
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>

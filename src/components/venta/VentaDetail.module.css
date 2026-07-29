@@ -272,58 +272,44 @@
   width: clamp(24px, 7vw, 110px);
   background: #d5dae0;
 }
-.pdCards {
+/* 나머지 2제품 상세페이지 — 작게 나란히(일관성 증명) */
+.pdPages {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2vw, 28px);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.pdCard {
-  border: 1px solid #e6e9ec;
-  border-radius: 14px;
-  padding: clamp(16px, 1.5vw, 22px);
-  background: #fff;
+.pdPageItem {
+  min-width: 0;
 }
-.pdCardHead {
+.pdPageLabel {
   display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 16px;
-}
-.pdBadge {
-  flex: 0 0 auto;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  background: #1a2430;
-  color: #fff;
-  display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 700;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-bottom: 16px;
+  text-align: center;
 }
-.pdCardName {
+.pdPageName {
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #1a2430;
 }
-.pdCardKw {
+.pdPageKw {
   font-size: 12px;
   color: #8a97a3;
-  margin-top: 3px;
 }
-.pdCardImgs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.pdCardImgs img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 8px;
+.pdPageShot {
   display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ececec;
+  box-shadow: 0 30px 70px -40px rgba(28, 48, 78, 0.35);
 }
 .pdTagline {
   display: flex;
@@ -356,8 +342,9 @@
   }
 }
 @media (max-width: 720px) {
-  .pdCards {
+  .pdPages {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
