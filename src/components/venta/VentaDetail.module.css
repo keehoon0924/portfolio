@@ -196,6 +196,7 @@
 }
 .pdHeader {
   margin-bottom: clamp(40px, 5vw, 76px);
+  text-align: center;
 }
 .pdTitle {
   display: inline-block;
