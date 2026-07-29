@@ -102,7 +102,7 @@
 .noteRight {
   left: 100%;
   margin-left: clamp(20px, 2.5vw, 40px);
-  text-align: right;
+  text-align: left;
 }
 .noteLeft {
   right: 100%;
