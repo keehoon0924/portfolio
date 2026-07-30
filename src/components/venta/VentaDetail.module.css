@@ -48,7 +48,7 @@
 
 /* ══ 메인 페이지 쇼케이스 — 하늘 배경 위에 가운데 정렬 ══ */
 .showcase {
-  background: #f2f7fc url("/assets/venta/bg.png") top center / 100% auto no-repeat;
+  background: #f2f7fc url("/assets/venta/bg.webp") top center / 100% auto no-repeat;
   padding: clamp(56px, 7vw, 112px) clamp(20px, 4vw, 48px) clamp(72px, 9vw, 150px);
   text-align: center;
 }

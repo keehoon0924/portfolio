@@ -30,7 +30,7 @@ export const tonefitMeta = {
  * 코드에선 위치/크기만 잡는다.
  */
 export const tonefitKv = {
-  mockup: "/assets/images/phone1.png",
+  mockup: "/assets/images/phone1.webp",
 };
 
 /** 2막 — 문제·배경 (발표 대본 13~15p 기반). \n = 의도된 줄바꿈 */
@@ -79,7 +79,7 @@ export type Screen = {
 export const tonefitScreens: Screen[] = [
   {
     id: "hero",
-    img: "/assets/images/mobile-main.png", // → tf-step-1-hero.png
+    img: "/assets/images/mobile-main.webp", // → tf-step-1-hero.png
     objPos: "center 2%",
     kicker: "01 · 메인",
     title: "첫 화면 3초에 ‘왜 TONE:FIT인가’",
@@ -87,7 +87,7 @@ export const tonefitScreens: Screen[] = [
   },
   {
     id: "match",
-    img: "/assets/images/brand-iden-mo.png", // → tf-step-2-match.png
+    img: "/assets/images/brand-iden-mo.webp", // → tf-step-2-match.png
     objPos: "center 22%",
     kicker: "02 · AI 매칭",
     title: "퍼스널 컬러를 데이터로 시각화",
@@ -95,7 +95,7 @@ export const tonefitScreens: Screen[] = [
   },
   {
     id: "frame",
-    img: "/assets/images/frame-mo.png", // → tf-step-3-frame.png
+    img: "/assets/images/frame-mo.webp", // → tf-step-3-frame.png
     objPos: "center 8%",
     kicker: "03 · FRAME",
     title: "상품(프레임) 선택을 직관적으로",
@@ -103,7 +103,7 @@ export const tonefitScreens: Screen[] = [
   },
   {
     id: "community",
-    img: "/assets/images/news-mo.png", // → tf-step-4-community.png
+    img: "/assets/images/news-mo.webp", // → tf-step-4-community.png
     objPos: "center 10%",
     kicker: "04 · 커뮤니티",
     title: "고객이 직접 공유하는 바이럴 구조",
@@ -111,7 +111,7 @@ export const tonefitScreens: Screen[] = [
   },
   {
     id: "brand",
-    img: "/assets/images/brand-smart-mo.png", // → tf-step-5-brand.png
+    img: "/assets/images/brand-smart-mo.webp", // → tf-step-5-brand.png
     objPos: "center 4%",
     kicker: "05 · 브랜드 스토리",
     title: "HOW IT WORKS로 사용 흐름 설명",

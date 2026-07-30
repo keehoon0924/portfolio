@@ -13,7 +13,7 @@ import styles from "./TonefitDetail.module.css";
 const IMG = "/assets/tonefit/new";
 const LIVE_URL = "https://ad-portfolio-tonefitcom.netlify.app";
 const SLIDES = [1, 2, 3, 4, 5, 6, 7];
-const MAIN_PC = `${IMG}/main-pc.png`;
+const MAIN_PC = `${IMG}/main-pc.webp`;
 
 /* SNS 마케팅 카드 (Instagram 1·2 / Threads 3·4) — insta2에 릴스 영상 */
 const SNS_CARDS = [
@@ -105,7 +105,7 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
             <img
               key={n}
               className={styles.slide}
-              src={`${IMG}/${n}.png`}
+              src={`${IMG}/${n}.webp`}
               alt={`TONE:FIT 케이스 스터디 ${n}`}
               loading={n <= 2 ? "eager" : "lazy"}
             />
@@ -208,12 +208,12 @@ export function TonefitDetail({ onClose }: { onClose: () => void }) {
                 <button
                   type="button"
                   className={styles.snsThumb}
-                  onClick={() => setLightbox(`/assets/images/${c.img}.png`)}
+                  onClick={() => setLightbox(`/assets/images/${c.img}.webp`)}
                   aria-label={`${c.tag} 게시물 크게 보기`}
                 >
                   <img
                     className={styles.snsImg}
-                    src={`/assets/images/${c.img}.png`}
+                    src={`/assets/images/${c.img}.webp`}
                     alt={c.caption}
                     loading="lazy"
                   />

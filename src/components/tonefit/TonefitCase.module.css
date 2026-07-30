@@ -6,11 +6,11 @@
 .intro {
   border-top: 1px solid var(--border);
   /*
-   * 1순위: 생성 배경 이미지(tf-kv-bg.png) — 아직 없으면 이 레이어는 건너뛰고
+   * 1순위: 생성 배경 이미지(tf-kv-bg.webp) — 아직 없으면 이 레이어는 건너뛰고
    * 아래 그라데이션(플레이스홀더 겸 폴백)이 보인다. 이미지 추가하면 자동 적용.
    */
   background:
-    url("/assets/tf-kv-bg.png") center / cover no-repeat,
+    url("/assets/tf-kv-bg.webp") center / cover no-repeat,
     radial-gradient(80% 70% at 80% 28%, rgba(232, 137, 91, 0.18), transparent 62%),
     linear-gradient(180deg, #fbf7f3 0%, #f2ede8 100%);
   overflow: hidden;

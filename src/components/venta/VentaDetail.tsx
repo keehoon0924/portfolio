@@ -9,7 +9,7 @@ const ROOT = "/assets/venta";
 const DIR = "/assets/venta/full%20page";
 const INTRO = ["1.1", "3", "4"]; // venta 루트 — kv 위에 쌓는 인트로
 
-/* 메인 페이지(main.png) 좌우 교차 주석 — top은 이미지 세로 위치 % */
+/* 메인 페이지(main.webp) 좌우 교차 주석 — top은 이미지 세로 위치 % */
 const MAIN_NOTES = [
   {
     top: "5%",
@@ -140,7 +140,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
             <img
               key={`intro-${name}`}
               className={styles.section}
-              src={`${ROOT}/${name}.png`}
+              src={`${ROOT}/${name}.webp`}
               alt={`VENTA 인트로 ${name}`}
               loading={i < 2 ? "eager" : "lazy"}
             />
@@ -162,7 +162,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
           <div className={styles.pageStage}>
             <img
               className={styles.showcasePage}
-              src={`${DIR}/main.png`}
+              src={`${DIR}/main.webp`}
               alt="VENTA 메인 페이지"
               loading="lazy"
             />
@@ -192,7 +192,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
               )}
               <img
                 className={styles.pageShot}
-                src={`${DIR}/${encodeURIComponent(pg.name)}.png`}
+                src={`${DIR}/${encodeURIComponent(pg.name)}.webp`}
                 alt={`VENTA ${pg.name}`}
                 loading="lazy"
               />
@@ -214,7 +214,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
           <div className={styles.pdStage}>
             <img
               className={styles.pdPage}
-              src={`${DETAIL}/rep.png`}
+              src={`${DETAIL}/rep.webp`}
               alt="VENTA 상세 페이지 대표 예시 (에어로 러닝)"
               loading="lazy"
             />
@@ -239,7 +239,7 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
                   </div>
                   <img
                     className={styles.pdPageShot}
-                    src={`${DETAIL}/${pg.file}.png`}
+                    src={`${DETAIL}/${pg.file}.webp`}
                     alt={`${pg.name} 상세 페이지`}
                     loading="lazy"
                   />
@@ -276,8 +276,8 @@ export function VentaDetail({ onClose }: { onClose: () => void }) {
                   <img
                     src={
                       s.file === "login"
-                        ? `${DETAIL}/login-nf.png`
-                        : `${DIR}/${encodeURIComponent(s.file)}.png`
+                        ? `${DETAIL}/login-nf.webp`
+                        : `${DIR}/${encodeURIComponent(s.file)}.webp`
                     }
                     alt={`VENTA ${s.name} 화면`}
                     loading="lazy"

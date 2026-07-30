@@ -9,10 +9,10 @@ import styles from "./CheongyeonDetail.module.css";
  */
 const IMG = "/assets/cheongyeon";
 const LIVE_URL = "https://cheongyeon-amber.vercel.app/";
-const SPACE_FULL = `${IMG}/space/space%20full.png`;
-const SPACE_1 = `${IMG}/space/space%201.png`; // 호버 전
-const SPACE_2 = `${IMG}/space/space%202.png`; // 호버 후
-const SPACE_3 = `${IMG}/space/space%203.png`; // 평면도 클릭 후
+const SPACE_FULL = `${IMG}/space/space%20full.webp`;
+const SPACE_1 = `${IMG}/space/space%201.webp`; // 호버 전
+const SPACE_2 = `${IMG}/space/space%202.webp`; // 호버 후
+const SPACE_3 = `${IMG}/space/space%203.webp`; // 평면도 클릭 후
 
 /* 공간 섹션 주석 (목업 세로 위치 %) — 섹션 기준 배치 */
 const SPACE_NOTES = [
@@ -49,7 +49,7 @@ function Slide({ n }: { n: number }) {
     <section className={styles.slideSec}>
       <img
         className={styles.slide}
-        src={`${IMG}/${n}.png`}
+        src={`${IMG}/${n}.webp`}
         alt={`청연 케이스 스터디 ${n}`}
         loading={n <= 2 ? "eager" : "lazy"}
       />

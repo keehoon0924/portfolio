@@ -42,7 +42,7 @@ export function OnlyeyeDetail({ onClose }: { onClose: () => void }) {
             <img
               key={n}
               className={styles.preview}
-              src={`${IMG}/go/${n}.png`}
+              src={`${IMG}/go/${n}.webp`}
               alt={`온리아이 랜딩 페이지 미리보기 ${n}`}
               loading={n === 1 ? "eager" : "lazy"}
             />
@@ -55,7 +55,7 @@ export function OnlyeyeDetail({ onClose }: { onClose: () => void }) {
             <img
               key={s}
               className={styles.section}
-              src={`${IMG}/${s}.png`}
+              src={`${IMG}/${s}.webp`}
               alt={`온리아이 랜딩 페이지 섹션 ${i + 1}`}
               loading={i < 2 ? "eager" : "lazy"}
             />
